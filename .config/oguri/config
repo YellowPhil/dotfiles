@@ -1,0 +1,5 @@
+[output *]
+image=/home/synerr/Downloads/ezgif.com-gif-maker.gif
+filter=nearest
+scaling-mode=fill
+anchor=center

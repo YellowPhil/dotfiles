@@ -1,0 +1,894 @@
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.dialogPolyfill = factory());
+}(this, function () { 'use strict';
+
+  // nb. This is for IE10 and lower _only_.
+  var supportCustomEvent = window.CustomEvent;
+  if (!supportCustomEvent || typeof supportCustomEvent === 'object') {
+    supportCustomEvent = function CustomEvent(event, x) {
+      x = x || {};
+      var ev = document.createEvent('CustomEvent');
+      ev.initCustomEvent(event, !!x.bubbles, !!x.cancelable, x.detail || null);
+      return ev;
+    };
+    supportCustomEvent.prototype = window.Event.prototype;
+  }
+
+  /**
+   * Dispatches the passed event to both an "on<type>" handler as well as via the
+   * normal dispatch operation. Does not bubble.
+   *
+   * @param {!EventTarget} target
+   * @param {!Event} event
+   * @return {boolean}
+   */
+  function safeDispatchEvent(target, event) {
+    var check = 'on' + event.type.toLowerCase();
+    if (typeof target[check] === 'function') {
+      target[check](event);
+    }
+    return target.dispatchEvent(event);
+  }
+
+  /**
+   * @param {Element} el to check for stacking context
+   * @return {boolean} whether this el or its parents creates a stacking context
+   */
+  function createsStackingContext(el) {
+    while (el && el !== document.body) {
+      var s = window.getComputedStyle(el);
+      var invalid = function(k, ok) {
+        return !(s[k] === undefined || s[k] === ok);
+      };
+
+      if (s.opacity < 1 ||
+          invalid('zIndex', 'auto') ||
+          invalid('transform', 'none') ||
+          invalid('mixBlendMode', 'normal') ||
+          invalid('filter', 'none') ||
+          invalid('perspective', 'none') ||
+          s['isolation'] === 'isolate' ||
+          s.position === 'fixed' ||
+          s.webkitOverflowScrolling === 'touch') {
+        return true;
+      }
+      el = el.parentElement;
+    }
+    return false;
+  }
+
+  /**
+   * Finds the nearest <dialog> from the passed element.
+   *
+   * @param {Element} el to search from
+   * @return {HTMLDialogElement} dialog found
+   */
+  function findNearestDialog(el) {
+    while (el) {
+      if (el.localName === 'dialog') {
+        return /** @type {HTMLDialogElement} */ (el);
+      }
+      if (el.parentElement) {
+        el = el.parentElement;
+      } else if (el.parentNode) {
+        el = el.parentNode.host;
+      } else {
+        el = null;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Blur the specified element, as long as it's not the HTML body element.
+   * This works around an IE9/10 bug - blurring the body causes Windows to
+   * blur the whole application.
+   *
+   * @param {Element} el to blur
+   */
+  function safeBlur(el) {
+    // Find the actual focused element when the active element is inside a shadow root
+    while (el && el.shadowRoot && el.shadowRoot.activeElement) {
+      el = el.shadowRoot.activeElement;
+    }
+
+    if (el && el.blur && el !== document.body) {
+      el.blur();
+    }
+  }
+
+  /**
+   * @param {!NodeList} nodeList to search
+   * @param {Node} node to find
+   * @return {boolean} whether node is inside nodeList
+   */
+  function inNodeList(nodeList, node) {
+    for (var i = 0; i < nodeList.length; ++i) {
+      if (nodeList[i] === node) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * @param {HTMLFormElement} el to check
+   * @return {boolean} whether this form has method="dialog"
+   */
+  function isFormMethodDialog(el) {
+    if (!el || !el.hasAttribute('method')) {
+      return false;
+    }
+    return el.getAttribute('method').toLowerCase() === 'dialog';
+  }
+
+  /**
+   * @param {!DocumentFragment|!Element} hostElement
+   * @return {?Element}
+   */
+  function findFocusableElementWithin(hostElement) {
+    // Note that this is 'any focusable area'. This list is probably not exhaustive, but the
+    // alternative involves stepping through and trying to focus everything.
+    var opts = ['button', 'input', 'keygen', 'select', 'textarea'];
+    var query = opts.map(function(el) {
+      return el + ':not([disabled])';
+    });
+    // TODO(samthor): tabindex values that are not numeric are not focusable.
+    query.push('[tabindex]:not([disabled]):not([tabindex=""])');  // tabindex != "", not disabled
+    var target = hostElement.querySelector(query.join(', '));
+
+    if (!target && 'attachShadow' in Element.prototype) {
+      // If we haven't found a focusable target, see if the host element contains an element
+      // which has a shadowRoot.
+      // Recursively search for the first focusable item in shadow roots.
+      var elems = hostElement.querySelectorAll('*');
+      for (var i = 0; i < elems.length; i++) {
+        if (elems[i].tagName && elems[i].shadowRoot) {
+          target = findFocusableElementWithin(elems[i].shadowRoot);
+          if (target) {
+            break;
+          }
+        }
+      }
+    }
+    return target;
+  }
+
+  /**
+   * Determines if an element is attached to the DOM.
+   * @param {Element} element to check
+   * @return {boolean} whether the element is in DOM
+   */
+  function isConnected(element) {
+    return element.isConnected || document.body.contains(element);
+  }
+
+  /**
+   * @param {!Event} event
+   * @return {?Element}
+   */
+  function findFormSubmitter(event) {
+    if (event.submitter) {
+      return event.submitter;
+    }
+
+    var form = event.target;
+    if (!(form instanceof HTMLFormElement)) {
+      return null;
+    }
+
+    var submitter = dialogPolyfill.formSubmitter;
+    if (!submitter) {
+      var target = event.target;
+      var root = ('getRootNode' in target && target.getRootNode() || document);
+      submitter = root.activeElement;
+    }
+
+    if (!submitter || submitter.form !== form) {
+      return null;
+    }
+    return submitter;
+  }
+
+  /**
+   * @param {!Event} event
+   */
+  function maybeHandleSubmit(event) {
+    if (event.defaultPrevented) {
+      return;
+    }
+    var form = /** @type {!HTMLFormElement} */ (event.target);
+
+    // We'd have a value if we clicked on an imagemap.
+    var value = dialogPolyfill.imagemapUseValue;
+    var submitter = findFormSubmitter(event);
+    if (value === null && submitter) {
+      value = submitter.value;
+    }
+
+    // There should always be a dialog as this handler is added specifically on them, but check just
+    // in case.
+    var dialog = findNearestDialog(form);
+    if (!dialog) {
+      return;
+    }
+
+    // Prefer formmethod on the button.
+    var formmethod = submitter && submitter.getAttribute('formmethod') || form.getAttribute('method');
+    if (formmethod !== 'dialog') {
+      return;
+    }
+    event.preventDefault();
+
+    if (value != null) {
+      // nb. we explicitly check against null/undefined
+      dialog.close(value);
+    } else {
+      dialog.close();
+    }
+  }
+
+  /**
+   * @param {!HTMLDialogElement} dialog to upgrade
+   * @constructor
+   */
+  function dialogPolyfillInfo(dialog) {
+    this.dialog_ = dialog;
+    this.replacedStyleTop_ = false;
+    this.openAsModal_ = false;
+
+    // Set a11y role. Browsers that support dialog implicitly know this already.
+    if (!dialog.hasAttribute('role')) {
+      dialog.setAttribute('role', 'dialog');
+    }
+
+    dialog.show = this.show.bind(this);
+    dialog.showModal = this.showModal.bind(this);
+    dialog.close = this.close.bind(this);
+
+    dialog.addEventListener('submit', maybeHandleSubmit, false);
+
+    if (!('returnValue' in dialog)) {
+      dialog.returnValue = '';
+    }
+
+    if ('MutationObserver' in window) {
+      var mo = new MutationObserver(this.maybeHideModal.bind(this));
+      mo.observe(dialog, {attributes: true, attributeFilter: ['open']});
+    } else {
+      // IE10 and below support. Note that DOMNodeRemoved etc fire _before_ removal. They also
+      // seem to fire even if the element was removed as part of a parent removal. Use the removed
+      // events to force downgrade (useful if removed/immediately added).
+      var removed = false;
+      var cb = function() {
+        removed ? this.downgradeModal() : this.maybeHideModal();
+        removed = false;
+      }.bind(this);
+      var timeout;
+      var delayModel = function(ev) {
+        if (ev.target !== dialog) { return; }  // not for a child element
+        var cand = 'DOMNodeRemoved';
+        removed |= (ev.type.substr(0, cand.length) === cand);
+        window.clearTimeout(timeout);
+        timeout = window.setTimeout(cb, 0);
+      };
+      ['DOMAttrModified', 'DOMNodeRemoved', 'DOMNodeRemovedFromDocument'].forEach(function(name) {
+        dialog.addEventListener(name, delayModel);
+      });
+    }
+    // Note that the DOM is observed inside DialogManager while any dialog
+    // is being displayed as a modal, to catch modal removal from the DOM.
+
+    Object.defineProperty(dialog, 'open', {
+      set: this.setOpen.bind(this),
+      get: dialog.hasAttribute.bind(dialog, 'open')
+    });
+
+    this.backdrop_ = document.createElement('div');
+    this.backdrop_.className = 'backdrop';
+    this.backdrop_.addEventListener('mouseup'  , this.backdropMouseEvent_.bind(this));
+    this.backdrop_.addEventListener('mousedown', this.backdropMouseEvent_.bind(this));
+    this.backdrop_.addEventListener('click'    , this.backdropMouseEvent_.bind(this));
+  }
+
+  dialogPolyfillInfo.prototype = /** @type {HTMLDialogElement.prototype} */ ({
+
+    get dialog() {
+      return this.dialog_;
+    },
+
+    /**
+     * Maybe remove this dialog from the modal top layer. This is called when
+     * a modal dialog may no longer be tenable, e.g., when the dialog is no
+     * longer open or is no longer part of the DOM.
+     */
+    maybeHideModal: function() {
+      if (this.dialog_.hasAttribute('open') && isConnected(this.dialog_)) { return; }
+      this.downgradeModal();
+    },
+
+    /**
+     * Remove this dialog from the modal top layer, leaving it as a non-modal.
+     */
+    downgradeModal: function() {
+      if (!this.openAsModal_) { return; }
+      this.openAsModal_ = false;
+      this.dialog_.style.zIndex = '';
+
+      // This won't match the native <dialog> exactly because if the user set top on a centered
+      // polyfill dialog, that top gets thrown away when the dialog is closed. Not sure it's
+      // possible to polyfill this perfectly.
+      if (this.replacedStyleTop_) {
+        this.dialog_.style.top = '';
+        this.replacedStyleTop_ = false;
+      }
+
+      // Clear the backdrop and remove from the manager.
+      this.backdrop_.parentNode && this.backdrop_.parentNode.removeChild(this.backdrop_);
+      dialogPolyfill.dm.removeDialog(this);
+    },
+
+    /**
+     * @param {boolean} value whether to open or close this dialog
+     */
+    setOpen: function(value) {
+      if (value) {
+        this.dialog_.hasAttribute('open') || this.dialog_.setAttribute('open', '');
+      } else {
+        this.dialog_.removeAttribute('open');
+        this.maybeHideModal();  // nb. redundant with MutationObserver
+      }
+    },
+
+    /**
+     * Handles mouse events ('mouseup', 'mousedown', 'click') on the fake .backdrop element, redirecting them as if
+     * they were on the dialog itself.
+     *
+     * @param {!Event} e to redirect
+     */
+    backdropMouseEvent_: function(e) {
+      if (!this.dialog_.hasAttribute('tabindex')) {
+        // Clicking on the backdrop should move the implicit cursor, even if dialog cannot be
+        // focused. Create a fake thing to focus on. If the backdrop was _before_ the dialog, this
+        // would not be needed - clicks would move the implicit cursor there.
+        var fake = document.createElement('div');
+        this.dialog_.insertBefore(fake, this.dialog_.firstChild);
+        fake.tabIndex = -1;
+        fake.focus();
+        this.dialog_.removeChild(fake);
+      } else {
+        this.dialog_.focus();
+      }
+
+      var redirectedEvent = document.createEvent('MouseEvents');
+      redirectedEvent.initMouseEvent(e.type, e.bubbles, e.cancelable, window,
+          e.detail, e.screenX, e.screenY, e.clientX, e.clientY, e.ctrlKey,
+          e.altKey, e.shiftKey, e.metaKey, e.button, e.relatedTarget);
+      this.dialog_.dispatchEvent(redirectedEvent);
+      e.stopPropagation();
+    },
+
+    /**
+     * Focuses on the first focusable element within the dialog. This will always blur the current
+     * focus, even if nothing within the dialog is found.
+     */
+    focus_: function() {
+      // Find element with `autofocus` attribute, or fall back to the first form/tabindex control.
+      var target = this.dialog_.querySelector('[autofocus]:not([disabled])');
+      if (!target && this.dialog_.tabIndex >= 0) {
+        target = this.dialog_;
+      }
+      if (!target) {
+        target = findFocusableElementWithin(this.dialog_);
+      }
+      safeBlur(document.activeElement);
+      target && target.focus();
+    },
+
+    /**
+     * Sets the zIndex for the backdrop and dialog.
+     *
+     * @param {number} dialogZ
+     * @param {number} backdropZ
+     */
+    updateZIndex: function(dialogZ, backdropZ) {
+      if (dialogZ < backdropZ) {
+        throw new Error('dialogZ should never be < backdropZ');
+      }
+      this.dialog_.style.zIndex = dialogZ;
+      this.backdrop_.style.zIndex = backdropZ;
+    },
+
+    /**
+     * Shows the dialog. If the dialog is already open, this does nothing.
+     */
+    show: function() {
+      if (!this.dialog_.open) {
+        this.setOpen(true);
+        this.focus_();
+      }
+    },
+
+    /**
+     * Show this dialog modally.
+     */
+    showModal: function() {
+      if (this.dialog_.hasAttribute('open')) {
+        throw new Error('Failed to execute \'showModal\' on dialog: The element is already open, and therefore cannot be opened modally.');
+      }
+      if (!isConnected(this.dialog_)) {
+        throw new Error('Failed to execute \'showModal\' on dialog: The element is not in a Document.');
+      }
+      if (!dialogPolyfill.dm.pushDialog(this)) {
+        throw new Error('Failed to execute \'showModal\' on dialog: There are too many open modal dialogs.');
+      }
+
+      if (createsStackingContext(this.dialog_.parentElement)) {
+        console.warn('A dialog is being shown inside a stacking context. ' +
+            'This may cause it to be unusable. For more information, see this link: ' +
+            'https://github.com/GoogleChrome/dialog-polyfill/#stacking-context');
+      }
+
+      this.setOpen(true);
+      this.openAsModal_ = true;
+
+      // Optionally center vertically, relative to the current viewport.
+      if (dialogPolyfill.needsCentering(this.dialog_)) {
+        dialogPolyfill.reposition(this.dialog_);
+        this.replacedStyleTop_ = true;
+      } else {
+        this.replacedStyleTop_ = false;
+      }
+
+      // Insert backdrop.
+      this.dialog_.parentNode.insertBefore(this.backdrop_, this.dialog_.nextSibling);
+
+      // Focus on whatever inside the dialog.
+      this.focus_();
+    },
+
+    /**
+     * Closes this HTMLDialogElement. This is optional vs clearing the open
+     * attribute, however this fires a 'close' event.
+     *
+     * @param {string=} opt_returnValue to use as the returnValue
+     */
+    close: function(opt_returnValue) {
+      if (!this.dialog_.hasAttribute('open')) {
+        throw new Error('Failed to execute \'close\' on dialog: The element does not have an \'open\' attribute, and therefore cannot be closed.');
+      }
+      this.setOpen(false);
+
+      // Leave returnValue untouched in case it was set directly on the element
+      if (opt_returnValue !== undefined) {
+        this.dialog_.returnValue = opt_returnValue;
+      }
+
+      // Triggering "close" event for any attached listeners on the <dialog>.
+      var closeEvent = new supportCustomEvent('close', {
+        bubbles: false,
+        cancelable: false
+      });
+      safeDispatchEvent(this.dialog_, closeEvent);
+    }
+
+  });
+
+  var dialogPolyfill = {};
+
+  dialogPolyfill.reposition = function(element) {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    var topValue = scrollTop + (window.innerHeight - element.offsetHeight) / 2;
+    element.style.top = Math.max(scrollTop, topValue) + 'px';
+  };
+
+  dialogPolyfill.isInlinePositionSetByStylesheet = function(element) {
+    for (var i = 0; i < document.styleSheets.length; ++i) {
+      var styleSheet = document.styleSheets[i];
+      var cssRules = null;
+      // Some browsers throw on cssRules.
+      try {
+        cssRules = styleSheet.cssRules;
+      } catch (e) {}
+      if (!cssRules) { continue; }
+      for (var j = 0; j < cssRules.length; ++j) {
+        var rule = cssRules[j];
+        var selectedNodes = null;
+        // Ignore errors on invalid selector texts.
+        try {
+          selectedNodes = document.querySelectorAll(rule.selectorText);
+        } catch(e) {}
+        if (!selectedNodes || !inNodeList(selectedNodes, element)) {
+          continue;
+        }
+        var cssTop = rule.style.getPropertyValue('top');
+        var cssBottom = rule.style.getPropertyValue('bottom');
+        if ((cssTop && cssTop !== 'auto') || (cssBottom && cssBottom !== 'auto')) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  dialogPolyfill.needsCentering = function(dialog) {
+    var computedStyle = window.getComputedStyle(dialog);
+    if (computedStyle.position !== 'absolute') {
+      return false;
+    }
+
+    // We must determine whether the top/bottom specified value is non-auto.  In
+    // WebKit/Blink, checking computedStyle.top == 'auto' is sufficient, but
+    // Firefox returns the used value. So we do this crazy thing instead: check
+    // the inline style and then go through CSS rules.
+    if ((dialog.style.top !== 'auto' && dialog.style.top !== '') ||
+        (dialog.style.bottom !== 'auto' && dialog.style.bottom !== '')) {
+      return false;
+    }
+    return !dialogPolyfill.isInlinePositionSetByStylesheet(dialog);
+  };
+
+  /**
+   * @param {!Element} element to force upgrade
+   */
+  dialogPolyfill.forceRegisterDialog = function(element) {
+    if (window.HTMLDialogElement || element.showModal) {
+      console.warn('This browser already supports <dialog>, the polyfill ' +
+          'may not work correctly', element);
+    }
+    if (element.localName !== 'dialog') {
+      throw new Error('Failed to register dialog: The element is not a dialog.');
+    }
+    new dialogPolyfillInfo(/** @type {!HTMLDialogElement} */ (element));
+  };
+
+  /**
+   * @param {!Element} element to upgrade, if necessary
+   */
+  dialogPolyfill.registerDialog = function(element) {
+    if (!element.showModal) {
+      dialogPolyfill.forceRegisterDialog(element);
+    }
+  };
+
+  /**
+   * @constructor
+   */
+  dialogPolyfill.DialogManager = function() {
+    /** @type {!Array<!dialogPolyfillInfo>} */
+    this.pendingDialogStack = [];
+
+    var checkDOM = this.checkDOM_.bind(this);
+
+    // The overlay is used to simulate how a modal dialog blocks the document.
+    // The blocking dialog is positioned on top of the overlay, and the rest of
+    // the dialogs on the pending dialog stack are positioned below it. In the
+    // actual implementation, the modal dialog stacking is controlled by the
+    // top layer, where z-index has no effect.
+    this.overlay = document.createElement('div');
+    this.overlay.className = '_dialog_overlay';
+    this.overlay.addEventListener('click', function(e) {
+      this.forwardTab_ = undefined;
+      e.stopPropagation();
+      checkDOM([]);  // sanity-check DOM
+    }.bind(this));
+
+    this.handleKey_ = this.handleKey_.bind(this);
+    this.handleFocus_ = this.handleFocus_.bind(this);
+
+    this.zIndexLow_ = 100000;
+    this.zIndexHigh_ = 100000 + 150;
+
+    this.forwardTab_ = undefined;
+
+    if ('MutationObserver' in window) {
+      this.mo_ = new MutationObserver(function(records) {
+        var removed = [];
+        records.forEach(function(rec) {
+          for (var i = 0, c; c = rec.removedNodes[i]; ++i) {
+            if (!(c instanceof Element)) {
+              continue;
+            } else if (c.localName === 'dialog') {
+              removed.push(c);
+            }
+            removed = removed.concat(c.querySelectorAll('dialog'));
+          }
+        });
+        removed.length && checkDOM(removed);
+      });
+    }
+  };
+
+  /**
+   * Called on the first modal dialog being shown. Adds the overlay and related
+   * handlers.
+   */
+  dialogPolyfill.DialogManager.prototype.blockDocument = function() {
+    document.documentElement.addEventListener('focus', this.handleFocus_, true);
+    document.addEventListener('keydown', this.handleKey_);
+    this.mo_ && this.mo_.observe(document, {childList: true, subtree: true});
+  };
+
+  /**
+   * Called on the first modal dialog being removed, i.e., when no more modal
+   * dialogs are visible.
+   */
+  dialogPolyfill.DialogManager.prototype.unblockDocument = function() {
+    document.documentElement.removeEventListener('focus', this.handleFocus_, true);
+    document.removeEventListener('keydown', this.handleKey_);
+    this.mo_ && this.mo_.disconnect();
+  };
+
+  /**
+   * Updates the stacking of all known dialogs.
+   */
+  dialogPolyfill.DialogManager.prototype.updateStacking = function() {
+    var zIndex = this.zIndexHigh_;
+
+    for (var i = 0, dpi; dpi = this.pendingDialogStack[i]; ++i) {
+      dpi.updateZIndex(--zIndex, --zIndex);
+      if (i === 0) {
+        this.overlay.style.zIndex = --zIndex;
+      }
+    }
+
+    // Make the overlay a sibling of the dialog itself.
+    var last = this.pendingDialogStack[0];
+    if (last) {
+      var p = last.dialog.parentNode || document.body;
+      p.appendChild(this.overlay);
+    } else if (this.overlay.parentNode) {
+      this.overlay.parentNode.removeChild(this.overlay);
+    }
+  };
+
+  /**
+   * @param {Element} candidate to check if contained or is the top-most modal dialog
+   * @return {boolean} whether candidate is contained in top dialog
+   */
+  dialogPolyfill.DialogManager.prototype.containedByTopDialog_ = function(candidate) {
+    while (candidate = findNearestDialog(candidate)) {
+      for (var i = 0, dpi; dpi = this.pendingDialogStack[i]; ++i) {
+        if (dpi.dialog === candidate) {
+          return i === 0;  // only valid if top-most
+        }
+      }
+      candidate = candidate.parentElement;
+    }
+    return false;
+  };
+
+  dialogPolyfill.DialogManager.prototype.handleFocus_ = function(event) {
+    var target = event.composedPath ? event.composedPath()[0] : event.target;
+
+    if (this.containedByTopDialog_(target)) { return; }
+
+    if (document.activeElement === document.documentElement) { return; }
+
+    event.preventDefault();
+    event.stopPropagation();
+    safeBlur(/** @type {Element} */ (target));
+
+    if (this.forwardTab_ === undefined) { return; }  // move focus only from a tab key
+
+    var dpi = this.pendingDialogStack[0];
+    var dialog = dpi.dialog;
+    var position = dialog.compareDocumentPosition(target);
+    if (position & Node.DOCUMENT_POSITION_PRECEDING) {
+      if (this.forwardTab_) {
+        // forward
+        dpi.focus_();
+      } else if (target !== document.documentElement) {
+        // backwards if we're not already focused on <html>
+        document.documentElement.focus();
+      }
+    }
+
+    return false;
+  };
+
+  dialogPolyfill.DialogManager.prototype.handleKey_ = function(event) {
+    this.forwardTab_ = undefined;
+    if (event.keyCode === 27) {
+      event.preventDefault();
+      event.stopPropagation();
+      var cancelEvent = new supportCustomEvent('cancel', {
+        bubbles: false,
+        cancelable: true
+      });
+      var dpi = this.pendingDialogStack[0];
+      if (dpi && safeDispatchEvent(dpi.dialog, cancelEvent)) {
+        dpi.dialog.close();
+      }
+    } else if (event.keyCode === 9) {
+      this.forwardTab_ = !event.shiftKey;
+    }
+  };
+
+  /**
+   * Finds and downgrades any known modal dialogs that are no longer displayed. Dialogs that are
+   * removed and immediately readded don't stay modal, they become normal.
+   *
+   * @param {!Array<!HTMLDialogElement>} removed that have definitely been removed
+   */
+  dialogPolyfill.DialogManager.prototype.checkDOM_ = function(removed) {
+    // This operates on a clone because it may cause it to change. Each change also calls
+    // updateStacking, which only actually needs to happen once. But who removes many modal dialogs
+    // at a time?!
+    var clone = this.pendingDialogStack.slice();
+    clone.forEach(function(dpi) {
+      if (removed.indexOf(dpi.dialog) !== -1) {
+        dpi.downgradeModal();
+      } else {
+        dpi.maybeHideModal();
+      }
+    });
+  };
+
+  /**
+   * @param {!dialogPolyfillInfo} dpi
+   * @return {boolean} whether the dialog was allowed
+   */
+  dialogPolyfill.DialogManager.prototype.pushDialog = function(dpi) {
+    var allowed = (this.zIndexHigh_ - this.zIndexLow_) / 2 - 1;
+    if (this.pendingDialogStack.length >= allowed) {
+      return false;
+    }
+    if (this.pendingDialogStack.unshift(dpi) === 1) {
+      this.blockDocument();
+    }
+    this.updateStacking();
+    return true;
+  };
+
+  /**
+   * @param {!dialogPolyfillInfo} dpi
+   */
+  dialogPolyfill.DialogManager.prototype.removeDialog = function(dpi) {
+    var index = this.pendingDialogStack.indexOf(dpi);
+    if (index === -1) { return; }
+
+    this.pendingDialogStack.splice(index, 1);
+    if (this.pendingDialogStack.length === 0) {
+      this.unblockDocument();
+    }
+    this.updateStacking();
+  };
+
+  dialogPolyfill.dm = new dialogPolyfill.DialogManager();
+  dialogPolyfill.formSubmitter = null;
+  dialogPolyfill.imagemapUseValue = null;
+
+  /**
+   * Installs global handlers, such as click listers and native method overrides. These are needed
+   * even if a no dialog is registered, as they deal with <form method="dialog">.
+   */
+  if (window.HTMLDialogElement === undefined) {
+
+    /**
+     * If HTMLFormElement translates method="DIALOG" into 'get', then replace the descriptor with
+     * one that returns the correct value.
+     */
+    var testForm = document.createElement('form');
+    testForm.setAttribute('method', 'dialog');
+    if (testForm.method !== 'dialog') {
+      var methodDescriptor = Object.getOwnPropertyDescriptor(HTMLFormElement.prototype, 'method');
+      if (methodDescriptor) {
+        // nb. Some older iOS and older PhantomJS fail to return the descriptor. Don't do anything
+        // and don't bother to update the element.
+        var realGet = methodDescriptor.get;
+        methodDescriptor.get = function() {
+          if (isFormMethodDialog(this)) {
+            return 'dialog';
+          }
+          return realGet.call(this);
+        };
+        var realSet = methodDescriptor.set;
+        /** @this {HTMLElement} */
+        methodDescriptor.set = function(v) {
+          if (typeof v === 'string' && v.toLowerCase() === 'dialog') {
+            return this.setAttribute('method', v);
+          }
+          return realSet.call(this, v);
+        };
+        Object.defineProperty(HTMLFormElement.prototype, 'method', methodDescriptor);
+      }
+    }
+
+    /**
+     * Global 'click' handler, to capture the <input type="submit"> or <button> element which has
+     * submitted a <form method="dialog">. Needed as Safari and others don't report this inside
+     * document.activeElement.
+     */
+    document.addEventListener('click', function(ev) {
+      dialogPolyfill.formSubmitter = null;
+      dialogPolyfill.imagemapUseValue = null;
+      if (ev.defaultPrevented) { return; }  // e.g. a submit which prevents default submission
+
+      var target = /** @type {Element} */ (ev.target);
+      if ('composedPath' in ev) {
+        var path = ev.composedPath();
+        target = path.shift() || target;
+      }
+      if (!target || !isFormMethodDialog(target.form)) { return; }
+
+      var valid = (target.type === 'submit' && ['button', 'input'].indexOf(target.localName) > -1);
+      if (!valid) {
+        if (!(target.localName === 'input' && target.type === 'image')) { return; }
+        // this is a <input type="image">, which can submit forms
+        dialogPolyfill.imagemapUseValue = ev.offsetX + ',' + ev.offsetY;
+      }
+
+      var dialog = findNearestDialog(target);
+      if (!dialog) { return; }
+
+      dialogPolyfill.formSubmitter = target;
+
+    }, false);
+
+    /**
+     * Global 'submit' handler. This handles submits of `method="dialog"` which are invalid, i.e.,
+     * outside a dialog. They get prevented.
+     */
+    document.addEventListener('submit', function(ev) {
+      var form = ev.target;
+      var dialog = findNearestDialog(form);
+      if (dialog) {
+        return;  // ignore, handle there
+      }
+
+      var submitter = findFormSubmitter(ev);
+      var formmethod = submitter && submitter.getAttribute('formmethod') || form.getAttribute('method');
+      if (formmethod === 'dialog') {
+        ev.preventDefault();
+      }
+    });
+
+    /**
+     * Replace the native HTMLFormElement.submit() method, as it won't fire the
+     * submit event and give us a chance to respond.
+     */
+    var nativeFormSubmit = HTMLFormElement.prototype.submit;
+    var replacementFormSubmit = function () {
+      if (!isFormMethodDialog(this)) {
+        return nativeFormSubmit.call(this);
+      }
+      var dialog = findNearestDialog(this);
+      dialog && dialog.close();
+    };
+    HTMLFormElement.prototype.submit = replacementFormSubmit;
+  }
+
+  return dialogPolyfill;
+
+}));
+âOëÀD      bªãÄbªãÅDo¨6bæ9‘   B    :https://pkg.go.dev/third_party/dialog-polyfill/dialog-polyfill.js necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/2 200 OK
+accept-ranges: bytes
+content-security-policy: object-src 'none'; base-uri 'none'; script-src 'unsafe-inline' 'strict-dynamic' https: http: 'sha256-DVdvl49HC0iGx/YKQq/kVNATnEdzGfExbJVTHqT95l8=' 'sha256-CoGrkqEM1Kjjf5b1bpcnDLl8ZZLAsVX+BoAzZ5+AOmc=' 'sha256-QqhlxKosyquihHG/Jahbski3BB1pDss2/CDgLzKKbmE=' 'sha256-karKh1IrXOF1g+uoSxK+k9BuciCwYY/ytGuQVUiRzcM=' 'sha256-mxm3e8M0u3nPPBmLIBgGuMvGUIL5LGv+HzV3bLAIBgw=' 'sha256-+iS8jRq15Ez/Kzz0/G+SNc0geLNvTyf2NZC7MyJgpRE=' 'sha256-bL+cN9GtUg5dqjPwDiPJq4yfiEvOyEJ3rfw/YkNIAWc=' 'sha256-UiVwSVJIK9udADqG5GZe+nRUXWK9wEot2vrxL4D2pQs=' 'sha256-cB+y/oSfWGFf7lHk8KX+ZX2CZQz/dPamIICuPvHcB6w=' 'sha256-7mi5SPcD1cogj2+ju8J/+/qJG99F6Qo+3pO4xQkRf6Q=' 'sha256-rEbn/zvLCsDDvDrVWQuUkKGEQsjQjFvIvJK4NVIMqZ4='
+content-type: text/javascript; charset=utf-8
+last-modified: Wed, 08 Jun 2022 15:11:53 GMT
+x-content-type-options: nosniff
+x-frame-options: deny
+x-cloud-trace-context: 6b22cc6b895d681e35f20a11b0ab8ef5
+date: Tue, 28 Jun 2022 23:15:13 GMT
+server: Google Frontend
+content-length: 29167
+via: 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+X-Firefox-Spdy: h2
+ original-response-headers accept-ranges: bytes
+content-security-policy: object-src 'none'; base-uri 'none'; script-src 'unsafe-inline' 'strict-dynamic' https: http: 'sha256-DVdvl49HC0iGx/YKQq/kVNATnEdzGfExbJVTHqT95l8=' 'sha256-CoGrkqEM1Kjjf5b1bpcnDLl8ZZLAsVX+BoAzZ5+AOmc=' 'sha256-QqhlxKosyquihHG/Jahbski3BB1pDss2/CDgLzKKbmE=' 'sha256-karKh1IrXOF1g+uoSxK+k9BuciCwYY/ytGuQVUiRzcM=' 'sha256-mxm3e8M0u3nPPBmLIBgGuMvGUIL5LGv+HzV3bLAIBgw=' 'sha256-+iS8jRq15Ez/Kzz0/G+SNc0geLNvTyf2NZC7MyJgpRE=' 'sha256-bL+cN9GtUg5dqjPwDiPJq4yfiEvOyEJ3rfw/YkNIAWc=' 'sha256-UiVwSVJIK9udADqG5GZe+nRUXWK9wEot2vrxL4D2pQs=' 'sha256-cB+y/oSfWGFf7lHk8KX+ZX2CZQz/dPamIICuPvHcB6w=' 'sha256-7mi5SPcD1cogj2+ju8J/+/qJG99F6Qo+3pO4xQkRf6Q=' 'sha256-rEbn/zvLCsDDvDrVWQuUkKGEQsjQjFvIvJK4NVIMqZ4='
+content-type: text/javascript; charset=utf-8
+last-modified: Wed, 08 Jun 2022 15:11:53 GMT
+x-content-type-options: nosniff
+x-frame-options: deny
+x-cloud-trace-context: 6b22cc6b895d681e35f20a11b0ab8ef5
+date: Tue, 28 Jun 2022 23:15:13 GMT
+server: Google Frontend
+content-length: 29167
+via: 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+X-Firefox-Spdy: h2
+ ctid 2 uncompressed-len 0 net-response-time-onstart 741 net-response-time-onstop 763   qÔ

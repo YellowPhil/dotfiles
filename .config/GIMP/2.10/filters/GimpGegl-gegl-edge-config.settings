@@ -1,0 +1,9 @@
+# settings
+
+(GimpGegl-gegl-edge-config "2022-05-15 19:29:41"
+    (time 1652632181)
+    (algorithm sobel)
+    (amount 10)
+    (border-behavior white))
+
+# end of settings

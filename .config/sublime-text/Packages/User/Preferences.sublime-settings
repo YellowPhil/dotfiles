@@ -1,0 +1,9 @@
+{
+	"theme": "Adaptive.sublime-theme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"font_face": "Fira Code",
+	"font_size": 11,
+}

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US" class="main en">
+<!--<![endif]-->
+<head>
+	<title>Skoltech | Сколтех запускает виртуальный тур по кампусу! </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=0.8,user-scalable=yes" />
+	<meta name="google-site-verification" content="AGgXxPG_-qirV9x6B3KIGEfdyoxS4e9uOJDcXtUeGSQ" />
+	<meta name="facebook-domain-verification" content="1enewuk6lbm8wwc8l3c35t6z7xo5kk" />
+	<meta name="keywords" content="Skoltech, institute, Skolkovo Institute of Science and Technology, innovation, student, students, research, education, admissions, skolkovo, science, technology" />
+	<meta name="description" content="Сколковский институт науки и технологий" />
+<meta property="description" content="Сколковский институт науки и технологий" />	<meta property="og:site_name" content="Skoltech | Skolkovo Institute of Science and Technology" />
+	<meta property="og:site" content="https://www.skoltech.ru/en" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Skoltech | Skolkovo Institute of Science and Technology" />
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://www.skoltech.ru/app/xmlrpc.php">
+	<link rel="icon" href="https://cdn.skoltech.ru/img/favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="https://cdn.skoltech.ru/img/favicon.ico" type="image/x-icon"/>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="https://cdn.skoltech.ru/css/skoltech.ru/general.css?prod259" />
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/vendor/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/vendor/waypoints.min.js"></script>
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/vendor/waypoints-sticky.min.js"></script>
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/vendor/jq.swiper.js"></script>
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/mailto_content_fixer.js?prod259"></script>
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/core.js?prod259"></script>
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/mcalendar_data_2016_2017.js?prod259"></script>
+	<script type="text/javascript" src="https://cdn.skoltech.ru/js/mcalendar.js?prod259"></script>
+	<!--[if lt IE 9]><script src="https://cdn.skoltech.ru/js/vendor/html5.js"></script><![endif]-->
+	<script>
+		window.isMainPage = true;
+			</script>
+<!--[if IE 7]><link rel='stylesheet' id='css-ie-fix' href='https://www.skoltech.ru/app/data/plugins/recent-posts-plex/assets/css/css-ie7-fix.css' type='text/css' media='all' /> <![endif]--><link rel='stylesheet' id='sktch_media__css_main_style-css'  href='https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/styles/site.skoltech_media.css?ver=5.0' type='text/css' media='all' />
+<link rel='stylesheet' id='sktch_media__css_audio_player-css'  href='https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/styles/audioplayer.css?ver=5.0' type='text/css' media='all' />
+<link rel='stylesheet' id='sktch_media__css_zebra_datepicker-css'  href='https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/styles/zebra_datepicker_metallic.css?ver=5.0' type='text/css' media='all' />
+<link rel='stylesheet' id='sktch_subs__css_plugin_styles-css'  href='https://www.skoltech.ru/app/data/plugins/skoltech_subscribes/assets/styles/styles.css?ver=1.0.5' type='text/css' media='all' />
+<link rel='stylesheet' id='sktch_subs__css_theme_checkbox-css'  href='https://www.skoltech.ru/app/data/plugins/skoltech_subscribes/assets/styles/form.theme.checkbox.css?ver=1.0.5' type='text/css' media='all' />
+<link rel='stylesheet' id='sktch_subs__css_theme_green-css'  href='https://www.skoltech.ru/app/data/plugins/skoltech_subscribes/assets/styles/form.theme.green.css?ver=1.0.5' type='text/css' media='all' />
+<link rel='stylesheet' id='srp-front-stylesheet-css'  href='https://www.skoltech.ru/app/data/plugins/recent-posts-plex/assets/css/css-front.css?ver=4.1.13' type='text/css' media='all' />
+<link rel='stylesheet' id='ajax-load-more-css'  href='https://www.skoltech.ru/app/data/plugins/ajax-load-more/core/css/ajax-load-more.min.css?ver=4.1.13' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://www.skoltech.ru/app/data/plugins/contact-form-7/includes/css/styles.css?ver=4.1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='yteam-prettyPhoto-css'  href='https://www.skoltech.ru/app/data/plugins/people_plugin/styles/prettyPhoto.css?ver=3.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='yteam-style-default-css'  href='https://www.skoltech.ru/app/data/plugins/people_plugin/styles/team.css?ver=0.2.9' type='text/css' media='all' />
+<link rel='stylesheet' id='scrollup-css-css'  href='https://www.skoltech.ru/app/data/plugins/smooth-scroll-up/css/scrollup.css?ver=4.1.13' type='text/css' media='all' />
+<link rel='stylesheet' id='twentythirteen-fonts-css'  href='//fonts.googleapis.com/css?family=Source+Sans+Pro%3A300%2C400%2C700%2C300italic%2C400italic%2C700italic%7CBitter%3A400%2C700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='https://www.skoltech.ru/app/data/themes/abstract/fonts/genericons.css?ver=2.09' type='text/css' media='all' />
+<link rel='stylesheet' id='twentythirteen-style-css'  href='https://www.skoltech.ru/app/data/themes/skoltech/style.css?ver=2013-07-18' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentythirteen-ie-css'  href='https://www.skoltech.ru/app/data/themes/abstract/css/ie.css?ver=2013-07-18' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='sedlex_styles-css'  href='https://www.skoltech.ru/app/data/sedlex/inline_styles/371a4ed2145f392782ad4c2c11dbde843035e100.css?ver=20220628' type='text/css' media='all' />
+<link rel='stylesheet' id='mpce-theme-css'  href='https://www.skoltech.ru/app/data/plugins/motopress-content-editor-lite/includes/css/theme.min.css?ver=2.5.2' type='text/css' media='all' />
+<style id='mpce-theme-inline-css' type='text/css'>
+.mp-row-fixed-width {max-width:1170px;}
+</style>
+<link rel='stylesheet' id='mpce-bootstrap-grid-css'  href='https://www.skoltech.ru/app/data/plugins/motopress-content-editor-lite/bootstrap/bootstrap-grid.min.css?ver=2.5.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/scripts/jquery.ba_throttle_debounce.min.js?ver=5.0'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/scripts/site.skoltech_media.js?ver=5.0'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/scripts/audioplayer.js?ver=5.0'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/scripts/zebra_datepicker.js?ver=5.0'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/skoltech_subscribes/assets/scripts/site.subscribes.skoltech.js?ver=1.0.5'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script><script>jQueryWP = jQuery;</script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script id='st_insights_js'type='text/javascript' src='https://ws.sharethis.com/button/st_insights.js?publisher=4d48b7c5-0ae3-43d4-bfbe-3ff8c17a8ae6&#038;product=simpleshare'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/sedlex/inline_scripts/4139b9ad7b935834d8d31961702681728a5a530a.js?ver=20220628'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.skoltech.ru/app/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.skoltech.ru/app/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Moscow high school students test their gaming skills at Skoltech' href='https://www.skoltech.ru/en/2022/06/moscow-high-school-students-test-their-gaming-skills-at-skoltech/' />
+<link rel='next' title='Marmots hatching new infectious germ' href='https://www.skoltech.ru/en/2022/06/marmots-hatching-new-infectious-germ/' />
+<link rel='canonical' href='https://www.skoltech.ru/en/2022/06/skolteh-zapuskaet-virtualnyj-tur-po-kampusu/' />
+<link rel='shortlink' href='https://www.skoltech.ru/?p=58508' />
+<script>(function(d, s, id){
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+                 fjs.parentNode.insertBefore(js, fjs);
+               }(document, 'script', 'facebook-jssdk'));</script><style type="text/css">	.ssba {
+									
+									
+									
+									
+								}
+								.ssba img
+								{
+									width: px !important;
+									padding: px;
+									border:  0;
+									box-shadow: none !important;
+									display: inline !important;
+									vertical-align: middle;
+								}
+								.ssba, .ssba a
+								{
+									text-decoration:none;
+									border:0;
+									background: none;
+									
+									
+									
+									font-weight: bold;
+								}
+								.ssba_sharecount:after, .ssba_sharecount:before {
+									right: 100%;
+									border: solid transparent;
+									content: " ";
+									height: 0;
+									width: 0;
+									position: absolute;
+									pointer-events: none;
+								}
+								.ssba_sharecount:after {
+									border-color: rgba(224, 221, 221, 0);
+									border-right-color: #f5f5f5;
+									border-width: 5px;
+									top: 50%;
+									margin-top: -5px;
+								}
+								.ssba_sharecount:before {
+									border-color: rgba(85, 94, 88, 0);
+									border-right-color: #e0dddd;
+									border-width: 6px;
+									top: 50%;
+									margin-top: -6px;
+								}
+								.ssba_sharecount {
+									font: 11px Arial, Helvetica, sans-serif;
+
+									padding: 5px;
+									-khtml-border-radius: 6px;
+									-o-border-radius: 6px;
+									-webkit-border-radius: 6px;
+									-moz-border-radius: 6px;
+									border-radius: 6px;
+									position: relative;
+									border: 1px solid #e0dddd;color: #555e58;
+										background: #ffffff;
+									}
+									.ssba_sharecount:after {
+										border-right-color: #ffffff;
+									}</style><link rel="alternate" href="https://www.skoltech.ru/en/2022/06/skolteh-zapuskaet-virtualnyj-tur-po-kampusu/" hreflang="en" />
+<link rel="alternate" href="https://www.skoltech.ru/2022/06/skoltech-launches-virtual-tour-around-campus/" hreflang="ru" />
+	<style type="text/css" id="twentythirteen-header-css">
+			.site-header {
+			background: url(https://www.skoltech.ru/app/data/themes/abstract/images/headers/circle.png) no-repeat scroll top;
+			background-size: 1600px auto;
+		}
+		</style>
+	<style type="text/css" media="screen"></style>	<script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=VK-RTRG-117688-gcJoH';</script><script>
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '1937114103201205');
+	fbq('track', 'PageView');
+	</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1937114103201205&ev=PageView&noscript=1"/</noscript>
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-45015019-1', 'auto');
+		ga('create', 'UA-45015019-4', 'auto', 'mscTracker');
+		ga('send', 'pageview');
+		ga('mscTracker.send', 'pageview');
+	</script>
+		<!-- Код тега ремаркетинга Google -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 855591663;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+	</script>
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+	</script>
+	<noscript>
+	<div style="display:inline;">
+	<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/855591663/?guid=ON&amp;script=0"/>
+	</div>
+	</noscript>
+	<!-- Код тега ремаркетинга Google -->
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function() {
+				try {
+					w.yaCounter44076564 = new Ya.Metrika({
+						id:44076564,
+						clickmap:true,
+						trackLinks:true,
+						accurateTrackBounce:true,
+						webvisor:true
+					});
+				} catch(e) { }
+			});
+			var n = d.getElementsByTagName("script")[0],
+				s = d.createElement("script"),
+				f = function () { n.parentNode.insertBefore(s, n); };
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = "https://mc.yandex.ru/metrika/watch.js";
+	 
+			if (w.opera == "[object Opera]") {
+				d.addEventListener("DOMContentLoaded", f, false);
+			} else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/44076564" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body data-rsssl=1 class="single single-post postid-58508">
+	<div class="wrapper-body">
+		<header id="header">
+			<a id="logo"  href="https://www.skoltech.ru/en" title="Skoltech - Skolkovo Institute of Science and Technology"></a>			
+			<a id="logo-top100" target="_blank" href="https://www.skoltech.ru/en/2019/10/skoltech-enters-the-top100-nature-index-2019-young-university-ranking/"></a>			
+			
+						<div class="block-top">
+				<div class="bar-top">
+					<nav id="panel-quicklinks">
+						<a class="alterVersionButton" href="?alter=1" title="Contrast version of the website"></a>
+						<div class="lang">
+															<a href="https://www.skoltech.ru/2022/06/skoltech-launches-virtual-tour-around-campus/" class="icon icon-ru ru lang-item lang-item-458 lang-item-ru" title="Перейти на русскую версию">RU</a>
+													<a style="margin-left:10px;" href="https://www.skoltech.cn" class="icon icon-ru ru lang-item" title="Перейти на китайскую версию">CN</a>						</div>
+						<div class="menu-header-menu-en-container"><ul id="menu-header-menu-en" class="menu"><li id="menu-item-12289" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12289"><a href="https://www.skoltech.ru/en/about/founders/">Founder</a></li>
+<li id="menu-item-12293" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12293"><a href="https://www.skoltech.ru/en/about/press/">Press Enquiries</a></li>
+<li id="menu-item-12290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12290"><a href="https://www.skoltech.ru/en/about/join-staff/">Join Staff</a></li>
+<li id="menu-item-12294" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12294"><a href="https://www.skoltech.ru/en/about/contacts/">Contact &amp; Visit Us</a></li>
+<li id="menu-item-35803" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35803"><a target="_blank" href="https://join.skoltech.ru">Join Faculty</a></li>
+</ul></div>					</nav>
+				</div>
+				<div class="panel-socialicons">
+					<aside id="ttrust_social-6" class="widget ttrustSocial"><ul class="clearfix tiny"><li><a href="https://t.me/skoltech_en" target="_blank" class="icon-instag" title="Telegram"></a><li><a href="http://vk.com/skoltech" target="_blank" class="icon-vk" title="VKontakte"></a><li><a href="https://twitter.com/Skoltech" target="_blank" class="icon-twitter" title="Twitter"></a><li><a href="https://www.linkedin.com/company/skolkovo-institute-of-science-and-technology" target="_blank" class="icon-linkedin" title="LinkedIn"></a><li><a href="http://www.youtube.com/user/skoltech" target="_blank" class="icon-youtube" title="YouTube"></a></ul></aside>				</div>
+				
+						</div>
+		</header>
+		<div class="wrapper-content">
+		<h1 style="position:absolute;top:-2000px;left:-2000px;width:1px;height:1px;display:block;">Skoltech is an international graduate research-focused university that was founded by the group of world-renowned scientists in 2011. Skoltech's curriculum focuses on technology and innovation, offering Master's programs in 11 technological disciplines. Students receive rigorous theoretical and practical training, design their own research projects, participate in internships and gain entrepreneurial skills in English. The faculty is comprised of current researchers with international accreditation and achievements.</h1>
+			<div id="navbar" class="navbar"><div class="wrapper-menu">
+				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+					<h3 class="menu-toggle">Menu</h3>
+					<div class="menu-main-menu-en-container"><ul id="menu-main-menu-en" class="nav-menu"><li id="menu-item-12295" class="home-menu-item menu-item menu-item-type-custom menu-item-object-custom menu-item-12295"><a href="https://www.skoltech.ru/en">Skoltech:</a></li>
+<li id="menu-item-12296" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12296"><a href="https://www.skoltech.ru/en/about/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-39430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39430"><a href="https://www.skoltech.ru/en/about/mission-and-strategy-2/">Mission &#038; Strategy</a>
+	<ul class="sub-menu">
+		<li id="menu-item-39431" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39431"><a href="https://www.skoltech.ru/en/about/annual-reports/">Annual reports</a></li>
+	</ul>
+</li>
+	<li id="menu-item-39439" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39439"><a href="https://www.skoltech.ru/en/about/governance/">Governance</a>
+	<ul class="sub-menu">
+		<li id="menu-item-39440" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39440"><a href="https://www.skoltech.ru/en/about/founders/">Founder</a></li>
+		<li id="menu-item-39443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39443"><a href="https://www.skoltech.ru/en/about/governance/board-of-trustees/">Board of Trustees</a>
+		<ul class="sub-menu">
+			<li id="menu-item-39446" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39446"><a href="https://www.skoltech.ru/en/about/governance/board-of-trustees/committees/">Committees</a></li>
+		</ul>
+</li>
+		<li id="menu-item-39455" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39455"><a href="https://www.skoltech.ru/en/about/governance/academic-council/">Academic Council</a>
+		<ul class="sub-menu">
+			<li id="menu-item-39458" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39458"><a href="https://www.skoltech.ru/en/about/governance/academic-council/committees/">Committees </a></li>
+		</ul>
+</li>
+		<li id="menu-item-39461" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39461"><a href="https://www.skoltech.ru/en/about/governance/leadership/">Leadership</a>
+		<ul class="sub-menu">
+			<li id="menu-item-39465" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39465"><a href="https://www.skoltech.ru/en/about/governance/leadership/organization-chart/">Organization chart</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li id="menu-item-12303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12303"><a href="https://www.skoltech.ru/en/about/mit/">MIT</a></li>
+	<li id="menu-item-58503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-58503"><a href="https://360.skoltech.ru">Virtual Tour</a></li>
+	<li id="menu-item-12305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12305"><a href="https://www.skoltech.ru/en/about/join-staff/">Join Staff</a></li>
+	<li id="menu-item-12306" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12306"><a href="https://www.skoltech.ru/en/about/press/">Press Enquiries</a>
+	<ul class="sub-menu">
+		<li id="menu-item-12307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12307"><a href="https://www.skoltech.ru/en/about/press/releases/">Press Releases</a></li>
+	</ul>
+</li>
+	<li id="menu-item-35804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35804"><a href="https://www.skoltech.ru/en/o-nas/disclosure-info/actual-purchases/">Actual Purchases</a></li>
+	<li id="menu-item-26757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-26757"><a href="https://www.skoltech.ru/en/about/legal-information/">Legal Information</a>
+	<ul class="sub-menu">
+		<li id="menu-item-27622" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27622"><a href="https://www.skoltech.ru/o-nas/legal-info/politika-obrabotki-personalnyh-dannyh/">Agreement on processing of personal data (in Russian)</a></li>
+		<li id="menu-item-27621" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27621"><a href="https://www.skoltech.ru/en/about/legal-information/nda/">Offer to conclude a non-disclosure agreement</a></li>
+	</ul>
+</li>
+	<li id="menu-item-50527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50527"><a href="https://brand.skoltech.ru">Brand</a></li>
+	<li id="menu-item-49298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-49298"><a href="https://www.skoltech.ru/en/about/payments-en-info/">Payments</a>
+	<ul class="sub-menu">
+		<li id="menu-item-49685" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49685"><a href="https://www.skoltech.ru/o-nas/payment-info/refund/">Refund Terms</a></li>
+		<li id="menu-item-49684" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49684"><a href="https://www.skoltech.ru/o-nas/payment-info/tickets/">Events and Tickets</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12310"><a href="https://www.skoltech.ru/en/about/contacts/">Contact &#038; Visit Us</a></li>
+</ul>
+</li>
+<li id="menu-item-12311" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12311"><a href="https://www.skoltech.ru/en/apply/">Admissions</a>
+<ul class="sub-menu">
+	<li id="menu-item-12312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12312"><a href="https://www.skoltech.ru/en/apply/how-to-apply/">Requirements and Deadlines</a></li>
+	<li id="menu-item-40081" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40081"><a href="https://www.skoltech.ru/en/apply/msc-programs/">Apply for MSc Programs</a></li>
+	<li id="menu-item-12341" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12341"><a href="https://www.skoltech.ru/en/apply/phd-programs/">Apply for PhD Programs</a></li>
+	<li id="menu-item-12349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12349"><a href="https://www.skoltech.ru/en/apply/faq/">Frequently Asked Questions</a></li>
+	<li id="menu-item-12350" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12350"><a href="https://www.skoltech.ru/en/apply/contact-us/">Contact or Visit Us</a></li>
+</ul>
+</li>
+<li id="menu-item-12372" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12372"><a href="https://www.skoltech.ru/en/education/">Education</a>
+<ul class="sub-menu">
+	<li id="menu-item-12373" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12373"><a href="#">About Skoltech Education</a>
+	<ul class="sub-menu">
+		<li id="menu-item-12375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12375"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/learning-outcomes-framework/">Learning Outcomes Framework</a>
+		<ul class="sub-menu">
+			<li id="menu-item-35859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35859"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/credit-sytstem-amp-grading/">Credit System &#038; Grading</a></li>
+			<li id="menu-item-12377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12377"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/academic-term-structure/">Academic Term Structure</a></li>
+		</ul>
+</li>
+		<li id="menu-item-35917" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35917"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/documents/">License &#038; Accreditation</a></li>
+		<li id="menu-item-35915" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35915"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/">About Skoltech Education</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12381"><a href="https://www.skoltech.ru/en/education/msc-programs/">MSc Studies</a>
+	<ul class="sub-menu">
+		<li id="menu-item-35864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-35864"><a href="https://www.skoltech.ru/en/education/msc-programs/msc-programs/">MSc Programs</a>
+		<ul class="sub-menu">
+			<li id="menu-item-57296" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57296"><a href="https://www.skoltech.ru/en/education/msc-programs/materialstechnologies/">Materials Technologies</a></li>
+			<li id="menu-item-20510" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-20510"><a href="https://www.skoltech.ru/en/education/msc-programs/ds/">Data Science</a>
+			<ul class="sub-menu">
+				<li id="menu-item-22590" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22590"><a href="https://www.skoltech.ru/en/education/msc-programs/ds/mml/">Math of Machine Learning</a></li>
+			</ul>
+</li>
+			<li id="menu-item-49905" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-49905"><a href="https://www.skoltech.ru/en/education/msc-programs/internet-of-things-amp-wireless-technologies/">Internet Of Things &#038; Wireless Technologies</a>
+			<ul class="sub-menu">
+				<li id="menu-item-52850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52850"><a href="https://www.skoltech.ru/en/internet-of-things-amp-computer-data-analysis/">Internet Of Things &#038; Computer Data Analysis</a></li>
+			</ul>
+</li>
+			<li id="menu-item-49914" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49914"><a href="https://www.skoltech.ru/en/education/msc-programs/advanced-computational-science/">Advanced Computational Science</a></li>
+			<li id="menu-item-22835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22835"><a href="https://www.skoltech.ru/en/education/msc-programs/energy/">Energy Systems</a></li>
+			<li id="menu-item-20509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20509"><a href="https://www.skoltech.ru/en/education/msc-programs/ls/">Life Sciences</a></li>
+			<li id="menu-item-22763" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22763"><a href="https://www.skoltech.ru/en/education/msc-programs/tphysics/">Mathematical and Theoretical Physics</a></li>
+			<li id="menu-item-20507" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20507"><a href="https://www.skoltech.ru/en/education/msc-programs/materials/">Materials Science</a></li>
+			<li id="menu-item-20504" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20504"><a href="https://www.skoltech.ru/en/education/msc-programs/photonics/">Photonics and Quantum Materials</a></li>
+			<li id="menu-item-20503" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20503"><a href="https://www.skoltech.ru/en/education/msc-programs/engineeringsystems/">Engineering Systems</a></li>
+			<li id="menu-item-20505" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20505"><a href="https://www.skoltech.ru/en/education/msc-programs/petroleum/">Petroleum Engineering</a></li>
+		</ul>
+</li>
+		<li id="menu-item-12378" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12378"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/independent-studies-period/">Independent Study Period</a></li>
+		<li id="menu-item-35889" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35889"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/innovation-workshop/">Innovation Workshop</a></li>
+		<li id="menu-item-12379" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12379"><a href="https://www.skoltech.ru/en/education/about-skoltech-education/industrial-immersion/">Industrial Immersion</a></li>
+		<li id="menu-item-35903" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35903"><a href="https://www.skoltech.ru/en/education/msc-programs/msc-programs/academic-mobility/">Academic Mobility</a></li>
+		<li id="menu-item-51993" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51993"><a href="https://www.skoltech.ru/en/education/academic-calendar/msc-academic-calendar-2021-2022/">MSc Academic Calendar 2021-2022</a></li>
+		<li id="menu-item-58013" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58013"><a href="https://www.skoltech.ru/en/education/academic-calendar/msc-academic-calendar-2022-2023/">MSc Academic Calendar 2022-2023</a></li>
+	</ul>
+</li>
+	<li id="menu-item-24889" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24889"><a href="https://www.skoltech.ru/en/education/phd-programs/">PhD Programs</a>
+	<ul class="sub-menu">
+		<li id="menu-item-35933" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35933"><a href="https://www.skoltech.ru/en/education/phd-programs/about-phd-2/">About PhD</a></li>
+		<li id="menu-item-34819" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-34819"><a href="https://www.skoltech.ru/en/education/phd-programs/">PhD Programs</a>
+		<ul class="sub-menu">
+			<li id="menu-item-23501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23501"><a href="https://www.skoltech.ru/en/education/phd-programs/computational-and-data-science-and-engineering/">Computational and Data Science and Engineering</a></li>
+			<li id="menu-item-23502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23502"><a href="https://www.skoltech.ru/en/education/phd-programs/engineering-systems/">Engineering Systems</a></li>
+			<li id="menu-item-23500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23500"><a href="https://www.skoltech.ru/en/education/phd-programs/life-sciences/">Life Sciences</a></li>
+			<li id="menu-item-23508" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23508"><a href="https://www.skoltech.ru/en/education/phd-programs/materials-science-and-engineering/">Materials Science and Engineering</a></li>
+			<li id="menu-item-23499" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23499"><a href="https://www.skoltech.ru/en/education/phd-programs/mathematics/">Mathematics and Mechanics</a></li>
+			<li id="menu-item-23504" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23504"><a href="https://www.skoltech.ru/en/education/phd-programs/petroleum-engineering/">Petroleum Engineering</a></li>
+			<li id="menu-item-23503" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23503"><a href="https://www.skoltech.ru/en/education/phd-programs/physics/">Physics</a></li>
+		</ul>
+</li>
+		<li id="menu-item-54473" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54473"><a href="https://www.skoltech.ru/app/data/uploads/2021/10/PhD-Student-Handbook-2021.pdf">PhD Student Handbook</a></li>
+		<li id="menu-item-51385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51385"><a href="https://www.skoltech.ru/en/education/phd-programs/double-degree-phd-programs/">Double PhD Degree</a></li>
+		<li id="menu-item-24864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24864"><a href="https://www.skoltech.ru/en/education/phd-defenses/">PhD Thesis Defenses</a></li>
+		<li id="menu-item-52757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52757"><a href="https://www.skoltech.ru/en/education/academic-calendar/phd-academic-calendar-2021-2022/">PhD Academic Calendar 2021-2022</a></li>
+	</ul>
+</li>
+	<li id="menu-item-25305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25305"><a href="https://www.skoltech.ru/en/education/course-catalog/">Course Catalog</a></li>
+	<li id="menu-item-17289" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17289"><a href="https://www.skoltech.ru/en/education/schedule/">Schedule</a></li>
+	<li id="menu-item-35962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-35962"><a href="https://www.skoltech.ru/en/education/resources/">Resources</a>
+	<ul class="sub-menu">
+		<li id="menu-item-35957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35957"><a href="https://www.skoltech.ru/en/education/resources/campus/">Campus</a></li>
+		<li id="menu-item-35960" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35960"><a href="https://www.skoltech.ru/en/education/resources/labs-and-equipment/">Labs and Equipment</a></li>
+		<li id="menu-item-35961" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35961"><a href="https://www.skoltech.ru/en/education/resources/student-information-system/">Student Information System</a></li>
+		<li id="menu-item-35959" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35959"><a href="https://www.skoltech.ru/en/education/resources/learning-management-system/">Learning Management System</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12411"><a href="https://www.skoltech.ru/en/education/library/">Library</a></li>
+	<li id="menu-item-12413" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12413"><a href="https://www.skoltech.ru/en/education/skoltech-education-office/">Contacts</a></li>
+</ul>
+</li>
+<li id="menu-item-12414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12414"><a href="https://www.skoltech.ru/research/en">Research</a>
+<ul class="sub-menu">
+	<li id="menu-item-12415" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12415"><a href="https://www.skoltech.ru/research/en">Research Centers</a></li>
+	<li id="menu-item-12417" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12417"><a href="https://www.skoltech.ru/research/en/grants-contracts/">Grants &#038; Contracts</a></li>
+	<li id="menu-item-24269" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24269"><a href="https://www.skoltech.ru/research/en/opportunities-partnerships/next-generation-skoltech-mit-partnership-program/">Next Generation Program: Skoltech – MIT Joint Projects</a></li>
+	<li id="menu-item-24268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24268"><a href="https://www.skoltech.ru/research/en/shared-resources/">Shared Resources</a></li>
+</ul>
+</li>
+<li id="menu-item-12420" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12420"><a href="https://www.skoltech.ru/en/innovation/">Innovation</a>
+<ul class="sub-menu">
+	<li id="menu-item-12423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12423"><a href="https://www.skoltech.ru/en/kto/">Knowledge Transfer Office</a>
+	<ul class="sub-menu">
+		<li id="menu-item-12427" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12427"><a href="https://www.skoltech.ru/en/kto/faq/">Frequently Asked Questions</a></li>
+		<li id="menu-item-51145" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51145"><a href="https://www.skoltech.ru/ofis-transfera-znaniy/intellectual-property-portfolio/">IP Portfolio</a></li>
+		<li id="menu-item-12429" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12429"><a href="https://www.skoltech.ru/en/kto/contact/">Contacts</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-12361" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12361"><a href="http://faculty.skoltech.ru">Faculty</a>
+<ul class="sub-menu">
+	<li id="menu-item-12362" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12362"><a href="http://faculty.skoltech.ru/faculty/">Faculty</a>
+	<ul class="sub-menu">
+		<li id="menu-item-28729" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-28729"><a href="http://faculty.skoltech.ru/faculty/">Faculty Directory</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12363" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12363"><a href="http://faculty.skoltech.ru/researchers/">Research Scientists</a></li>
+	<li id="menu-item-12364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12364"><a href="http://faculty.skoltech.ru/appointments-development/">Appointments and Development</a>
+	<ul class="sub-menu">
+		<li id="menu-item-12365" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12365"><a href="http://faculty.skoltech.ru/appointments-development/academic-rank-and-tenure/">Academic Rank and Tenure</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12366"><a href="http://faculty.skoltech.ru/positions/">Positions</a>
+	<ul class="sub-menu">
+		<li id="menu-item-12367" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12367"><a href="http://faculty.skoltech.ru/positions/how-to-apply/">How to Apply</a></li>
+		<li id="menu-item-12368" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12368"><a href="http://faculty.skoltech.ru/positions/listings/">Listings</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12369" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12369"><a href="http://faculty.skoltech.ru/about">About</a>
+	<ul class="sub-menu">
+		<li id="menu-item-12370" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12370"><a href="https://www.skoltech.ru/faculty/about/office-of-postdoctoral-affairs">Office of Postdoctoral Affairs</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12371" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12371"><a href="http://faculty.skoltech.ru/contacts/">Contact</a></li>
+</ul>
+</li>
+<li id="menu-item-12430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12430"><a href="https://www.skoltech.ru/en/industry/">Industry</a>
+<ul class="sub-menu">
+	<li id="menu-item-33007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-33007"><a href="#">Priority Technology Areas</a>
+	<ul class="sub-menu">
+		<li id="menu-item-12434" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12434"><a href="https://www.skoltech.ru/en/industry/priority-technology-areas/oil-and-gas/">Oil and Gas</a></li>
+		<li id="menu-item-12433" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12433"><a href="https://www.skoltech.ru/en/industry/priority-technology-areas/photonics/">Photonics</a></li>
+		<li id="menu-item-12644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12644"><a href="https://www.skoltech.ru/en/industry/priority-technology-areas/biomedical-technologies/">Biomedical Technologies</a></li>
+		<li id="menu-item-12645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12645"><a href="https://www.skoltech.ru/en/industry/priority-technology-areas/information-and-communication-technologies/">Information and Communication Technologies</a></li>
+		<li id="menu-item-12646" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12646"><a href="https://www.skoltech.ru/en/industry/priority-technology-areas/space-technologies/">Space Technologies</a></li>
+		<li id="menu-item-12435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12435"><a href="https://www.skoltech.ru/en/industry/priority-technology-areas/materials-and-structures/">Materials, Structures and Advanced Manufacturing</a></li>
+		<li id="menu-item-12643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12643"><a href="https://www.skoltech.ru/en/industry/priority-technology-areas/energy-technologies/">Energy Technologies</a></li>
+	</ul>
+</li>
+	<li id="menu-item-12647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12647"><a href="https://www.skoltech.ru/en/industry/students-and-industry/">Students and Industry</a></li>
+	<li id="menu-item-12648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12648"><a href="https://www.skoltech.ru/en/industry/modular-courses-for-industry/">Modular Courses for Industry</a></li>
+	<li id="menu-item-34060" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34060"><a href="https://www.skoltech.ru/en/industry/scientific-industrial-policy-group/">The Analytical Department on Science &#038; Technology Development</a></li>
+	<li id="menu-item-40354" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40354"><a href="https://www.skoltech.ru/en/industry/industrial-projects-industrial-brochure/">Industrial Department</a>
+	<ul class="sub-menu">
+		<li id="menu-item-43866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43866"><a href="https://www.skoltech.ru/en/industry/industrial-projects-industrial-brochure/industrial-projects-book/">Industrial Projects Book</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-12351" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-12351"><a href="https://www.skoltech.ru/en/student-life/student-affairs/">Student Life</a>
+<ul class="sub-menu">
+	<li id="menu-item-12352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12352"><a href="https://www.skoltech.ru/en/student-life/extracurricular-activities/">Student Clubs</a></li>
+	<li id="menu-item-12353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12353"><a href="https://www.skoltech.ru/en/student-life/student-council/">Student Council</a></li>
+	<li id="menu-item-12354" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12354"><a href="https://www.skoltech.ru/en/student-life/team/">Student Life Team</a></li>
+	<li id="menu-item-12355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12355"><a href="https://www.skoltech.ru/en/student-life/life-in-moscow/">Life in Moscow</a></li>
+	<li id="menu-item-12356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12356"><a href="https://www.skoltech.ru/en/student-life/international-students/">International Students</a></li>
+	<li id="menu-item-12357" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12357"><a href="https://www.skoltech.ru/en/student-life/health-insurance/">Health Insurance</a></li>
+	<li id="menu-item-12360" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12360"><a href="https://www.skoltech.ru/en/student-life/skoltech-eurobot-team/">Skoltech Eurobot Team</a></li>
+	<li id="menu-item-12358" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12358"><a href="https://www.skoltech.ru/en/student-life/the-skoltech-alumni-association/">The Skoltech Alumni Association</a></li>
+</ul>
+</li>
+<li id="menu-item-34700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-34700"><a href="https://www.skoltech.ru/en/colloquia/">Colloquia</a>
+<ul class="sub-menu">
+	<li id="menu-item-55700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55700"><a href="https://www.skoltech.ru/en/colloquia/physical-seminar-of-skoltech/">Physical Seminar of Skoltech</a></li>
+	<li id="menu-item-34701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34701"><a href="https://www.skoltech.ru/en/cms/">Computational Materials Science Seminar (CMS)</a></li>
+	<li id="menu-item-31999" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-31999"><a href="https://www.skoltech.ru/en/energy-colloquium/">Energy Colloquium</a>
+	<ul class="sub-menu">
+		<li id="menu-item-37210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37210"><a href="https://www.skoltech.ru/en/energy-colloquium/schedule-for-the-winter-spring-of-2019/">Schedule for the Winter/Spring of 2019</a></li>
+		<li id="menu-item-32000" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32000"><a href="https://www.skoltech.ru/en/energy-colloquium/schedule-for-the-winter-spring-2017/">Schedule for the Winter/Spring 2017</a></li>
+		<li id="menu-item-32007" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32007"><a href="https://www.skoltech.ru/en/energy-colloquium/schedule-for-the-autumn-winter-of-2017/">Schedule for the Autumn/Winter of 2017</a></li>
+		<li id="menu-item-32008" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32008"><a href="https://www.skoltech.ru/en/energy-colloquium/schedule-for-the-autumn-winter-of-2016/">Schedule for the Autumn / Winter of 2016</a></li>
+		<li id="menu-item-32009" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32009"><a href="https://www.skoltech.ru/en/energy-colloquium/schedule-for-the-winter-spring-of-2016/">Schedule for the Winter / Spring of 2016</a></li>
+		<li id="menu-item-32010" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32010"><a href="https://www.skoltech.ru/en/energy-colloquium/eq-schedule-for-fall-winter-term-2015/">Schedule for the Autumn / Winter of 2015</a></li>
+	</ul>
+</li>
+	<li id="menu-item-37147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37147"><a href="https://www.skoltech.ru/en/colloquia/hpc-big-data-and-ai-seminar/">HPC, Big Data and AI seminar</a></li>
+	<li id="menu-item-44659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44659"><a href="https://www.skoltech.ru/en/colloquia/seminar-nonlinear-waves/">Seminar &#8220;Nonlinear waves&#8221;</a></li>
+</ul>
+</li>
+<li id="menu-item-46514" class="donate_button menu-item menu-item-type-custom menu-item-object-custom menu-item-46514"><a target="_blank" href="https://online.skoltech.ru/like/">Donate</a></li>
+</ul></div>				</nav><!-- #site-navigation -->
+				<div class="search-block"><form role="search" method="get" class="search-form" action="https://www.skoltech.ru/en/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" title="Search for:" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></div>
+				<a href="#" onclick="$('.search-form').submit();" class="search-button icon icon-search"></a>
+			</div></div><!-- #navbar -->		<div class="block-content">
+		<div class="block-leftmenu">
+			<div class="wrapper">
+				<b>Read also</b>
+				<aside id="wdg_specialrecentpostsfree-4" class="widget widget_specialrecentpostsFree"><h3 class="widget-title srp-widget-title"></h3><div class="srp-widget-container"><div id="wdg_specialrecentpostsfree-4-srp-singlepost-1" class="srp-widget-singlepost"><div class="srp-thumbnail-box"><div class="thumb-category category-news-en">News</div><a class="srp-widget-thmblink" style="background-image: url(https://www.skoltech.ru/app/data/uploads/2022/06/Marmots_Hatching_Infection.jpg);" href="https://www.skoltech.ru/en/2022/06/marmots-hatching-new-infectious-germ/" title="Marmots hatching new infectious germ"></a></div><div class="srp-content-box"><h4 class="srp-post-title"><a class="srp-post-title-link" href="https://www.skoltech.ru/en/2022/06/marmots-hatching-new-infectious-germ/" title="Marmots hatching new infectious germ">Marmots hatching new infectious germ</a></h4></div><div style="clear:both; height: 0px;"></div></div><div id="wdg_specialrecentpostsfree-4-srp-singlepost-2" class="srp-widget-singlepost"><div class="srp-thumbnail-box"><div class="thumb-category category-news-en">News</div><a class="srp-widget-thmblink" style="background-image: url(https://www.skoltech.ru/app/data/uploads/2022/06/DSC_8345.jpg);" href="https://www.skoltech.ru/en/2022/06/moscow-high-school-students-test-their-gaming-skills-at-skoltech/" title="Moscow high school students test their gaming skills at Skoltech"></a></div><div class="srp-content-box"><h4 class="srp-post-title"><a class="srp-post-title-link" href="https://www.skoltech.ru/en/2022/06/moscow-high-school-students-test-their-gaming-skills-at-skoltech/" title="Moscow high school students test their gaming skills at Skoltech">Moscow high school students test their gaming skills at Skoltech</a></h4></div><div style="clear:both; height: 0px;"></div></div><div id="wdg_specialrecentpostsfree-4-srp-singlepost-3" class="srp-widget-singlepost"><div class="srp-thumbnail-box"><div class="thumb-category category-news-en">News</div><a class="srp-widget-thmblink" style="background-image: url(https://www.skoltech.ru/app/data/uploads/2022/06/Poking_Holes_2.jpg);" href="https://www.skoltech.ru/en/2022/06/scientists-poke-holes-in-liquid-to-keep-airplanes-from-freezing-on-a-rainy-day/" title="Scientists poke holes in liquid to keep airplanes from freezing on a rainy day"></a></div><div class="srp-content-box"><h4 class="srp-post-title"><a class="srp-post-title-link" href="https://www.skoltech.ru/en/2022/06/scientists-poke-holes-in-liquid-to-keep-airplanes-from-freezing-on-a-rainy-day/" title="Scientists poke holes in liquid to keep airplanes from freezing on a rainy day">Scientists poke holes in liquid to keep airplanes from freezing on a rainy day</a></h4></div><div style="clear:both; height: 0px;"></div></div><div style="clear:both; height: 0px;"></div></div><!-- EOF Special Recent Posts FREE Edition ver10 --></aside>			</div>
+		</div>
+		<div class="block-cont">
+			<div class="wrapper">
+								
+<article id="post-58508" class="post-58508 post type-post status-publish has-post-thumbnail hentry category-news-en category-pressreleases-en">
+	<header class="entry-header">
+				<h1 class="block-title">Сколтех запускает виртуальный тур по кампусу! </h1>
+						<div class="entry-meta">
+			<span class="date-block"><time class="entry-date" datetime="2022-06-24T16:27:00+00:00">24/06/2022</time></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+			<div></div>
+<div><a href="https://www.skoltech.ru/app/data/uploads/2022/06/2022-06-24_12-58-58.jpg" class="gallery_colorbox"><img src="https://www.skoltech.ru/app/data/uploads/2022/06/2022-06-24_12-58-58.jpg"  alt="2022-06-24_12-58-58" width="1763" height="903" class="aligncenter size-full wp-image-58505" /></a></div>
+<div>Теперь любой желающий может совершить виртуальную прогулку по нашему потрясающему кампусу и даже зайти в некоторые лаборатории Сколтеха. В туре много интерактивных объектов, с которыми можно взаимодействовать: например, нажать на оборудование, чтобы узнать более подробную информацию о нём, запустить видео и открыть фотографии. Кстати, тур адаптирован и под мобильные устройства. </div>
+<div></div>
+<div>Уверены, вам понравится: <a href="https://360.skoltech.ru/" class="OWAAutoLink" id="LPlnk162816">360.skoltech.ru</a></div>
+<div id="LPBorder_GT_16560773068840.6894029730909725"></div>
+<p>&nbsp;</p>
+<p><b>Contact information:</b><br />
+					Skoltech Communications<br />
+					+7 (495) 280 14 81<br />
+					<span id="eeb-922716"></span><script type="text/javascript">(function(){var ml="FinrkuA-Dmf%htCea02loE.sc43",mi=";J>@;BA<3?:;J8;BB9@1C=D;J6HD99521H@=1D2G;IAG4DC=?H<F35;BB;BA;BAHC@GG;J8;BB9@1C=D7C124;BB;JEHD99521H@=1D2G;IAG4DC=?H<F35;J>;B0@;JE",o="";for(var j=0,l=mi.length;j<l;j++){o+=ml.charAt(mi.charCodeAt(j)-48);}document.getElementById("eeb-922716").innerHTML = decodeURIComponent(o);}());</script><noscript>*protected email*</noscript></p>
+<!-- Simple Share Buttons Adder (6.3.3) simplesharebuttons.com --><div class="ssba ssba-wrap"><div style="text-align:left"><a data-site="vk" class="ssba_vk_share ssba_share_link" href="http://vkontakte.ru/share.php?url=https://www.skoltech.ru/en/2022/06/skolteh-zapuskaet-virtualnyj-tur-po-kampusu/"  target="_blank" ><img src="https://www.skoltech.ru/app/data/plugins/simple-share-buttons-adder/buttons/simple/vk.png" title="VK" class="ssba ssba-img" alt="Share on VK" /></a><span id="eeb-417636"></span><script type="text/javascript">(function(){var ml="s3.hDuenlAwEci-mvFtbopy7%91z5!62k_0CdB8afjrg",mi="H1SWHOR3Z6XH14HOO?W=8BDH19H1A05CY6<BH14H4RH9JH4RHU9H4RHU;H4RHUUH4JHVOH4RHULH4JHVLHORH4RHUGH4RHURH4RHUAH4JHV1H4JHVJH4RHU9H4RHURH4RHULH4JHVOHORH4RHUOH4RHUVH4JHVRH4JHVOH4JHV1H4RHURH4RHUUH4JHVSH4RHU4H4JHVUH4RHUIHORH4JHVOH4JHV1H4JHVRHORH4RHUAH4RHU;HORH4RHU9H4RHURH4RHUSH4RHUAH4JHV1H4JHVJH4JHV1MHSOH9RHONCDTFH14HOLOR3BBE0H19HOAHOA:::20PD8B6<32Z5HOA67HOAOROOHOARNHOA0PD8B63>KWE50PW6B>@=ZB5W87FY>B5Z>ED>PW?E505HOAHOOHORTWBW>0=B6H14HOO6?W=8HOOHOR<8W00H14HOO00CWQ6?W=8Q03WZ6HOR?W=8BD>8=7PHOOH1;H1S=?[HOR0Z<H14HOO3BBE0H19HOAHOA:::20PD8B6<32Z5HOAWEEHOATWBWHOAE85[=70HOA0=?E86>03WZ6>C5BBD70>WTT6ZHOAC5BBD70HOA0=?E86HOA6?W=82E7[HOOHORB=B86H14HOO;?W=8HOOHOR<8W00H14HOO00CWHOR00CW>=?[HOOHORW8BH14HOO;?W=8HORB3=0HORBDHOR0D?6D76HOOHORHOAH1;H1SHOAWH1;",o="";for(var j=0,l=mi.length;j<l;j++){o+=ml.charAt(mi.charCodeAt(j)-48);}document.getElementById("eeb-417636").innerHTML = decodeURIComponent(o);}());</script><noscript>*protected email*</noscript></div></div>			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+		
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post -->
+			</div>
+		</div>
+	</div>
+	</div>
+						<footer id="footer">
+						<div class="wrapper">Our website is also available at <b><u><a href="https://skol.tech">skol.tech</a></u></b> thanks to our colleague Igal Zak<style>.cards img{margin-right:5px;margin-top:10px;}
+.cards{opacity:0.25;
+-webkit-transition: opacity 0.3s ease;
+-moz-transition: opacity 0.3s ease;
+-o-transition: opacity 0.3s ease;
+transition: opacity 0.3s ease;}
+.cards:hover{opacity:1;}
+.myLinkModal{
+color: #aaa !important;
+display: inline-block;
+margin-top: 15px;
+border-bottom: 1px dotted #aaa;
+text-decoration: none;
+}
+.myLinkModal:hover{
+	color:#fff !important;
+	border-bottom: 1px solid #fff;
+}
+#paym_modal {
+  width: 50%; height: 50%;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 4px;
+  background: #fafafa;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  margin: auto;
+  display: none;
+  opacity: 0;
+  z-index: 38;
+  text-align: center;
+}
+#paym_modal #paym_modal__close {
+  width: 21px; height: 21px;
+  position: absolute;
+  top: 1px; right: 11px;
+  cursor: pointer;
+  display: block;
+  font-size: 29px;
+}
+#myOverlay {
+  z-index: 37;
+  position: fixed;
+  background-color: rgba(0,0,0,.7);
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  cursor :pointer;
+  display :none;
+}</style>
+					<script>
+$(document).ready(function() {
+  $('a.myLinkModal2').click( function(event){
+    event.preventDefault();
+    $('#myOverlay').fadeIn(1, function(){
+      $('#paym_modal') 
+      .css('display', 'block')
+      .animate({opacity: 1}, 1);
+    });
+  });
+
+  $('#paym_modal__close, #myOverlay').click( function(){
+    $('#paym_modal').animate({opacity: 0}, 1,
+      function(){
+        $(this).css('display', 'none');
+        $('#myOverlay').fadeOut(1);
+    });
+  });
+});
+</script><div class="cards">
+<img src="https://cdn.skoltech.ru/img/payment_icons/card-mir.png" alt="">
+<img src="https://cdn.skoltech.ru/img/payment_icons/card-visa.png" alt=""><img src="https://cdn.skoltech.ru/img/payment_icons/card-amex.png" alt="">
+<img src="https://cdn.skoltech.ru/img/payment_icons/card-diners.png" alt="">
+<img src="https://cdn.skoltech.ru/img/payment_icons/card-jcb.png" alt="">
+<img src="https://cdn.skoltech.ru/img/payment_icons/card-unionpay.png" alt=""><img alt="masterpas_01_icom_small.png" src="https://cdn.skoltech.ru/img/payment_icons/masterpas_01_icom_small.png" width="46" height="30"><a href="https://www.uniteller.ru" target="_blank"><img src="https://cdn.skoltech.ru/img/payment_icons/card-uniteller.png" alt=""></a>
+</div>
+<a class="myLinkModal" href="https://www.skoltech.ru/en/about/payments-en-info/">Payments</a><div id="paym_modal">
+  <h4>Оплата на сайте</h4>
+  <span id="paym_modal__close" class="close">ₓ</span>
+</div>
+<div id="myOverlay"></div>
+
+
+					
+								</div>
+      <div class="wrapper" style="padding-top: 0px;">
+				2011-2022 &copy; Skoltech<br />Skolkovo Institute of Science and Technology			</div>
+					</footer>
+<script> var $nocnflct = jQuery.noConflict();
+			$nocnflct(function () {
+			    $nocnflct.scrollUp({
+				scrollName: 'scrollUp', // Element ID
+				scrollClass: 'scrollUp scrollup-pill scrollup-right', // Element Class
+				scrollDistance: 300, // Distance from top/bottom before showing element (px)
+				scrollFrom: 'top', // top or bottom
+				scrollSpeed: 300, // Speed back to top (ms)
+				easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+				animation: 'none', // Fade, slide, none
+				animationInSpeed: 200, // Animation in speed (ms)
+				animationOutSpeed: 200, // Animation out speed (ms)
+				scrollText: '↑', // Text for element, can contain HTML
+				scrollTitle: false, // Set a custom link title if required. Defaults to scrollText
+				scrollImg: false, // Set true to use image
+				activeOverlay: false, // Set CSS color to display scrollUp active point
+				zIndex: 2147483647 // Z-Index for the overlay
+			    });
+			});</script><style id="motopress-ce-private-styles" data-posts="" type="text/css"></style><script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"https:\/\/www.skoltech.ru\/app\/data\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ...","cached":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/contact-form-7/includes/js/scripts.js?ver=4.1.2'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/people_plugin/js/jquery.prettyPhoto.js?ver=3.1.4'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/people_plugin/js/main.js?ver=0.2.9'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/simple-share-buttons-adder/js/ssba.min.js?ver=4.1.13'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/plugins/smooth-scroll-up/js/jquery.scrollUp.min.js?ver=4.1.13'></script>
+<script type='text/javascript' src='https://www.skoltech.ru/app/data/themes/abstract/js/functions.js?ver=2013-07-18'></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready( function($) {
+$("ul.menu").not(":has(li)").closest('div').prev('h3.widget-title').hide();
+});
+/* ]]> */
+</script>	</div>
+<!-- Google remarketing code -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 855591663;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/855591663/?guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- /Google remarketing code -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter44076564 = new Ya.Metrika({
+                    id:44076564,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+ 
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+ 
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/44076564" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>������      b�@{b�@�Dox6       y    O^partitionKey=%28https%2Cskoltech.ru%29,:https://www.skoltech.ru/en/2022/06/skolteh-zapuskaet-virtualnyj-tur-po-kampusu/ strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Date: Tue, 28 Jun 2022 17:54:56 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16
+X-Powered-By: PHP/5.4.16
+Expires: Wed, 11 Jan 1984 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate, max-age=0
+Pragma: no-cache
+Link: <https://www.skoltech.ru/?p=58508>; rel=shortlink
+Content-Type: text/html; charset=UTF-8
+ original-response-headers Date: Tue, 28 Jun 2022 17:54:56 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16
+X-Powered-By: PHP/5.4.16
+Expires: Wed, 11 Jan 1984 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate, max-age=0
+Pragma: no-cache
+Set-Cookie: pll_language=en; expires=Wed, 28-Jun-2023 17:54:56 GMT; path=/
+Link: <https://www.skoltech.ru/?p=58508>; rel=shortlink
+Keep-Alive: timeout=5, max=89
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+ ctid 1 uncompressed-len 0 net-response-time-onstart 1982 net-response-time-onstop 2053   ��

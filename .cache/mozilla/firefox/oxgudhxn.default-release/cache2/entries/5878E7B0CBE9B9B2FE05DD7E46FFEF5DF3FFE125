@@ -1,0 +1,365 @@
+var VpaidVideoPlayer = function() {
+    this.slot_ = null;
+    this.eventsCallbacks_ = {};
+    this.attributes_ = {
+        'companions' : '',
+        'desiredBitrate' : 256,
+        'duration' : 30,
+        'expanded' : false,
+        'height' : 0,
+        'icons' : '',
+        'linear' : true,
+        'remainingTime' : 10,
+        'skippableState' : false,
+        'viewMode' : 'normal',
+        'width' : 0,
+        'volume' : 1.0
+    };
+    this.quartileEvents_ = [
+        {event: 'AdVideoStart', value: 0},
+        {event: 'AdVideoFirstQuartile', value: 25},
+        {event: 'AdVideoMidpoint', value: 50},
+        {event: 'AdVideoThirdQuartile', value: 75},
+        {event: 'AdVideoComplete', value: 100}
+    ];
+    this.lastQuartileIndex_ = 0;
+    this.parameters_ = {};
+    this.vast_ = null;
+    this.ad_ = {};
+    this.adVideo_ = {
+        adDisplayContainer: null,
+        adsLoader: null,
+        adsRequest: null,
+        adsManager: null,
+        init: () => {
+            this.log('adVideo_.init start');
+
+            let head = document.getElementsByTagName('head')[0];
+            let script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '//imasdk.googleapis.com/js/sdkloader/ima3.js';
+            script.onload = () => {
+
+                this.adVideo_.adDisplayContainer_ =
+                    new google.ima.AdDisplayContainer(
+                        this.slot_);
+                this.adVideo_.adDisplayContainer_.initialize();
+
+                google.ima.settings.setVpaidMode(google.ima.ImaSdkSettings.VpaidMode.ENABLED);
+
+                this.adVideo_.adsLoader = new google.ima.AdsLoader(this.adVideo_.adDisplayContainer_);
+                this.adVideo_.adsLoader.addEventListener(
+                    google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
+                    this.adVideo_.onAdsManagerLoaded,
+                    false);
+                this.adVideo_.adsLoader.addEventListener(
+                    google.ima.AdErrorEvent.Type.AD_ERROR,
+                    this.adVideo_.onAdError,
+                    false);
+
+                this.adVideo_.adsRequest = new google.ima.AdsRequest();
+                this.adVideo_.adsRequest.adsResponse = this.vast_;
+                this.adVideo_.adsRequest.linearAdSlotWidth = this.attributes_['width'];
+                this.adVideo_.adsRequest.linearAdSlotHeight = this.attributes_['height'];
+
+                this.adVideo_.adsLoader.requestAds(this.adVideo_.adsRequest);
+            };
+            head.appendChild(script);
+
+            this.log('adVideo_.init end');
+        },
+        onAdsManagerLoaded: (adsManagerLoadedEvent) => {
+            this.log('adVideo_.onAdsManagerLoaded start');
+
+            let setting = new google.ima.AdsRenderingSettings();
+            setting.loadVideoTimeout = 30000;
+            setting.uiElements = [];
+
+            this.adVideo_.adsManager = adsManagerLoadedEvent.getAdsManager({}, setting);
+
+            this.adVideo_.adsManager.addEventListener(
+                google.ima.AdEvent.Type.COMPLETE,
+                this.adVideo_.onAdCompleted);
+            this.adVideo_.adsManager.addEventListener(
+                google.ima.AdErrorEvent.Type.AD_ERROR,
+                this.adVideo_.onAdError);
+
+            this.adVideo_.adsManager.addEventListener(
+                google.ima.AdEvent.Type.STARTED,
+                () => this.callEvent_('AdVideoStart')
+            );
+
+            this.adVideo_.adsManager.addEventListener(
+                google.ima.AdEvent.Type.IMPRESSION,
+                () => this.callEvent_('AdImpression')
+            );
+
+            this.adVideo_.adsManager.addEventListener(
+                google.ima.AdEvent.Type.FIRST_QUARTILE,
+                () => this.callEvent_('AdVideoFirstQuartile')
+            );
+
+            this.adVideo_.adsManager.addEventListener(
+                google.ima.AdEvent.Type.MIDPOINT,
+                () => this.callEvent_('AdVideoMidpoint')
+            );
+
+            this.adVideo_.adsManager.addEventListener(
+                google.ima.AdEvent.Type.THIRD_QUARTILE,
+                () => this.callEvent_('AdVideoThirdQuartile')
+            );
+
+            // this.adVideo_.adsManager.addEventListener(
+            //     google.ima.AdEvent.Type.THIRD_QUARTILE,
+            //     () => this.callEvent_('AdVideoThirdQuartile')
+            // );
+
+            this.callEvent_('AdLoaded');
+            this.log('adVideo_.onAdsManagerLoaded end');
+        },
+        onAdError: (adErrorEvent) => {
+            this.log('adVideo_.onAdError start');
+            this.log(adErrorEvent.getError());
+            this.adVideo_.adsManager.destroy();
+            this.log('adVideo_.onAdError end')
+        },
+        onAdCompleted: () => {
+            this.log('adVideo_.onAdCompeted start');
+            this.adVideo_.adsManager.destroy();
+            // this.callEvent_('AdSkipped');
+            this.callEvent_('AdVideoComplete');
+            this.callEvent_('AdStopped');
+            this.log('adVideo_.onAdCompeted end');
+        },
+        startAd: () => {
+            this.adVideo_.adsManager.setVolume(0);
+            this.adVideo_.adsManager.init(this.attributes_['width'], this.attributes_['height'], google.ima.ViewMode.NORMAL);
+            this.adVideo_.adsManager.start();
+        },
+        pauseAd: () => {
+            this.adVideo_.adsManager.pause();
+        },
+        resumeAd: () => {
+            this.adVideo_.adsManager.resume();
+        },
+        setVolume: (value) => {
+            this.adVideo_.adsManager.setVolume(value);
+        },
+        resize: (width, height, viewMode) => {
+            this.adVideo_.adsManager.resize(width, height, viewMode)
+        }
+    };
+};
+
+VpaidVideoPlayer.prototype.initAd = function(
+    width,
+    height,
+    viewMode,
+    desiredBitrate,
+    creativeData,
+    environmentVars) {
+    this.log('initAd start');
+
+    width = Math.round(width);
+    height = Math.round(height);
+
+    // slot and videoSlot are passed as part of the environmentVars
+    this.attributes_['width'] = width;
+    this.attributes_['height'] = height;
+    this.attributes_['viewMode'] = viewMode;
+    this.attributes_['desiredBitrate'] = desiredBitrate;
+    this.slot_ = environmentVars.slot;
+
+    let domain = '';
+    if (window.location.ancestorOrigins && window.location.ancestorOrigins.length > 0) {
+        domain = window.location.ancestorOrigins.item(window.location.ancestorOrigins.length - 1);
+
+    }
+    domain = domain.replace(/(^\w+:|^)\/\//, '');
+    domain = domain === '' ? 'test.domain' : domain;
+
+    // Parse the incoming parameters.
+    this.parameters_ = JSON.parse(creativeData['AdParameters']);
+
+    this.parameters_.url = this.parameters_.url.replace('{WIDTH}', width.toString());
+    this.parameters_.url = this.parameters_.url.replace('{HEIGHT}', height.toString());
+    this.parameters_.url = this.parameters_.url.replace('{DOMAIN}', domain);
+    this.parameters_.url = this.parameters_.url.replace('{UA}', encodeURIComponent(navigator.userAgent));
+
+    fetch(this.parameters_.url)
+        .then(res => {
+            res.text()
+                .then(res => {
+                    this.vast_ = res;
+                    this.adVideo_.init();
+                    this.ad_ = this.adVideo_;
+                })
+        })
+        .catch(() => this.callEvent_('AdSkipped'));
+
+    this.log('initAd end');
+};
+
+VpaidVideoPlayer.prototype.overlayOnClick_ = function() {
+    this.callEvent_('AdClickThru');
+};
+
+VpaidVideoPlayer.prototype.handshakeVersion = function(version) {
+    return ('2.0');
+};
+
+VpaidVideoPlayer.prototype.startAd = function() {
+    this.log('startAd start');
+    this.ad_.startAd();
+    this.callEvent_('AdStarted');
+    this.log('startAd end');
+};
+
+VpaidVideoPlayer.prototype.stopAd = function() {
+    this.log('stopAd start');
+    this.callEvent_('AdStopped');
+    this.log('stopAd end');
+};
+
+VpaidVideoPlayer.prototype.setAdVolume = function(value) {
+    this.attributes_['volume'] = value;
+    this.log('setAdVolume ' + value);
+    this.ad_.setVolume(value);
+    this.callEvent_('AdVolumeChange');
+};
+
+VpaidVideoPlayer.prototype.getAdVolume = function() {
+    this.log('getAdVolume');
+    return this.attributes_['volume'];
+};
+
+VpaidVideoPlayer.prototype.resizeAd = function(width, height, viewMode) {
+    this.log('resizeAd ' + width + 'x' + height + ' ' + viewMode);
+    this.attributes_['width'] = width;
+    this.attributes_['height'] = height;
+    this.attributes_['viewMode'] = viewMode;
+    this.ad_.resize(width, height, viewMode);
+    this.callEvent_('AdSizeChange');
+};
+
+VpaidVideoPlayer.prototype.pauseAd = function() {
+    this.log('pauseAd');
+    this.ad_.pauseAd();
+    this.callEvent_('AdPaused');
+};
+
+VpaidVideoPlayer.prototype.resumeAd = function() {
+    this.log('resumeAd');
+    this.ad_.resumeAd();
+    this.callEvent_('AdPlaying');
+};
+
+VpaidVideoPlayer.prototype.expandAd = function() {
+    this.log('expandAd');
+    this.attributes_['expanded'] = true;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    }
+    this.callEvent_('AdExpanded');
+};
+
+VpaidVideoPlayer.prototype.getAdExpanded = function() {
+    this.log('getAdExpanded');
+    return this.attributes_['expanded'];
+};
+
+VpaidVideoPlayer.prototype.getAdSkippableState = function() {
+    this.log('getAdSkippableState');
+    return this.attributes_['skippableState'];
+};
+
+VpaidVideoPlayer.prototype.collapseAd = function() {
+    this.log('collapseAd');
+    this.attributes_['expanded'] = false;
+};
+
+VpaidVideoPlayer.prototype.skipAd = function() {
+    this.log('skipAd');
+    this.ad_.onAdCompleted();
+};
+
+VpaidVideoPlayer.prototype.subscribe = function(
+    aCallback,
+    eventName,
+    aContext) {
+    this.log('Subscribe ' + aCallback);
+    var callBack = aCallback.bind(aContext);
+    this.eventsCallbacks_[eventName] = callBack;
+};
+
+VpaidVideoPlayer.prototype.unsubscribe = function(eventName) {
+    this.log('unsubscribe ' + eventName);
+    this.eventsCallbacks_[eventName] = null;
+};
+
+VpaidVideoPlayer.prototype.getAdWidth = function() {
+    return this.attributes_['width'];
+};
+
+VpaidVideoPlayer.prototype.getAdHeight = function() {
+    return this.attributes_['height'];
+};
+
+VpaidVideoPlayer.prototype.getAdRemainingTime = function() {
+    return this.attributes_['remainingTime'];
+};
+
+VpaidVideoPlayer.prototype.getAdDuration = function() {
+    return this.attributes_['duration'];
+};
+
+VpaidVideoPlayer.prototype.getAdCompanions = function() {
+    return this.attributes_['companions'];
+};
+
+VpaidVideoPlayer.prototype.getAdIcons = function() {
+    return this.attributes_['icons'];
+};
+
+VpaidVideoPlayer.prototype.getAdLinear = function() {
+    return this.attributes_['linear'];
+};
+
+VpaidVideoPlayer.prototype.log = function(message) {
+    console.log(message);
+};
+
+VpaidVideoPlayer.prototype.callEvent_ = function(eventType) {
+    if (eventType in this.eventsCallbacks_) {
+        this.eventsCallbacks_[eventType]();
+        // console.log(eventType)
+    }
+};
+
+VpaidVideoPlayer.prototype.muteButtonOnClick_ = function() {
+    if (this.attributes_['volume'] == 0) {
+        this.attributes_['volume'] = 1.0;
+    } else {
+        this.attributes_['volume'] = 0.0;
+    }
+    this.callEvent_('AdVolumeChange');
+};
+
+var getVPAIDAd = function() {
+    return new VpaidVideoPlayer();
+};≠©∆∆      "b∏5Ωb∏5ΩDqñ®bΩö÷   -    :https://dsp-eu.surfy.dev/static/vpaid_1.0.js necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/2 200 OK
+date: Thu, 23 Jun 2022 12:45:12 GMT
+content-type: text/javascript; charset=utf-8
+content-length: 11295
+accept-ranges: bytes
+last-modified: Sun, 16 Jan 2022 12:20:12 GMT
+strict-transport-security: max-age=15724800; includeSubDomains
+X-Firefox-Spdy: h2
+ original-response-headers date: Thu, 23 Jun 2022 12:45:12 GMT
+content-type: text/javascript; charset=utf-8
+content-length: 11295
+accept-ranges: bytes
+last-modified: Sun, 16 Jan 2022 12:20:12 GMT
+strict-transport-security: max-age=15724800; includeSubDomains
+X-Firefox-Spdy: h2
+ ctid 2 uncompressed-len 0 net-response-time-onstart 1168 net-response-time-onstop 1233   ,

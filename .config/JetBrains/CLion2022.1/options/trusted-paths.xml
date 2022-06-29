@@ -1,0 +1,23 @@
+<application>
+  <component name="Trusted.Paths">
+    <option name="TRUSTED_PROJECT_PATHS">
+      <map>
+        <entry key="$USER_HOME$/Documents/ClionProjects" value="true" />
+        <entry key="$USER_HOME$/Documents/ClionProjects/graphs" value="true" />
+        <entry key="$USER_HOME$/Documents/ClionProjects/lab4b" value="true" />
+        <entry key="$USER_HOME$/Documents/ClionProjects/lab5" value="true" />
+        <entry key="$USER_HOME$/Documents/ClionProjects/scratch" value="true" />
+        <entry key="$USER_HOME$/Documents/ClionProjects/untitled" value="true" />
+        <entry key="$USER_HOME$/Documents/QtCreator/lab4a" value="true" />
+        <entry key="$USER_HOME$/Trash" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="Trusted.Paths.Settings">
+    <option name="TRUSTED_PATHS">
+      <list>
+        <option value="$USER_HOME$/Documents/QtCreator" />
+      </list>
+    </option>
+  </component>
+</application>

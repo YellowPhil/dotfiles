@@ -1,0 +1,62 @@
+#!/bin/sh
+# Simple theme-switcher script.
+# author https://github.com/rxyhn
+
+# var
+########
+awesome=$HOME/.config/awesome/rc.lua
+theme=$HOME/.config/awesome/theme
+term=$HOME/.config/alacritty/alacritty.yml
+zshrc=$HOME/.zshrc
+nvim=$HOME/.config/nvim/init.vim
+rofi=$HOME/.config/rofi/config.rasi
+
+
+# Beautiful day themes
+#########################
+day () {
+  export LS_COLORS="$(vivid generate one-light)"
+  # colorscheme
+  sed -i "17s/.*/theme = themes[1]/g" $awesome
+  # picom
+  sed -i "14s/.*/shadow-opacity = 0.25;/g" $theme/picom.conf
+  # alacritty
+  sed -i "4s/.*/  - .config\/alacritty\/themes\/day.yml/g" $term
+  # ls color
+  sed -i '$s/molokai/one-light/' $zshrc 
+  #vim colors
+  sed -i 's/background=dark/background=light/g' $nvim
+  #rofi colors
+  sed -i 's/spotlight-dark/spotlight/g' $rofi
+}
+
+# Aesthetic night themes
+###########################
+night () {
+  export LS_COLORS="$(vivid generate molokai)"
+  # colorscheme
+  sed -i "17s/.*/theme = themes[2]/g" $awesome
+  # picom
+  sed -i "14s/.*/shadow-opacity = 0.50;/g" $theme/picom.conf
+  # alacritty
+  sed -i "4s/.*/  - .config\/alacritty\/themes\/tender.yml/g" $term
+  #ls color
+  sed -i '$s/one-light/molokai/' $zshrc 
+  #vim colors
+  sed -i 's/background=light/background=dark/g' $nvim
+  #rofi colors
+  sed -i 's/spotlight/spotlight-dark/g' $rofi
+
+}
+
+case $1 in
+    day)
+    day
+    ;;
+
+    night)
+    night
+    ;;
+
+    *)
+esac

@@ -1,0 +1,15 @@
+[2022-04-29 23:56:24.114] [main] [critical] [saleae_log.cpp:224] Global logging level is set to: info
+[2022-04-29 23:56:24.114] [main] [info] [saleae_log.cpp:226] Logfile path set to: /home/synerr/.config/Logic/logs/graphio-2022-04-29--23-56-20.log
+[2022-04-29 23:56:24.632] [main] [info] [graph_server.cpp:732] DeleteGraphData SeesionId: -2
+[2022-04-29 23:56:24.632] [main] [info] [graph_server.cpp:756] DeleteGraph( -2 ) called
+[2022-04-29 23:56:54.328] [main] [info] [digital_store.cpp:317] DigitalStore::OnStartDeserialization: Creating deserialization thread
+[2022-04-29 23:56:54.328] [main] [info] [digital_store.cpp:317] DigitalStore::OnStartDeserialization: Creating deserialization thread
+[2022-04-29 23:56:54.328] [main] [info] [digital_store.cpp:317] DigitalStore::OnStartDeserialization: Creating deserialization thread
+[2022-04-29 23:56:54.482] [main] [info] [analyzer_node.cpp:2113] named pipe connected
+[2022-04-29 23:56:54.494] [main] [info] [analyzer_node.cpp:2078] all frames written to database
+[2022-04-29 23:56:54.494] [main] [info] [analyzer_node.cpp:2113] named pipe connected
+[2022-04-29 23:56:54.495] [main] [info] [analyzer_node.cpp:2078] all frames written to database
+[2022-04-30 00:04:05.976] [main] [info] [analyzer_node.cpp:958] joining database thread
+[2022-04-30 00:04:05.976] [main] [info] [analyzer_node.cpp:961] database thread joined
+[2022-04-30 00:04:06.493] [main] [info] [analyzer_node.cpp:958] joining database thread
+[2022-04-30 00:04:06.493] [main] [info] [analyzer_node.cpp:961] database thread joined

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/synerr/Pictures/Wallpaper/mrrobot4.jpg",
+    "alpha": "1",
+    "special": {
+        "background": "#010800",
+        "foreground": "#e0ecde",
+        "cursor": "#e0ecde"
+    },
+    "colors": {
+        "color0": "#010800",
+        "color1": "#0DAA01",
+        "color2": "#2DAD1B",
+        "color3": "#13C604",
+        "color4": "#5FC051",
+        "color5": "#84CA7A",
+        "color6": "#A9D9A2",
+        "color7": "#e0ecde",
+        "color8": "#9ca59b",
+        "color9": "#0DAA01",
+        "color10": "#2DAD1B",
+        "color11": "#13C604",
+        "color12": "#5FC051",
+        "color13": "#84CA7A",
+        "color14": "#A9D9A2",
+        "color15": "#e0ecde"
+    }
+}

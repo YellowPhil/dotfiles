@@ -1,0 +1,6 @@
+2022/06/27-14:40:15.383 4243 Reusing MANIFEST /home/synerr/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
+2022/06/27-14:40:15.383 4243 Recovering log #36
+2022/06/27-14:40:15.385 4243 Reusing old log /home/synerr/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/000036.log 
+2022/06/27-14:48:44.909 4233 Level-0 table #42: started
+2022/06/27-14:48:44.935 4233 Level-0 table #42: 1647013 bytes OK
+2022/06/27-14:48:44.937 4233 Delete type=0 #36

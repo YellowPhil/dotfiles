@@ -1,0 +1,191 @@
+<project version="4">
+  <component name="BookmarksManager">
+    <option name="groups">
+      <GroupState>
+        <option name="name" value="scratch" />
+      </GroupState>
+    </option>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="-1">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/include/c++/12.1.0/bits/stl_vector.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20888">
+              <caret line="1124" selection-start-line="1124" selection-end-line="1124" />
+              <folding>
+                <element signature="e#17880#18433#0" expanded="true" />
+                <element signature="e#33940#34765#0" expanded="true" />
+                <element signature="e#44409#45012#0" expanded="true" />
+                <element signature="e#47556#48263#0" expanded="true" />
+                <element signature="e#49347#50259#0" expanded="true" />
+                <element signature="e#68023#69449#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTypeUsageLocalSummary">
+    <fileType name="CMakeLists.txt">
+      <summary usageCount="3" lastUsed="1654293567746" />
+    </fileType>
+    <fileType name="ObjectiveC">
+      <summary usageCount="7" lastUsed="1654293567761" />
+    </fileType>
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/main.cpp" />
+    </changedPaths>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="RunConfigurationStartHistory">
+    <history>
+      <element setting="CMake Application.scratch" executorId="Run" />
+      <element setting="CMake Application.scratch" executorId="Debug" />
+    </history>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5525000" />
+  </component>
+  <component name="ToolWindowManager">
+    <layout>
+      <window_info id="Bookmarks" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.25" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" show_stripe_button="false" weight="0.3300926" />
+      <window_info anchor="bottom" id="Debug" order="3" show_stripe_button="false" weight="0.38194442" />
+      <window_info anchor="bottom" id="Python Packages" order="4" />
+      <window_info anchor="bottom" id="TODO" order="5" />
+      <window_info anchor="bottom" id="Messages" order="6" weight="0.3300926" />
+      <window_info anchor="bottom" id="CMake" order="7" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Problems View" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Services" order="11" />
+      <window_info anchor="right" id="Key Promoter X" order="0" />
+      <window_info anchor="right" id="Database" order="1" />
+      <window_info anchor="right" id="Notifications" order="2" weight="0.25" />
+      <window_info anchor="right" id="make" order="3" show_stripe_button="false" side_tool="true" />
+    </layout>
+    <recentWindows>
+      <value>Run</value>
+      <value>Messages</value>
+      <value>Debug</value>
+    </recentWindows>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="287" height="79" key="DebuggerActiveHint" timestamp="1654278456136">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="287" height="79" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1654278456136" />
+    <state width="1874" height="384" key="GridCell.Tab.0.bottom" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state width="1874" height="384" key="GridCell.Tab.0.center" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state width="1874" height="384" key="GridCell.Tab.0.left" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state width="1874" height="384" key="GridCell.Tab.0.right" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state width="1874" height="384" key="GridCell.Tab.1.bottom" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state width="1874" height="384" key="GridCell.Tab.1.center" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state width="1874" height="384" key="GridCell.Tab.1.left" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state width="1874" height="384" key="GridCell.Tab.1.right" timestamp="1654280011908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="384" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1654280011908" />
+    <state x="454" y="212" key="SettingsEditor" timestamp="1654272319908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="454" y="212" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1654272319908" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///usr/include/c++/12.1.0/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20888">
+          <caret line="1124" selection-start-line="1124" selection-end-line="1124" />
+          <folding>
+            <element signature="e#17880#18433#0" expanded="true" />
+            <element signature="e#33940#34765#0" expanded="true" />
+            <element signature="e#44409#45012#0" expanded="true" />
+            <element signature="e#47556#48263#0" expanded="true" />
+            <element signature="e#49347#50259#0" expanded="true" />
+            <element signature="e#68023#69449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

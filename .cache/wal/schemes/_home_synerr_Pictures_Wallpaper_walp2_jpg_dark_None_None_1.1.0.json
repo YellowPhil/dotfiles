@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/synerr/Pictures/Wallpaper/walp2.jpg",
+    "alpha": "1",
+    "special": {
+        "background": "#0c0b0f",
+        "foreground": "#b0bedc",
+        "cursor": "#b0bedc"
+    },
+    "colors": {
+        "color0": "#0c0b0f",
+        "color1": "#A76554",
+        "color2": "#E3966D",
+        "color3": "#57679F",
+        "color4": "#68629A",
+        "color5": "#8E76AB",
+        "color6": "#847EC2",
+        "color7": "#b0bedc",
+        "color8": "#7b859a",
+        "color9": "#A76554",
+        "color10": "#E3966D",
+        "color11": "#57679F",
+        "color12": "#68629A",
+        "color13": "#8E76AB",
+        "color14": "#847EC2",
+        "color15": "#b0bedc"
+    }
+}

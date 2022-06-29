@@ -1,0 +1,18 @@
+00:00:00.387686 VirtualBox GUI VM Selector Window 6.1.34 r150636 linux.amd64 (May 30 2022 06:37:05) release log
+00:00:00.387691 Log opened 2022-06-13T09:40:37.138327000Z
+00:00:00.387693 Build Type: release
+00:00:00.387698 OS Product: Linux
+00:00:00.387701 OS Release: 5.18.3-arch1-1
+00:00:00.387704 OS Version: #1 SMP PREEMPT_DYNAMIC Thu, 09 Jun 2022 16:14:10 +0000
+00:00:00.387734 DMI Product Name: 82EY
+00:00:00.387746 DMI Product Version: IdeaPad Gaming 3 15ARH05
+00:00:00.387755 Firmware type: UEFI
+00:00:00.388097 Secure Boot: Disabled
+00:00:00.388176 Host RAM: 15363MB (15.0GB) total, 13714MB (13.3GB) available
+00:00:00.388195 Executable: /usr/lib/virtualbox/VirtualBox
+00:00:00.388197 Process ID: 84791
+00:00:00.388199 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.388271 Qt version: 5.15.4
+00:00:00.417792 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.417826 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:00.951959 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 641x46 x 638x1033

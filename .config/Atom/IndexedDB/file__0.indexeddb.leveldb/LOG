@@ -1,0 +1,27 @@
+2022/06/28-20:29:07.231 15d4 Reusing MANIFEST /home/synerr/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
+2022/06/28-20:29:07.231 15d4 Recovering log #41
+2022/06/28-20:29:07.244 15d4 Reusing old log /home/synerr/.config/Atom/IndexedDB/file__0.indexeddb.leveldb/000041.log 
+2022/06/28-20:29:28.188 15d4 Compacting 1@1 + 1@2 files
+2022/06/28-20:29:28.195 15d4 Generated table #44@1: 1482 keys, 160273 bytes
+2022/06/28-20:29:28.195 15d4 Compacted 1@1 + 1@2 files => 160273 bytes
+2022/06/28-20:29:28.196 15d4 compacted to: files[ 0 0 1 0 0 0 0 ]
+2022/06/28-20:29:28.196 15d4 Delete type=2 #39
+2022/06/28-20:29:28.196 15d4 Delete type=2 #42
+2022/06/28-20:33:44.911 15d4 Level-0 table #46: started
+2022/06/28-20:33:44.927 15d4 Level-0 table #46: 1514936 bytes OK
+2022/06/28-20:33:44.929 15d4 Delete type=0 #41
+2022/06/28-20:40:50.864 1f58 Compacting 1@1 + 1@2 files
+2022/06/28-20:40:50.872 1f58 Generated table #47@1: 1500 keys, 152388 bytes
+2022/06/28-20:40:50.872 1f58 Compacted 1@1 + 1@2 files => 152388 bytes
+2022/06/28-20:40:50.874 1f58 compacted to: files[ 0 0 1 0 0 0 0 ]
+2022/06/28-20:40:50.874 1f58 Delete type=2 #46
+2022/06/28-20:40:50.874 1f58 Delete type=2 #44
+2022/06/28-21:18:47.275 3d85 Level-0 table #49: started
+2022/06/28-21:18:47.303 3d85 Level-0 table #49: 2037928 bytes OK
+2022/06/28-21:18:47.305 3d85 Delete type=0 #45
+2022/06/28-21:36:48.925 41c4 Compacting 1@1 + 1@2 files
+2022/06/28-21:36:48.933 41c4 Generated table #50@1: 1502 keys, 153003 bytes
+2022/06/28-21:36:48.933 41c4 Compacted 1@1 + 1@2 files => 153003 bytes
+2022/06/28-21:36:48.935 41c4 compacted to: files[ 0 0 1 0 0 0 0 ]
+2022/06/28-21:36:48.935 41c4 Delete type=2 #49
+2022/06/28-21:36:48.935 41c4 Delete type=2 #47

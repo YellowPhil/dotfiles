@@ -1,0 +1,35 @@
+<application>
+  <component name="NotRoamableUiSettings">
+    <option name="fontScale" value="1.25" />
+    <option name="fontSize" value="17" />
+  </component>
+  <component name="ProjectPluginTrackerManager">
+    <trackers>
+      <map>
+        <entry key="28UG64xrTvHYjCBMZDsjbOVENTB">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+      </map>
+    </trackers>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="AndroidInitConfigurator.V1" value="true" />
+    <property name="AndroidInitConfigurator.V3" value="true" />
+    <property name="AndroidInitConfigurator.V5" value="true" />
+    <property name="NonModalCommitCustomization.IsApplied" value="true" />
+    <property name="appcds.runOnSecondStart" value="AI-211.7628.21.2111.8309675-21823c86a3abb199ad2298f7e87fca1b8279db593974c78b6133759e5b6c2d43" />
+    <property name="ask.about.ctrl.y.shortcut.v2" value="true" />
+    <property name="build.toolwindow.Build Output.selection.state" value="com.intellij.build.BuildTreeConsoleView" />
+    <property name="fileTypeChangedCounter" value="3" />
+    <property name="fileTypeDetectors" value="com.android.tools.idea.profilers.capture.MemoryCaptureFileType$Detector:com.android.tools.idea.sqlite.fileType.SqliteFileTypeDetector:com.intellij.ide.scratch.ScratchFileServiceImpl$Detector:com.jetbrains.cidr.lang.OCHeaderFileTypeDetector" />
+    <property name="ide.updates.previous.build.number" value="AI-211.7628.21.2111.8309675" />
+    <property name="installed.kotlin.plugin.version" value="211-1.5.30-release-408-AS7442.40" />
+    <property name="kotlin.plugin.releaseDate" value="211-1.5.30-release-408-AS7442.40:2021-08-24" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+  </component>
+  <component name="ToolbarSettingsService">
+    <option name="NEW_TOOLBAR_SETTINGS" value="OLD_NAVBAR" />
+  </component>
+</application>

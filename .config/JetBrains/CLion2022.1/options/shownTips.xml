@@ -1,0 +1,18 @@
+<application>
+  <component name="ShownTips">
+    <option name="shownTips">
+      <map>
+        <entry key="ChangeSignature.html" value="1652803804800" />
+        <entry key="CompleteStatement.html" value="1653000139446" />
+        <entry key="FindInPath.html" value="1653000132943" />
+        <entry key="GoToFile.html" value="1653000137733" />
+        <entry key="LiveTemplates.html" value="1653000141854" />
+        <entry key="NonSuspendingBreakpoints.html" value="1653000141324" />
+        <entry key="ScopesInTODO.html" value="1653000138773" />
+        <entry key="SelectIn.html" value="1652527293587" />
+        <entry key="partial_git_commit.html" value="1653000140663" />
+        <entry key="pull_requests.html" value="1653000140062" />
+      </map>
+    </option>
+  </component>
+</application>

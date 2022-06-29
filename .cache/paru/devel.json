@@ -1,0 +1,23 @@
+{
+  "azote-git": [
+    {
+      "url": "https://github.com/nwg-piotr/azote.git",
+      "branch": null,
+      "commit": "a8845b9df985d51570b83d40f40e0b0e7579b9e3"
+    }
+  ],
+  "i2c-ch341-dkms": [
+    {
+      "url": "https://github.com/gmarco/i2c-ch341",
+      "branch": null,
+      "commit": "2c3f7b58846e8206ce8d98cfa46fbae962a7f447"
+    }
+  ],
+  "wal-telegram-git": [
+    {
+      "url": "https://github.com/guillaumeboehm/wal-telegram.git",
+      "branch": null,
+      "commit": "63d992421d944839dcfaf71f19d42e4a8f33deda"
+    }
+  ]
+}

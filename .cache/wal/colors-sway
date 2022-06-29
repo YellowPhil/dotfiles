@@ -1,0 +1,21 @@
+set $wallpaper /home/synerr/Pictures/Wallpaper/wallpaper_leaf.jpg
+
+set $background #090B14
+set $foreground #bedfd5
+
+set $color0 #090B14
+set $color1 #224D4E
+set $color2 #19526A
+set $color3 #1D9468
+set $color4 #196392
+set $color5 #4E588F
+set $color6 #42ABA8
+set $color7 #bedfd5
+set $color8 #859c95
+set $color9 #224D4E
+set $color10 #19526A
+set $color11 #1D9468
+set $color12 #196392
+set $color13 #4E588F
+set $color14 #42ABA8
+set $color15 #bedfd5

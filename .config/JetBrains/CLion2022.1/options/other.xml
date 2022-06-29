@@ -1,0 +1,110 @@
+<application>
+  <component name="DynamicPluginEnabler">
+    <trackers>
+      <map>
+        <entry key="299YElwVu03zrqbcsAUi0evLFI1">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="29WJBz683Nm9xc6PkCaFpV0qAiY">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="29WSCcDcObbwYLnGA1NblkzTt4M">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="29bknVee09WqjkZAHrGVrrUD5uy">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="29t5pcBw85BbvwJYY4LhKS5CEug">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="29wIoOqsWsE0ugTHs7PmHTQCCEk">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="29wItDpwVDWD8DEXqXD7tbIiNm7">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="2A4c24Wm4N595doGsBLbB9r8bIE">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+      </map>
+    </trackers>
+  </component>
+  <component name="NotRoamableUiSettings">
+    <option name="fontFace" value="Fira Code" />
+    <option name="fontScale" value="1.0" />
+    <option name="fontSize" value="14.0" />
+  </component>
+  <component name="PropertyService"><![CDATA[{
+  "keyToString": {
+    "CWM_LOGGING_VERSION": "1",
+    "ExpandBeforeRunStepsPanel": "true",
+    "INHERITORS_AND_CATEGORIES.file.structure.state": "true",
+    "MarketplacePluginsSearchHistory": "/tag:Theme eyes\n/tag:Theme\n/tag:Theme lov\n/tag:Theme lovr\ntheme",
+    "NonModalCommitCustomization.IsApplied": "true",
+    "RunOnceActivity.cidr.test.framework.showIndexingAsTask": "true",
+    "RunOnceActivity.se.text.search": "true",
+    "SettingsSearchHistory": "find and replace\nfont",
+    "appcds.runOnSecondStart": "CL-221.5591.52-72b634f25061040095c9fb72d37d4ebbf0feee19cb5e15228abf261a157afd40",
+    "ask.about.ctrl.y.shortcut.v2": "true",
+    "bundled.plugins.list.saved.version": "CL-221.5591.52",
+    "clion.initialConfigPerformed": "true",
+    "file.gist.reindex.count": "256",
+    "fileTypeChangedCounter": "3",
+    "got.it.tooltip.cwm.invitation.notification": "1",
+    "got.it.tooltip.reader.mode.got.it": "1",
+    "gotit.previous.run": "CL-221.5591.52",
+    "ide.updates.whats.new.shown.for": "221",
+    "ideavim.statistics.timestamp": "1654272006004",
+    "input.method.disabler.muted": "true",
+    "last_opened_file_path": "/home/synerr/Documents/ClionProjects/lab4b",
+    "qualified.names.node.provider.file.structure.state": "true",
+    "registry.to.advanced.settings.migration.build": "CL-221.5591.52",
+    "selected.color.option.type": "CARET_COLOR",
+    "settings.code.style.selected.tab.ObjectiveC": "New File Extensions",
+    "structure.view.defaults.are.configured": "true",
+    "tasks.pass.word.conversion.enforced": "true",
+    "ts.lib.d.ts.version": "4.6.3"
+  },
+  "keyToStringList": {
+    "file.chooser.recent.files": [
+      "/home/synerr/Documents/ClionProjects/graphs",
+      "/home/synerr/Documents/QtCreator/lab4a",
+      "/home/synerr/Documents/ClionProjects/lab4b",
+      "/home/synerr/Documents/ClionProjects/lab5",
+      "/home/synerr/Documents/QtCreator/lab4a/BST.cpp",
+      "/home/synerr/Trash",
+      "/home/synerr/Documents/ClionProjects"
+    ],
+    "fileTypeDetectors": [
+      "com.intellij.ide.scratch.ScratchFileServiceImpl$Detector",
+      "com.jetbrains.cidr.lang.OCHeaderFileTypeDetector",
+      "com.intellij.javascript.debugger.sourcemap.SourceMapFileType$MyFileTypeDetector",
+      "com.intellij.database.vfs.DbStorageFileType$Detector",
+      "com.intellij.docker.dockerFile.DockerFileTypeDetector",
+      "org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector"
+    ]
+  }
+}]]></component>
+  <component name="TerminalCommandHistoryManager">
+    <command-history-files>
+      <command-history-file filename="lab4a-history" project-path="$USER_HOME$/Documents/QtCreator/lab4a" last-access-time="1654078716576" />
+      <command-history-file filename="graphs-history" project-path="$USER_HOME$/Documents/ClionProjects/graphs" last-access-time="1654292764498" />
+    </command-history-files>
+  </component>
+</application>

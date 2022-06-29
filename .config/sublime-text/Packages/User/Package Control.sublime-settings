@@ -1,0 +1,13 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"C++ Completions",
+		"C++ Snippets",
+		"C++ Starting Kit",
+	],
+}

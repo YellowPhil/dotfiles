@@ -1,0 +1,6 @@
+[Default Applications]
+x-scheme-handler/tg=userapp-Telegram Desktop-SKRJL1.desktop
+x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-SKRJL1.desktop;

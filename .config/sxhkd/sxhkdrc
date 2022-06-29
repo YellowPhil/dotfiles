@@ -1,0 +1,34 @@
+#spawn terminal
+super + Return
+	{alacritty}
+
+#lock screen
+super + shift + l
+	betterlockscreen --lock blur
+
+#spawn rofi (app menu)
+super + d
+	rofi -show drun -dpi $(srdb -query | grep "Xft.dpi:" | cut -f 2)
+
+#reload sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#clode window
+super + q
+	echo "client.focus:kill()" | awesome-client
+
+#move left-right in windows
+super + {h, l}
+	echo "require('awful').client.{focus}.bydirection('{left,right}')" | awesome-client
+
+#move up-down in windows
+super + {j, k}
+	echo "require('awful').client.{focus}.byidx('{1,-1}')" | awesome-client 
+
+
+
+#desktops navigation
+super + {1-9,0}{_, + ctrl, + shift}
+	echo "awful = require('awful') tag = awful.screen.focused().tags[{1-9,10}] {tag:view_only(),awful.tag.viewtoggle(tag),client.focus:move_to_tag(tag)}" | awesome-client
+

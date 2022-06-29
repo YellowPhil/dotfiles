@@ -1,0 +1,9 @@
+<application>
+  <component name="InlayHintsSettings">
+    <option name="disabledLanguages">
+      <set>
+        <option value="ObjectiveC" />
+      </set>
+    </option>
+  </component>
+</application>

@@ -1,0 +1,249 @@
+
+
+function check_all_sources(direction){
+//alert(direction);
+	chk_obj=new Array();  
+
+	if (document.SEARCH['R21DBN'] && !document.SEARCH['R21DBN'].length) chk_obj[0]=document.SEARCH['R21DBN'];
+	else chk_obj=document.SEARCH['R21DBN'];
+		
+	for (i=0; i < chk_obj.length; i++){
+//		chk_obj[i].style.display = "none";
+		chk_obj[i].checked = direction;
+//		chk_obj[i].style.display = "";
+	}
+
+}
+
+
+
+function gid(element_id){
+	return document.getElementById(element_id);
+}
+
+function st(exp) {
+	document.SEARCH_FORM.SAME_SEARCH.value='';
+	document.SEARCH_FORM.S21ALL.value="(<.>"+exp+"<.>)";
+	document.SEARCH_FORM.submit();
+}
+
+function sh(layer){
+	gid(layer).style.display=(gid(layer).style.display=="none") ? "" : "none";   
+}
+
+
+
+
+
+
+function fulltext_search(mfn) {
+	document.SEARCH_FORM.S21ALL.value='';	
+	document.SEARCH_FORM.S21STN.value='1';
+	document.SEARCH_FORM.SAME_SEARCH.value=mfn;
+	document.SEARCH_FORM.FT_NEAR_MFN_NEW.value=mfn;
+	document.SEARCH_FORM.SEARCHNEAR.value='1';
+	
+	//document.SEARCH_FORM.FT_REQUEST.value=my_req; 
+	//document.SEARCH_FORM.S21SRW.value='';
+	
+	document.SEARCH_FORM.submit(); 
+}
+
+
+
+function next_card(mfn) {
+	document.SEARCH_FORM.S21ALL.value='';	
+	document.SEARCH_FORM.S21STN.value='1';
+	document.SEARCH_FORM.Z21MFN.value=mfn;
+	//document.SEARCH_FORM.FT_NEAR_MFN_NEW.value=mfn;
+	//document.SEARCH_FORM.SEARCHNEAR.value='1';	
+	document.SEARCH_FORM.FT_REQUEST.value=''; 
+	//document.SEARCH_FORM.S21SRW.value='';
+	
+	document.SEARCH_FORM.submit(); 
+}
+
+
+function SSForm(r_number){
+	if (document.SEARCH_FORM.MFN && document.SEARCH_FORM.SEL_MFN) print_bo();
+	document.SEARCH_FORM.S21STN.value=r_number;
+	//alert('ALL'+document.SEARCH_FORM.S21ALL.value);
+	//alert('BACK'+document.SEARCH_FORM.REQ_BACK.value);
+	//Страховка от проблем при history back, связанных с динамической модификацией поля 
+	if (document.SEARCH_FORM.REQ_BACK) document.SEARCH_FORM.S21ALL.value=document.SEARCH_FORM.REQ_BACK.value; 
+	document.SEARCH_FORM.submit();
+}
+
+function request_decrypt(request,ft_requst){
+pref=new Array();
+pref[0]=new Array('T=','ЗАГЛАВИЕ','ЗАГЛАВИЯ');
+pref[1]=new Array('D=','ДИСЦИПЛИНА','ДИСЦИПЛИНЫ');
+pref[2]=new Array('SP=','СПЕЦИАЛЬНОСТЬ','СПЕЦИАЛЬНОСТИ');
+pref[3]=new Array('A=','АВТОР','АВТОРЫ');
+pref[4]=new Array('T=','ЗАГЛАВИЕ','ЗАГЛАВИЯ');
+pref[5]=new Array('K=','КЛЮЧЕВЫЕ СЛОВА','КЛЮЧЕВЫЕ СЛОВА');
+pref[6]=new Array('O=','ИЗДАТЕЛЬСТВО','ИЗДАТЕЛЬСТВА');
+pref[7]=new Array('G=','ГОД ИЗДАНИЯ','ГОДЫ ИЗДАНИЯ');
+pref[8]=new Array('R=','РУБРИКА','РУБРИКИ');
+pref[9]=new Array('V=','ВИД ИЗДАНИЯ','ВИДЫ ИЗДАНИЯ');
+pref[10]=new Array('HD=','ХАРАКТЕР ДОКУМЕНТА','ХАРАКТЕРЫ ДОКУМЕНТА');
+pref[11]=new Array('MHR=','МЕСТО ХРАНЕНИЯ','МЕСТА ХРАНЕНИЯ');
+pref[12]=new Array('TJ=','ЗАГЛАВИЕ СТАТЬИ','ЗАГЛАВИЯ СТАТЕЙ');
+pref[13]=new Array('VR=','ВИД ДОКУМЕНТА','ВИДЫ ДОКУМЕНТОВ');
+pref[14]=new Array('KAF=','КАФЕДРА','КАФЕДРЫ');
+integrator2='';
+prf_last='';
+
+if (ft_requst)document.writeln('<b> ПОЛНОТЕКСТОВЫЙ ЗАПРОС: </b>'+ft_requst);
+if (request.indexOf('I=')>0 || request.indexOf('TXT=')>0) return;
+
+multi=request.split('*');
+for(i in multi){
+	addi=multi[i].split('+');
+	prf_find=false;
+	for(d in pref){	
+		if (multi[i].indexOf(pref[d][0])>0){
+			prf_decript=(addi.length>1) ? pref[d][2]+': ' : pref[d][1]+': ';
+			prf_decript=(prf_last!=pref[d][0]) ? prf_decript : '';
+			document.writeln(integrator2+'<b>'+prf_decript+'</b>');	
+			integrator2='<b> И </b>'
+			prf_find=true;
+			prf_last=pref[d][0];
+			break;
+		}		
+	}
+	
+	if (prf_find){
+		integrator='';
+		for(k in addi){	
+		document.writeln(integrator+'"'+addi[k].replace(/(.*=)|(\<\.\>)|(\))|\$|(\/\(.*\))/g,'')+'"');	
+		integrator='<b> ИЛИ </b>';
+		}
+	}
+}
+
+}
+
+
+function make_win(mode,par,waiting){
+	cmd_str=new Array();
+	
+	cmd_str[7]= new Array('Печать_записей',cgi+'?I21DBN='+par[0]+'_PRINT&P21DBN='+par[0]+'&S21FMT='+par[1]+'&S21CNR=500&S21COLORTERMS=0&C21COM=S&S21SRW='+par[2]+'&S21ALL='+par[3]+'&FT_PREFIX='+par[6]+'&SAME_SEARCH='+par[4]+'&FT_REQUEST='+par[5]+'&FT_DISTANCE='+par[7]+'&FT_PARAMS='+par[8]+'&FT_NEAR_MFN'+par[9],"status=no,location=no,directories=no,toolbar=no,scrollbars=yes,resizable=yes",620,440);
+	//make_win(7,[document.SEARCH_FORM.P21DBN.value,document.SEARCH_FORM.PRINT_FORMAT.value,srw,s_expression,full_search,encodeURIComponent(full_search_req),document.SEARCH_FORM.FT_PREFIX.value,document.SEARCH_FORM.FT_DISTANCE.value,document.SEARCH_FORM.FT_PARAMS.value]);	
+
+
+	x=cmd_str[mode][3];
+	y=cmd_str[mode][4];
+	cx=screen.width/2-(x/2);
+	cy=screen.height/2-(y/2);
+	adr=(waiting) ? '' : cmd_str[mode][1]; 	
+	var load_window=window.open(adr,cmd_str[mode][0],cmd_str[mode][2]+',width='+x+',height='+y+',top='+cy+',left='+cx); 
+ load_window.focus();
+
+	if (load_window == null) {
+        alert('Отключите блокировку всплывающих окон в своём браузере! Всплывающие окна необходимы для корректной работы сайта!');
+	return;
+	}
+
+  
+  if (waiting){
+	  load_window.document.writeln('<html><body><div style="position: absolute;width:100%; height:100%; z-index:0;" id="progress_bar" ><table  style="width:100%; height:100%;"><tr><td align=center><div style="background-color: white"><table style="border: 4px double black; background-color: white"><tr><td align=center ><span style="font-size: 11pt; margin:10px; font-weight:bold">Ждите... '+waiting+'</span><br><img src="{httpjpath}/images/progbar.gif"></td></tr></table></div></td></tr></table></div></body></html>');
+		load_window.document.location=cmd_str[mode][1];
+  }
+  
+}
+
+
+
+function print_bo(sel_type){
+
+	var terms=document.SEARCH_FORM.SEL_MFN.value.split("~");
+	if (!document.SEARCH_FORM.MFN.length && document.SEARCH_FORM.MFN){
+		terms[terms.length+1]=document.SEARCH_FORM.MFN.value;
+	} else {
+		for (i=0,d=0; i<document.SEARCH_FORM.MFN.length; i++){ 
+			if (document.SEARCH_FORM.MFN[i].checked){ 
+				terms[terms.length+(d++)]=document.SEARCH_FORM.MFN[i].value;
+			}
+		}
+	}
+
+	full_search=document.SEARCH_FORM.SAME_SEARCH.value;
+	full_search_req=document.SEARCH_FORM.FT_REQUEST.value;
+	srw='avhead';
+	id_prefix=(sp_base) ? 'TXT=' : 'I='; 
+
+	if ((sel_type=="2"||sel_type=="3") && !terms.join()) alert("Для выбранного режима печати требуется отобрать записи!"); 
+	else {
+		if (sel_type){
+			s_expression="";
+			if (sel_type=="1"){
+				s_expression=document.SEARCH_FORM.SEL_ALL.value;
+				srw='';
+			} else {
+				integrator="%2B";
+				if (sel_type=="3"){
+					s_expression=document.SEARCH_FORM.SEL_ALL.value;
+					integrator="^";
+					if (document.SEARCH_FORM.SAME_SEARCH.value){
+						alert("В режиме ранжированного поиска исключение записей из списка печати невозможно!");
+						return;
+					}
+				}
+				for(i=0; i<terms.length; i++){
+					if(terms[i]) s_expression+=integrator+"<.>"+id_prefix+encodeURIComponent(terms[i])+"<.>";
+				}
+
+				full_search='';
+				full_search_req='';
+			}
+
+			if (full_search) full_search_req='';
+			//alert('SAME'+full_search);
+			//alert('FREQ'+full_search_req);	
+			//alert('SEXPR'+s_expression);
+
+			make_win(7,[document.SEARCH_FORM.P21DBN.value,document.SEARCH_FORM.PRINT_FORMAT.value,srw,s_expression,full_search,full_search_req,document.SEARCH_FORM.FT_PREFIX.value,document.SEARCH_FORM.FT_DISTANCE.value,document.SEARCH_FORM.FT_PARAMS.value,document.SEARCH_FORM.FT_NEAR_MFN.value]);
+
+		} else {
+
+			terms=arrayUnique(terms);
+			document.SEARCH_FORM.SEL_MFN.value=terms.join("~");
+		}
+	}
+
+}
+
+
+
+
+function arrayUnique( ar ) {
+	var a = [];
+	var l = ar.length;
+	for (var i = 0; i < l; i++) {
+		for (var j = i+1; j < l; j++) {
+			if (ar[i] === ar[j]) j = ++i;
+		}
+		a.push(ar[i]);
+	}
+	return a;
+}�>.{�      b��qb��dDo�gb��    Z    O^partitionKey=%28http%2Cmephi.ru%29,:http://libcatalog.mephi.ru/www/irbis64r/js/script.js necko:classified 1 strongly-framed 1 request-method GET response-head HTTP/1.1 200 OK
+Content-Length: 8324
+Content-Type: application/x-javascript
+Last-Modified: Tue, 04 Feb 2014 06:18:16 GMT
+Accept-Ranges: bytes
+ETag: "b6546e47021cf1:1be5"
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Access-Control-Allow-Origin: *
+Date: Mon, 27 Jun 2022 11:21:04 GMT
+ original-response-headers Content-Length: 8324
+Content-Type: application/x-javascript
+Last-Modified: Tue, 04 Feb 2014 06:18:16 GMT
+Accept-Ranges: bytes
+ETag: "b6546e47021cf1:1be5"
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Access-Control-Allow-Origin: *
+Date: Mon, 27 Jun 2022 11:21:04 GMT
+ ctid 2 uncompressed-len 0 net-response-time-onstart 84 net-response-time-onstop 85    �

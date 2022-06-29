@@ -1,0 +1,3790 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-layout="responsive">
+  <head>
+    
+    <script>
+      window.addEventListener('error', window.__err=function f(e){f.p=f.p||[];f.p.push(e)});
+    </script>
+    <script>
+      (function() {
+        const theme = document.cookie.match(/prefers-color-scheme=(light|dark|auto)/)?.[1]
+        if (theme) {
+          document.querySelector('html').setAttribute('data-theme', theme);
+        }
+      }())
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Package runtime contains operations that interact with Go&#39;s runtime system, such as functions to control goroutines.">
+    
+    <meta class="js-gtmID" data-gtmid="GTM-W8MVQXG">
+    <link rel="shortcut icon" href="/static/shared/icon/favicon.ico">
+    
+  <link rel="canonical" href="https://pkg.go.dev/runtime">
+
+    <link href="/static/frontend/frontend.min.css?version=prod-frontend-00041-fay" rel="stylesheet">
+    
+  <title>runtime package - runtime - Go Packages</title>
+
+    
+  <link href="/static/frontend/unit/unit.min.css?version=prod-frontend-00041-fay" rel="stylesheet">
+  
+  <link href="/static/frontend/unit/main/main.min.css?version=prod-frontend-00041-fay" rel="stylesheet">
+
+
+  </head>
+  <body>
+    
+    <script>
+      function loadScript(src, mod = true) {
+        let s = document.createElement('script');
+        s.src = src;
+        if (mod) {
+          s.type = 'module';
+          s.async = true;
+          s.defer = true
+        }
+        document.head.appendChild(s);
+      }
+      loadScript("/third_party/dialog-polyfill/dialog-polyfill.js", false)
+      loadScript("/static/frontend/frontend.js");
+    </script>
+    
+  <header class="go-Header go-Header--full js-siteHeader">
+    <div class="go-Header-inner go-Header-inner--dark">
+      <nav class="go-Header-nav">
+        <a href="https://go.dev/" class="js-headerLogo" data-gtmc="nav link"
+            data-test-id="go-header-logo-link">
+          <img class="go-Header-logo" src="/static/shared/logo/go-white.svg" alt="Go">
+        </a>
+        <div class="go-Header-rightContent">
+          
+<div class="go-SearchForm js-searchForm">
+  <form
+    class="go-InputGroup go-ShortcutKey go-SearchForm-form"
+    action="/search"
+    data-shortcut="/"
+    data-shortcut-alt="search"
+    data-gtmc="search form"
+    aria-label="Search for a package"
+    role="search"
+  >
+    <input name="q" class="go-Input js-searchFocus" aria-label="Search for a package" type="search"
+        autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+        placeholder="Search packages or symbols"
+        value="" />
+    <input name="m" value="" hidden>
+    <button class="go-Button go-Button--inverted" aria-label="Submit search">
+      <img
+        class="go-Icon"
+        height="24"
+        width="24"
+        src="/static/shared/icon/search_gm_grey_24dp.svg"
+        alt=""
+      />
+    </button>
+  </form>
+  <button class="go-SearchForm-expandSearch js-expandSearch" data-gtmc="nav button"
+      aria-label="Open search" data-test-id="expand-search">
+    <img class="go-Icon go-Icon--inverted" height="24" width="24"
+        src="/static/shared/icon/search_gm_grey_24dp.svg" alt="">
+  </button>
+</div>
+
+          <ul class="go-Header-menu">
+            <li class="go-Header-menuItem">
+              <a href="https://go.dev/solutions/" data-gtmc="nav link">Why Go</a>
+            </li>
+            <li class="go-Header-menuItem">
+              <a href="https://go.dev/learn/" data-gtmc="nav link">Get Started</a>
+            </li>
+            <li class="go-Header-menuItem">
+              <a href="https://golang.org/doc/" data-gtmc="nav link">Docs</a>
+            </li>
+            <li class="go-Header-menuItem go-Header-menuItem--active">
+              <a href="/" data-gtmc="nav link">Packages</a>
+            </li>
+            <li class="go-Header-menuItem">
+              <a href="https://play.golang.org/" data-gtmc="nav link">Play</a>
+            </li>
+            <li class="go-Header-menuItem">
+              <a href="https://go.dev/blog/" data-gtmc="nav link">Blog</a>
+            </li>
+          </ul>
+          <button class="go-Header-navOpen js-headerMenuButton go-Header-navOpen--white" data-gtmc="nav button" aria-label="Open navigation">
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <aside class="go-NavigationDrawer js-header">
+    <nav>
+      <div class="go-NavigationDrawer-header">
+        <a href="https://go.dev/" tabindex="-1">
+          <img class="go-NavigationDrawer-logo" src="/static/shared/logo/go-blue.svg" alt="Go.">
+        </a>
+      </div>
+      <ul class="go-NavigationDrawer-list">
+          <li class="go-NavigationDrawer-listItem">
+            <a href="https://go.dev/solutions/" tabindex="-1">Why Go</a>
+          </li>
+          <li class="go-NavigationDrawer-listItem">
+            <a href="https://go.dev/learn/" tabindex="-1">Get Started</a>
+          </li>
+          <li class="go-NavigationDrawer-listItem">
+            <a href="https://golang.org/doc/" tabindex="-1">Docs</a>
+          </li>
+          <li class="go-NavigationDrawer-listItem go-NavigationDrawer-listItem--active">
+            <a href="/" tabindex="-1">Packages</a>
+          </li>
+          <li class="go-NavigationDrawer-listItem">
+            <a href="https://play.golang.org/" tabindex="-1">Play</a>
+          </li>
+          <li class="go-NavigationDrawer-listItem">
+            <a href="https://go.dev/blog" tabindex="-1">Blog</a>
+          </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="go-NavigationDrawer-scrim js-scrim" role="presentation"></div>
+
+    
+  <main class="go-Main">
+    <div class="go-Main-banner" role="alert"></div>
+    <header class="go-Main-header js-mainHeader">
+  
+  
+  <nav class="go-Main-headerBreadcrumb go-Breadcrumb" aria-label="Breadcrumb" data-test-id="UnitHeader-breadcrumb">
+    <ol>
+      
+        
+          <li data-test-id="UnitHeader-breadcrumbItem">
+            <a href="/" data-gtmc="breadcrumb link">Discover Packages</a>
+          </li>
+        
+          <li data-test-id="UnitHeader-breadcrumbItem">
+            <a href="/std" data-gtmc="breadcrumb link">Standard library</a>
+          </li>
+        
+        <li>
+          <a href="/runtime@go1.18.3" data-gtmc="breadcrumb link" aria-current="location"
+              data-test-id="UnitHeader-breadcrumbCurrent">
+            runtime
+          </a>
+          
+            <button
+              class="go-Button go-Button--inline go-Clipboard js-clipboard"
+              title="Copy path to clipboard.&#10;&#10;runtime"
+              aria-label="Copy Path to Clipboard"
+              data-to-copy="runtime"
+              data-gtmc="breadcrumbs button"
+            >
+              <img
+                class="go-Icon go-Icon--accented"
+                height="24"
+                width="24"
+                src="/static/shared/icon/content_copy_gm_grey_24dp.svg"
+                alt=""
+              >
+            </button>
+          
+        
+      </li>
+    </ol>
+  </nav>
+
+  <div class="go-Main-headerContent">
+    
+  <div class="go-Main-headerTitle js-stickyHeader">
+    <a class="go-Main-headerLogo" href="https://go.dev/" aria-hidden="true" tabindex="-1" data-gtmc="header link" aria-label="Link to Go Homepage">
+      <img height="78" width="207" src="/static/shared/logo/go-blue.svg" alt="Go">
+    </a>
+    <h1 class="UnitHeader-titleHeading" data-test-id="UnitHeader-title">runtime</h1>
+    
+      <span class="go-Chip go-Chip--inverted">package</span>
+    
+      <span class="go-Chip go-Chip--inverted">standard library</span>
+    
+    
+      
+        <button
+          class="go-Button go-Button--inline go-Clipboard js-clipboard"
+          title="Copy path to clipboard.&#10;&#10;runtime"
+          aria-label="Copy Path to Clipboard"
+          data-to-copy="runtime"
+          data-gtmc="title button"
+          tabindex="-1"
+        >
+          <img
+            class="go-Icon go-Icon--accented"
+            height="24"
+            width="24"
+            src="/static/shared/icon/content_copy_gm_grey_24dp.svg"
+            alt=""
+          />
+        </button>
+      
+    
+  </div>
+
+    
+  <div class="go-Main-headerDetails">
+    
+      
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-version">
+    <a href="?tab=versions" aria-label="Go to Versions" data-gtmc="header link"><span class="go-textSubtle">Version: </span>go1.18.3</a>
+    
+    <span class="DetailsHeader-badge--latest" data-test-id="UnitHeader-minorVersionBanner">
+      <span class="go-Chip DetailsHeader-span--latest">Latest</span>
+      <span class="go-Chip DetailsHeader-span--notAtLatest">
+        Latest
+        
+  <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+    <summary>
+      <img class="go-Icon go-Icon--inverted" height="24" width="24" src="/static/shared/icon/alert_gm_grey_24dp.svg" alt="Warning">
+    </summary>
+    <p>This package is not in the latest version of its module.</p>
+  </details>
+
+      </span>
+      <a href="/runtime" aria-label="Go to Latest Version" data-gtmc="header link">
+        <span class="go-Chip go-Chip--alert DetailsHeader-span--goToLatest">Go to latest</span>
+      </a>
+    </span>
+  </span>
+
+      
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-commitTime">
+    Published: Jun  1, 2022
+  </span>
+
+      
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-licenses">
+    License: <a href="/runtime?tab=licenses" data-test-id="UnitHeader-license"
+            aria-label="Go to Licenses" data-gtmc="header link">BSD-3-Clause</a>
+      
+    
+  </span>
+
+      
+        
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-imports">
+    <a href="/runtime?tab=imports" aria-label="Go to Imports"
+        data-gtmc="header link">
+      <span class="go-textSubtle">Imports: </span>11
+    </a>
+  </span>
+
+        
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-importedby">
+    <a href="/runtime?tab=importedby" aria-label="Go to Imported By"
+        data-gtmc="header link">
+       <span class="go-textSubtle">Imported by: </span>180,813
+    </a>
+  </span>
+
+      
+    
+  </div>
+  
+  <div class="UnitHeader-overflowContainer">
+    <svg class="UnitHeader-overflowImage" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+    </svg>
+    <select class="UnitHeader-overflowSelect js-selectNav" tabindex="-1">
+      <option value="/">Main</option>
+      <option value="/runtime?tab=versions">
+        Versions
+      </option>
+      <option value="/runtime?tab=licenses">
+        Licenses
+      </option>
+      
+        <option value="/runtime?tab=imports">
+          Imports
+        </option>
+        <option value="/runtime?tab=importedby">
+          Imported By
+        </option>
+      
+    </select>
+  </div>
+
+
+  </div>
+
+</header>
+    <aside class="go-Main-aside  js-mainAside">
+  
+  <div class="UnitMeta">
+    <h2 class="go-textLabel">Details</h2>
+    
+  <ul class="UnitMeta-details">
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon go-Icon--accented"src="/static/shared/icon/check_circle_gm_grey_24dp.svg" alt="checked"height="24" width="24">
+
+          Valid <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/go.mod" target="_blank" rel="noopener">go.mod</a> file
+          <img class="go-Icon" src="/static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>
+          The Go module system was introduced in Go 1.11 and is the official dependency management
+          solution for Go.
+        </p>
+      </details>
+    </li>
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon go-Icon--accented"src="/static/shared/icon/check_circle_gm_grey_24dp.svg" alt="checked"height="24" width="24">
+
+          Redistributable license
+          <img class="go-Icon" src="/static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>
+          Redistributable licenses place minimal restrictions on how software can be used,
+          modified, and redistributed.
+        </p>
+      </details>
+    </li>
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon go-Icon--accented"src="/static/shared/icon/check_circle_gm_grey_24dp.svg" alt="checked"height="24" width="24">
+
+          Tagged version
+          <img class="go-Icon" src="/static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>Modules with tagged versions give importers more predictable builds.</p>
+      </details>
+    </li>
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon go-Icon--accented"src="/static/shared/icon/check_circle_gm_grey_24dp.svg" alt="checked"height="24" width="24">
+
+          Stable version
+          <img class="go-Icon" src="/static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>When a project reaches major version v1 it is considered stable.</p>
+      </details>
+    </li>
+    <li class="UnitMeta-detailsLearn">
+      <a href="/about#best-practices-h2" data-gtmc="meta link">Learn more</a>
+    </li>
+  </ul>
+
+    <h2 class="go-textLabel">Repository</h2>
+    <div class="UnitMeta-repo">
+      
+        <a href="https://cs.opensource.google/go/go" title="https://cs.opensource.google/go/go" target="_blank" rel="noopener">
+          cs.opensource.google/go/go
+        </a>
+      
+    </div>
+    
+  </div>
+
+</aside>
+    <nav class="go-Main-nav go-Main-nav--sticky js-mainNav" aria-label="Outline">
+  <div class="go-Main-navDesktop">
+    
+  <div class="UnitOutline-jumpTo">
+    <button class="UnitOutline-jumpToInput go-ShortcutKey js-jumpToInput"
+        aria-controls="jump-to-modal"
+        aria-label="Open Jump to Identifier"
+        data-shortcut="f"
+        data-shortcut-alt="find"
+        data-test-id="jump-to-button" data-gtmc="outline button">
+      Jump to ...
+    </button>
+  </div>
+  <ul class="go-Tree js-tree" role="tree" aria-label="Outline">
+    
+    
+      <li>
+        <a href="#section-documentation" data-gtmc="outline link">
+          Documentation
+        </a>
+        
+<ul>
+  
+    <li>
+      <a href="#pkg-overview" data-gtmc="doc outline link">Overview</a>
+    </li>
+  <li class="DocNav-overview">
+      <a href="#pkg-index" data-gtmc="doc outline link">
+        Index
+      </a>
+      
+        <ul>
+          <li>
+            <a href="#pkg-examples" data-gtmc="doc outline link">
+              Examples
+            </a>
+          </li>
+        </ul>
+      
+    </li>
+    <li class="DocNav-constants">
+      <a href="#pkg-constants" data-gtmc="doc outline link">
+        Constants
+      </a>
+    </li>
+    <li class="DocNav-variables">
+      <a href="#pkg-variables" data-gtmc="doc outline link">
+        Variables
+      </a>
+    </li>
+    <li class="DocNav-functions">
+      <a href="#pkg-functions" data-gtmc="doc outline link">
+        Functions
+      </a>
+      
+        <ul>
+          
+            <li>
+              <a href="#BlockProfile" title="BlockProfile(p)" data-gtmc="doc outline link">
+                BlockProfile(p)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#Breakpoint" title="Breakpoint()" data-gtmc="doc outline link">
+                Breakpoint()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#CPUProfile" title="CPUProfile()" data-gtmc="doc outline link">
+                CPUProfile()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#Caller" title="Caller(skip)" data-gtmc="doc outline link">
+                Caller(skip)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#Callers" title="Callers(skip, pc)" data-gtmc="doc outline link">
+                Callers(skip, pc)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#GC" title="GC()" data-gtmc="doc outline link">
+                GC()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#GOMAXPROCS" title="GOMAXPROCS(n)" data-gtmc="doc outline link">
+                GOMAXPROCS(n)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#GOROOT" title="GOROOT()" data-gtmc="doc outline link">
+                GOROOT()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#Goexit" title="Goexit()" data-gtmc="doc outline link">
+                Goexit()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#GoroutineProfile" title="GoroutineProfile(p)" data-gtmc="doc outline link">
+                GoroutineProfile(p)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#Gosched" title="Gosched()" data-gtmc="doc outline link">
+                Gosched()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#KeepAlive" title="KeepAlive(x)" data-gtmc="doc outline link">
+                KeepAlive(x)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#LockOSThread" title="LockOSThread()" data-gtmc="doc outline link">
+                LockOSThread()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#MemProfile" title="MemProfile(p, inuseZero)" data-gtmc="doc outline link">
+                MemProfile(p, inuseZero)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#MutexProfile" title="MutexProfile(p)" data-gtmc="doc outline link">
+                MutexProfile(p)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#NumCPU" title="NumCPU()" data-gtmc="doc outline link">
+                NumCPU()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#NumCgoCall" title="NumCgoCall()" data-gtmc="doc outline link">
+                NumCgoCall()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#NumGoroutine" title="NumGoroutine()" data-gtmc="doc outline link">
+                NumGoroutine()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#ReadMemStats" title="ReadMemStats(m)" data-gtmc="doc outline link">
+                ReadMemStats(m)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#ReadTrace" title="ReadTrace()" data-gtmc="doc outline link">
+                ReadTrace()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#SetBlockProfileRate" title="SetBlockProfileRate(rate)" data-gtmc="doc outline link">
+                SetBlockProfileRate(rate)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#SetCPUProfileRate" title="SetCPUProfileRate(hz)" data-gtmc="doc outline link">
+                SetCPUProfileRate(hz)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#SetCgoTraceback" title="SetCgoTraceback(version, traceback, context, symbolizer)" data-gtmc="doc outline link">
+                SetCgoTraceback(version, traceback, context, symbolizer)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#SetFinalizer" title="SetFinalizer(obj, finalizer)" data-gtmc="doc outline link">
+                SetFinalizer(obj, finalizer)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#SetMutexProfileFraction" title="SetMutexProfileFraction(rate)" data-gtmc="doc outline link">
+                SetMutexProfileFraction(rate)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#Stack" title="Stack(buf, all)" data-gtmc="doc outline link">
+                Stack(buf, all)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#StartTrace" title="StartTrace()" data-gtmc="doc outline link">
+                StartTrace()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#StopTrace" title="StopTrace()" data-gtmc="doc outline link">
+                StopTrace()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#ThreadCreateProfile" title="ThreadCreateProfile(p)" data-gtmc="doc outline link">
+                ThreadCreateProfile(p)
+              </a>
+            </li>
+          
+            <li>
+              <a href="#UnlockOSThread" title="UnlockOSThread()" data-gtmc="doc outline link">
+                UnlockOSThread()
+              </a>
+            </li>
+          
+            <li>
+              <a href="#Version" title="Version()" data-gtmc="doc outline link">
+                Version()
+              </a>
+            </li>
+          
+        </ul>
+      
+    </li>
+    <li class="DocNav-types">
+      <a href="#pkg-types" data-gtmc="doc outline link">
+        Types
+      </a>
+      <ul>
+        
+          
+          <li>
+            <a href="#BlockProfileRecord" title="type BlockProfileRecord" data-gtmc="doc outline link">
+              type BlockProfileRecord
+            </a>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#Error" title="type Error" data-gtmc="doc outline link">
+              type Error
+            </a>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#Frame" title="type Frame" data-gtmc="doc outline link">
+              type Frame
+            </a>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#Frames" title="type Frames" data-gtmc="doc outline link">
+              type Frames
+            </a>
+            
+              <ul>
+                
+                  <li>
+                    <a href="#CallersFrames" title="CallersFrames(callers)"
+                        data-gtmc="doc outline link">
+                      CallersFrames(callers)
+                    </a>
+                  </li>
+                
+                
+                  <li>
+                    <a href="#Frames.Next" title="(ci) Next()"
+                        data-gtmc="doc outline link">
+                      (ci) Next()
+                    </a>
+                  </li>
+                
+              </ul>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#Func" title="type Func" data-gtmc="doc outline link">
+              type Func
+            </a>
+            
+              <ul>
+                
+                  <li>
+                    <a href="#FuncForPC" title="FuncForPC(pc)"
+                        data-gtmc="doc outline link">
+                      FuncForPC(pc)
+                    </a>
+                  </li>
+                
+                
+                  <li>
+                    <a href="#Func.Entry" title="(f) Entry()"
+                        data-gtmc="doc outline link">
+                      (f) Entry()
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#Func.FileLine" title="(f) FileLine(pc)"
+                        data-gtmc="doc outline link">
+                      (f) FileLine(pc)
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#Func.Name" title="(f) Name()"
+                        data-gtmc="doc outline link">
+                      (f) Name()
+                    </a>
+                  </li>
+                
+              </ul>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#MemProfileRecord" title="type MemProfileRecord" data-gtmc="doc outline link">
+              type MemProfileRecord
+            </a>
+            
+              <ul>
+                
+                
+                  <li>
+                    <a href="#MemProfileRecord.InUseBytes" title="(r) InUseBytes()"
+                        data-gtmc="doc outline link">
+                      (r) InUseBytes()
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#MemProfileRecord.InUseObjects" title="(r) InUseObjects()"
+                        data-gtmc="doc outline link">
+                      (r) InUseObjects()
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#MemProfileRecord.Stack" title="(r) Stack()"
+                        data-gtmc="doc outline link">
+                      (r) Stack()
+                    </a>
+                  </li>
+                
+              </ul>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#MemStats" title="type MemStats" data-gtmc="doc outline link">
+              type MemStats
+            </a>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#StackRecord" title="type StackRecord" data-gtmc="doc outline link">
+              type StackRecord
+            </a>
+            
+              <ul>
+                
+                
+                  <li>
+                    <a href="#StackRecord.Stack" title="(r) Stack()"
+                        data-gtmc="doc outline link">
+                      (r) Stack()
+                    </a>
+                  </li>
+                
+              </ul>
+             
+          </li>
+        
+          
+          <li>
+            <a href="#TypeAssertionError" title="type TypeAssertionError" data-gtmc="doc outline link">
+              type TypeAssertionError
+            </a>
+            
+              <ul>
+                
+                
+                  <li>
+                    <a href="#TypeAssertionError.Error" title="(e) Error()"
+                        data-gtmc="doc outline link">
+                      (e) Error()
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#TypeAssertionError.RuntimeError" title="RuntimeError()"
+                        data-gtmc="doc outline link">
+                      RuntimeError()
+                    </a>
+                  </li>
+                
+              </ul>
+             
+          </li>
+         
+      </ul>
+    </li>
+  
+  
+</ul>
+
+      </li>
+    
+    
+      <li>
+        <a href="#section-sourcefiles" data-gtmc="outline link">
+          Source Files
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="#section-directories" data-gtmc="outline link">
+          Directories
+        </a>
+      </li>
+    
+  </ul>
+
+  </div>
+  <div class="go-Main-navMobile js-mainNavMobile">
+    <label class="go-Label">
+      <select class="go-Select">
+        
+          <option selected disabled>Documentation</option>
+        
+      </select>
+    </label>
+  </div>
+</nav>
+    <article class="go-Main-article js-mainContent">
+  <div class="UnitDetails" data-test-id="UnitDetails" style="display: block;">
+    <div class="UnitDetails-content js-unitDetailsContent" data-test-id="UnitDetails-content">
+      
+      
+        
+          
+  <div class="UnitDoc">
+    <h2 class="UnitDoc-title" id="section-documentation">
+      <img class="go-Icon" height="24" width="24" src="/static/shared/icon/code_gm_grey_24dp.svg" alt="">
+      Documentation
+      <a class="UnitDoc-idLink" href="#section-documentation">¶</a>
+    </h2>
+    
+  
+    
+      <div class="UnitBuildContext-titleContext">
+        <label>
+          <a href="https://go.dev/about#build-context" class="UnitBuildContext-link">Rendered for</a>
+          <select class="go-Select js-buildContextSelect">
+            
+              <option value="linux">linux/amd64</option>
+            
+              <option value="windows">windows/amd64</option>
+            
+              <option value="darwin">darwin/amd64</option>
+            
+              <option value="js">js/wasm</option>
+            
+          </select>
+        </label>
+      </div>
+    
+  
+
+    <div class="Documentation js-documentation">
+      
+        
+<div class="Documentation-content js-docContent"> <section class="Documentation-overview">
+    <h3 tabindex="-1" id="pkg-overview" class="Documentation-overviewHeader">Overview <a href="#pkg-overview">¶</a></h3>
+
+<div role="navigation" aria-label="Table of Contents">
+    <ul class="Documentation-toc "><li class="Documentation-tocItem">
+		  <a href="#hdr-Environment_Variables">Environment Variables</a>
+		</li></ul>
+  </div><p>Package runtime contains operations that interact with Go&#39;s runtime system,
+such as functions to control goroutines. It also includes the low-level type information
+used by the reflect package; see reflect&#39;s documentation for the programmable
+interface to the run-time type system.
+</p><h4 id="hdr-Environment_Variables">Environment Variables <a class="Documentation-idLink" href="#hdr-Environment_Variables">¶</a></h4><p>The following environment variables ($name or %name%, depending on the host
+operating system) control the run-time behavior of Go programs. The meanings
+and use may change from release to release.
+</p><p>The GOGC variable sets the initial garbage collection target percentage.
+A collection is triggered when the ratio of freshly allocated data to live data
+remaining after the previous collection reaches this percentage. The default
+is GOGC=100. Setting GOGC=off disables the garbage collector entirely.
+The runtime/debug package&#39;s SetGCPercent function allows changing this
+percentage at run time. See <a href="https://golang.org/pkg/runtime/debug/#SetGCPercent">https://golang.org/pkg/runtime/debug/#SetGCPercent</a>.
+</p><p>The GODEBUG variable controls debugging variables within the runtime.
+It is a comma-separated list of name=val pairs setting these named variables:
+</p><pre>allocfreetrace: setting allocfreetrace=1 causes every allocation to be
+profiled and a stack trace printed on each object&#39;s allocation and free.
+
+clobberfree: setting clobberfree=1 causes the garbage collector to
+clobber the memory content of an object with bad content when it frees
+the object.
+
+cgocheck: setting cgocheck=0 disables all checks for packages
+using cgo to incorrectly pass Go pointers to non-Go code.
+Setting cgocheck=1 (the default) enables relatively cheap
+checks that may miss some errors.  Setting cgocheck=2 enables
+expensive checks that should not miss any errors, but will
+cause your program to run slower.
+
+efence: setting efence=1 causes the allocator to run in a mode
+where each object is allocated on a unique page and addresses are
+never recycled.
+
+gccheckmark: setting gccheckmark=1 enables verification of the
+garbage collector&#39;s concurrent mark phase by performing a
+second mark pass while the world is stopped.  If the second
+pass finds a reachable object that was not found by concurrent
+mark, the garbage collector will panic.
+
+gcpacertrace: setting gcpacertrace=1 causes the garbage collector to
+print information about the internal state of the concurrent pacer.
+
+gcshrinkstackoff: setting gcshrinkstackoff=1 disables moving goroutines
+onto smaller stacks. In this mode, a goroutine&#39;s stack can only grow.
+
+gcstoptheworld: setting gcstoptheworld=1 disables concurrent garbage collection,
+making every garbage collection a stop-the-world event. Setting gcstoptheworld=2
+also disables concurrent sweeping after the garbage collection finishes.
+
+gctrace: setting gctrace=1 causes the garbage collector to emit a single line to standard
+error at each collection, summarizing the amount of memory collected and the
+length of the pause. The format of this line is subject to change.
+Currently, it is:
+	gc # @#s #%: #+#+# ms clock, #+#/#/#+# ms cpu, #-&gt;#-&gt;# MB, # MB goal, # P
+where the fields are as follows:
+	gc #        the GC number, incremented at each GC
+	@#s         time in seconds since program start
+	#%          percentage of time spent in GC since program start
+	#+...+#     wall-clock/CPU times for the phases of the GC
+	#-&gt;#-&gt;# MB  heap size at GC start, at GC end, and live heap
+	# MB goal   goal heap size
+	# P         number of processors used
+The phases are stop-the-world (STW) sweep termination, concurrent
+mark and scan, and STW mark termination. The CPU times
+for mark/scan are broken down in to assist time (GC performed in
+line with allocation), background GC time, and idle GC time.
+If the line ends with &#34;(forced)&#34;, this GC was forced by a
+runtime.GC() call.
+
+harddecommit: setting harddecommit=1 causes memory that is returned to the OS to
+also have protections removed on it. This is the only mode of operation on Windows,
+but is helpful in debugging scavenger-related issues on other platforms. Currently,
+only supported on Linux.
+
+inittrace: setting inittrace=1 causes the runtime to emit a single line to standard
+error for each package with init work, summarizing the execution time and memory
+allocation. No information is printed for inits executed as part of plugin loading
+and for packages without both user defined and compiler generated init work.
+The format of this line is subject to change. Currently, it is:
+	init # @#ms, # ms clock, # bytes, # allocs
+where the fields are as follows:
+	init #      the package name
+	@# ms       time in milliseconds when the init started since program start
+	# clock     wall-clock time for package initialization work
+	# bytes     memory allocated on the heap
+	# allocs    number of heap allocations
+
+madvdontneed: setting madvdontneed=0 will use MADV_FREE
+instead of MADV_DONTNEED on Linux when returning memory to the
+kernel. This is more efficient, but means RSS numbers will
+drop only when the OS is under memory pressure.
+
+memprofilerate: setting memprofilerate=X will update the value of runtime.MemProfileRate.
+When set to 0 memory profiling is disabled.  Refer to the description of
+MemProfileRate for the default value.
+
+invalidptr: invalidptr=1 (the default) causes the garbage collector and stack
+copier to crash the program if an invalid pointer value (for example, 1)
+is found in a pointer-typed location. Setting invalidptr=0 disables this check.
+This should only be used as a temporary workaround to diagnose buggy code.
+The real fix is to not store integers in pointer-typed locations.
+
+sbrk: setting sbrk=1 replaces the memory allocator and garbage collector
+with a trivial allocator that obtains memory from the operating system and
+never reclaims any memory.
+
+scavtrace: setting scavtrace=1 causes the runtime to emit a single line to standard
+error, roughly once per GC cycle, summarizing the amount of work done by the
+scavenger as well as the total amount of memory returned to the operating system
+and an estimate of physical memory utilization. The format of this line is subject
+to change, but currently it is:
+	scav # # KiB work, # KiB total, #% util
+where the fields are as follows:
+	scav #       the scavenge cycle number
+	# KiB work   the amount of memory returned to the OS since the last line
+	# KiB total  the total amount of memory returned to the OS
+	#% util      the fraction of all unscavenged memory which is in-use
+If the line ends with &#34;(forced)&#34;, then scavenging was forced by a
+debug.FreeOSMemory() call.
+
+scheddetail: setting schedtrace=X and scheddetail=1 causes the scheduler to emit
+detailed multiline info every X milliseconds, describing state of the scheduler,
+processors, threads and goroutines.
+
+schedtrace: setting schedtrace=X causes the scheduler to emit a single line to standard
+error every X milliseconds, summarizing the scheduler state.
+
+tracebackancestors: setting tracebackancestors=N extends tracebacks with the stacks at
+which goroutines were created, where N limits the number of ancestor goroutines to
+report. This also extends the information returned by runtime.Stack. Ancestor&#39;s goroutine
+IDs will refer to the ID of the goroutine at the time of creation; it&#39;s possible for this
+ID to be reused for another goroutine. Setting N to 0 will report no ancestry information.
+
+asyncpreemptoff: asyncpreemptoff=1 disables signal-based
+asynchronous goroutine preemption. This makes some loops
+non-preemptible for long periods, which may delay GC and
+goroutine scheduling. This is useful for debugging GC issues
+because it also disables the conservative stack scanning used
+for asynchronously preempted goroutines.
+</pre><p>The net and net/http packages also refer to debugging variables in GODEBUG.
+See the documentation for those packages for details.
+</p><p>The GOMAXPROCS variable limits the number of operating system threads that
+can execute user-level Go code simultaneously. There is no limit to the number of threads
+that can be blocked in system calls on behalf of Go code; those do not count against
+the GOMAXPROCS limit. This package&#39;s GOMAXPROCS function queries and changes
+the limit.
+</p><p>The GORACE variable configures the race detector, for programs built using -race.
+See <a href="https://golang.org/doc/articles/race_detector.html">https://golang.org/doc/articles/race_detector.html</a> for details.
+</p><p>The GOTRACEBACK variable controls the amount of output generated when a Go
+program fails due to an unrecovered panic or an unexpected runtime condition.
+By default, a failure prints a stack trace for the current goroutine,
+eliding functions internal to the run-time system, and then exits with exit code 2.
+The failure prints stack traces for all goroutines if there is no current goroutine
+or the failure is internal to the run-time.
+GOTRACEBACK=none omits the goroutine stack traces entirely.
+GOTRACEBACK=single (the default) behaves as described above.
+GOTRACEBACK=all adds stack traces for all user-created goroutines.
+GOTRACEBACK=system is like “all” but adds stack frames for run-time functions
+and shows goroutines created internally by the run-time.
+GOTRACEBACK=crash is like “system” but crashes in an operating system-specific
+manner instead of exiting. For example, on Unix systems, the crash raises
+SIGABRT to trigger a core dump.
+For historical reasons, the GOTRACEBACK settings 0, 1, and 2 are synonyms for
+none, all, and system, respectively.
+The runtime/debug package&#39;s SetTraceback function allows increasing the
+amount of output at run time, but it cannot reduce the amount below that
+specified by the environment variable.
+See <a href="https://golang.org/pkg/runtime/debug/#SetTraceback">https://golang.org/pkg/runtime/debug/#SetTraceback</a>.
+</p><p>The GOARCH, GOOS, GOPATH, and GOROOT environment variables complete
+the set of Go environment variables. They influence the building of Go programs
+(see <a href="https://golang.org/cmd/go">https://golang.org/cmd/go</a> and <a href="https://golang.org/pkg/go/build">https://golang.org/pkg/go/build</a>).
+GOARCH, GOOS, and GOROOT are recorded at compile time and made available by
+constants or functions in this package, but they do not influence the execution
+of the run-time system.
+</p>
+</section><section class="Documentation-index">
+    <h3 id="pkg-index" class="Documentation-indexHeader">Index <a href="#pkg-index">¶</a></h3>
+
+<ul class="Documentation-indexList">
+<li class="Documentation-indexConstants"><a href="#pkg-constants">Constants</a></li>
+<li class="Documentation-indexVariables"><a href="#pkg-variables">Variables</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#BlockProfile">func BlockProfile(p []BlockProfileRecord) (n int, ok bool)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#Breakpoint">func Breakpoint()</a></li>
+<li class="Documentation-indexFunction">
+        <a class="js-deprecatedTagLink" href="#CPUProfile">func CPUProfile() []byte</a><span class="Documentation-indexDeprecated Documentation-deprecatedTag">deprecated</span></li>
+<li class="Documentation-indexFunction">
+        <a href="#Caller">func Caller(skip int) (pc uintptr, file string, line int, ok bool)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#Callers">func Callers(skip int, pc []uintptr) int</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#GC">func GC()</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#GOMAXPROCS">func GOMAXPROCS(n int) int</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#GOROOT">func GOROOT() string</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#Goexit">func Goexit()</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#GoroutineProfile">func GoroutineProfile(p []StackRecord) (n int, ok bool)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#Gosched">func Gosched()</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#KeepAlive">func KeepAlive(x any)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#LockOSThread">func LockOSThread()</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#MemProfile">func MemProfile(p []MemProfileRecord, inuseZero bool) (n int, ok bool)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#MutexProfile">func MutexProfile(p []BlockProfileRecord) (n int, ok bool)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#NumCPU">func NumCPU() int</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#NumCgoCall">func NumCgoCall() int64</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#NumGoroutine">func NumGoroutine() int</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#ReadMemStats">func ReadMemStats(m *MemStats)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#ReadTrace">func ReadTrace() []byte</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#SetBlockProfileRate">func SetBlockProfileRate(rate int)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#SetCPUProfileRate">func SetCPUProfileRate(hz int)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#SetCgoTraceback">func SetCgoTraceback(version int, traceback, context, symbolizer unsafe.Pointer)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#SetFinalizer">func SetFinalizer(obj any, finalizer any)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#SetMutexProfileFraction">func SetMutexProfileFraction(rate int) int</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#Stack">func Stack(buf []byte, all bool) int</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#StartTrace">func StartTrace() error</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#StopTrace">func StopTrace()</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#ThreadCreateProfile">func ThreadCreateProfile(p []StackRecord) (n int, ok bool)</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#UnlockOSThread">func UnlockOSThread()</a></li>
+<li class="Documentation-indexFunction">
+        <a href="#Version">func Version() string</a></li>
+<li class="Documentation-indexType">
+          <a href="#BlockProfileRecord">type BlockProfileRecord</a></li>
+<li class="Documentation-indexType">
+          <a href="#Error">type Error</a></li>
+<li class="Documentation-indexType">
+          <a href="#Frame">type Frame</a></li>
+<li class="Documentation-indexType">
+          <a href="#Frames">type Frames</a></li>
+<li><ul class="Documentation-indexTypeFunctions">
+<li>
+            <a href="#CallersFrames">func CallersFrames(callers []uintptr) *Frames</a></li>
+</ul></li>
+<li><ul class="Documentation-indexTypeMethods">
+<li>
+            <a href="#Frames.Next">func (ci *Frames) Next() (frame Frame, more bool)</a></li>
+</ul></li>
+<li class="Documentation-indexType">
+          <a href="#Func">type Func</a></li>
+<li><ul class="Documentation-indexTypeFunctions">
+<li>
+            <a href="#FuncForPC">func FuncForPC(pc uintptr) *Func</a></li>
+</ul></li>
+<li><ul class="Documentation-indexTypeMethods">
+<li>
+            <a href="#Func.Entry">func (f *Func) Entry() uintptr</a></li>
+<li>
+            <a href="#Func.FileLine">func (f *Func) FileLine(pc uintptr) (file string, line int)</a></li>
+<li>
+            <a href="#Func.Name">func (f *Func) Name() string</a></li>
+</ul></li>
+<li class="Documentation-indexType">
+          <a href="#MemProfileRecord">type MemProfileRecord</a></li>
+<li><ul class="Documentation-indexTypeMethods">
+<li>
+            <a href="#MemProfileRecord.InUseBytes">func (r *MemProfileRecord) InUseBytes() int64</a></li>
+<li>
+            <a href="#MemProfileRecord.InUseObjects">func (r *MemProfileRecord) InUseObjects() int64</a></li>
+<li>
+            <a href="#MemProfileRecord.Stack">func (r *MemProfileRecord) Stack() []uintptr</a></li>
+</ul></li>
+<li class="Documentation-indexType">
+          <a href="#MemStats">type MemStats</a></li>
+<li class="Documentation-indexType">
+          <a href="#StackRecord">type StackRecord</a></li>
+<li><ul class="Documentation-indexTypeMethods">
+<li>
+            <a href="#StackRecord.Stack">func (r *StackRecord) Stack() []uintptr</a></li>
+</ul></li>
+<li class="Documentation-indexType">
+          <a href="#TypeAssertionError">type TypeAssertionError</a></li>
+<li><ul class="Documentation-indexTypeMethods">
+<li>
+            <a href="#TypeAssertionError.Error">func (e *TypeAssertionError) Error() string</a></li>
+<li>
+            <a href="#TypeAssertionError.RuntimeError">func (*TypeAssertionError) RuntimeError()</a></li>
+</ul></li>
+</ul>
+</section><section class="Documentation-examples">
+    <h4 tabindex="-1" id="pkg-examples" class="Documentation-examplesHeader">Examples <a class="Documentation-idLink" href="#pkg-examples">¶</a></h4>
+<ul class="Documentation-examplesList">
+<li><a href="#example-Frames" class="js-exampleHref">Frames</a></li>
+</ul>
+</section><h3 tabindex="-1" id="pkg-constants" class="Documentation-constantsHeader">Constants <a href="#pkg-constants">¶</a></h3>
+
+  <section class="Documentation-constants">
+    <div class="Documentation-declaration">
+      <span class="Documentation-declarationLink"><a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/compiler.go;l=13">View Source</a></span>
+      <pre><span id="Compiler" data-kind="constant">const Compiler = &#34;gc&#34;</span></pre>
+    </div>
+  <p>Compiler is the name of the compiler toolchain that built the
+running binary. Known toolchains are:
+</p><pre>gc      Also known as cmd/compile.
+gccgo   The gccgo front end, part of the GCC compiler suite.
+</pre>
+
+    <div class="Documentation-declaration">
+      <span class="Documentation-declarationLink"><a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/extern.go;l=275">View Source</a></span>
+      <pre><span id="GOARCH" data-kind="constant">const GOARCH <a href="/builtin#string">string</a> = <a href="/internal/goarch">goarch</a>.<a href="/internal/goarch#GOARCH">GOARCH</a></span></pre>
+    </div>
+  <p>GOARCH is the running program&#39;s architecture target:
+one of 386, amd64, arm, s390x, and so on.
+</p>
+
+    <div class="Documentation-declaration">
+      <span class="Documentation-declarationLink"><a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/extern.go;l=271">View Source</a></span>
+      <pre><span id="GOOS" data-kind="constant">const GOOS <a href="/builtin#string">string</a> = <a href="/internal/goos">goos</a>.<a href="/internal/goos#GOOS">GOOS</a></span></pre>
+    </div>
+  <p>GOOS is the running program&#39;s operating system target:
+one of darwin, freebsd, linux, and so on.
+To view possible combinations of GOOS and GOARCH, run &#34;go tool dist list&#34;.
+</p>
+</section>
+
+  <h3 tabindex="-1" id="pkg-variables" class="Documentation-variablesHeader">Variables <a href="#pkg-variables">¶</a></h3>
+
+  <section class="Documentation-variables">
+    <div class="Documentation-declaration">
+      <span class="Documentation-declarationLink"><a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=504">View Source</a></span>
+      <pre><span id="MemProfileRate" data-kind="variable">var MemProfileRate <a href="/builtin#int">int</a> = defaultMemProfileRate(512 * 1024)</span></pre>
+    </div>
+  <p>MemProfileRate controls the fraction of memory allocations
+that are recorded and reported in the memory profile.
+The profiler aims to sample an average of
+one allocation per MemProfileRate bytes allocated.
+</p><p>To include every allocated block in the profile, set MemProfileRate to 1.
+To turn off profiling entirely, set MemProfileRate to 0.
+</p><p>The tools that process the memory profiles assume that the
+profile rate is constant across the lifetime of the program
+and equal to the current value. Programs that change the
+memory profiling rate should do so just once, as early as
+possible in the execution of the program (for example,
+at the beginning of main).
+</p>
+</section>
+
+  <h3 tabindex="-1" id="pkg-functions" class="Documentation-functionsHeader">Functions <a href="#pkg-functions">¶</a></h3>
+
+  <section class="Documentation-functions"><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="BlockProfile" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=663">BlockProfile</a> <a class="Documentation-idLink" href="#BlockProfile">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.1</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func BlockProfile(p []<a href="#BlockProfileRecord">BlockProfileRecord</a>) (n <a href="/builtin#int">int</a>, ok <a href="/builtin#bool">bool</a>)</pre>
+    </div>
+  <p>BlockProfile returns n, the number of records in the current blocking profile.
+If len(p) &gt;= n, BlockProfile copies the profile into p and returns n, true.
+If len(p) &lt; n, BlockProfile does not change p and returns n, false.
+</p><p>Most clients should use the runtime/pprof package or
+the testing package&#39;s -test.blockprofile flag instead
+of calling BlockProfile directly.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="Breakpoint" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/proc.go;l=4301">Breakpoint</a> <a class="Documentation-idLink" href="#Breakpoint">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func Breakpoint()</pre>
+    </div>
+  <p>Breakpoint executes a breakpoint trap.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <details class="Documentation-deprecatedDetails js-deprecatedDetails">
+      <summary>
+        <h4 tabindex="-1" id="CPUProfile" data-kind="function" class="Documentation-functionHeader">
+          <span class="Documentation-deprecatedTitle">
+            func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cpuprof.go;l=189">CPUProfile</a>
+            <span class="Documentation-deprecatedTag">deprecated</span>
+            <span class="Documentation-deprecatedBody"></span>
+          </span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+      </summary>
+      <div class="go-Message go-Message--warning Documentation-deprecatedItemBody">
+        
+    <div class="Documentation-declaration">
+      <pre>func CPUProfile() []<a href="/builtin#byte">byte</a></pre>
+    </div>
+  <p>CPUProfile panics.
+It formerly provided raw access to chunks of
+a pprof-format profile generated by the runtime.
+The details of generating that format have changed,
+so this functionality has been removed.
+</p><p>Deprecated: Use the runtime/pprof package,
+or the handlers in the net/http/pprof package,
+or the testing package&#39;s -test.cpuprofile flag instead.
+</p>
+
+      </div>
+    </details>
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="Caller" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/extern.go;l=205">Caller</a> <a class="Documentation-idLink" href="#Caller">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func Caller(skip <a href="/builtin#int">int</a>) (pc <a href="/builtin#uintptr">uintptr</a>, file <a href="/builtin#string">string</a>, line <a href="/builtin#int">int</a>, ok <a href="/builtin#bool">bool</a>)</pre>
+    </div>
+  <p>Caller reports file and line number information about function invocations on
+the calling goroutine&#39;s stack. The argument skip is the number of stack frames
+to ascend, with 0 identifying the caller of Caller.  (For historical reasons the
+meaning of skip differs between Caller and Callers.) The return values report the
+program counter, file name, and line number within the file of the corresponding
+call. The boolean ok is false if it was not possible to recover the information.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="Callers" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/extern.go;l=228">Callers</a> <a class="Documentation-idLink" href="#Callers">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func Callers(skip <a href="/builtin#int">int</a>, pc []<a href="/builtin#uintptr">uintptr</a>) <a href="/builtin#int">int</a></pre>
+    </div>
+  <p>Callers fills the slice pc with the return program counters of function invocations
+on the calling goroutine&#39;s stack. The argument skip is the number of stack frames
+to skip before recording in pc, with 0 identifying the frame for Callers itself and
+1 identifying the caller of Callers.
+It returns the number of entries written to pc.
+</p><p>To translate these PCs into symbolic information such as function
+names and line numbers, use CallersFrames. CallersFrames accounts
+for inlined functions and adjusts the return program counters into
+call program counters. Iterating over the returned slice of PCs
+directly is discouraged, as is using FuncForPC on any of the
+returned PCs, since these cannot account for inlining or return
+program counter adjustment.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="GC" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgc.go;l=409">GC</a> <a class="Documentation-idLink" href="#GC">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func GC()</pre>
+    </div>
+  <p>GC runs a garbage collection and blocks the caller until the
+garbage collection is complete. It may also block the entire
+program.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="GOMAXPROCS" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debug.go;l=16">GOMAXPROCS</a> <a class="Documentation-idLink" href="#GOMAXPROCS">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func GOMAXPROCS(n <a href="/builtin#int">int</a>) <a href="/builtin#int">int</a></pre>
+    </div>
+  <p>GOMAXPROCS sets the maximum number of CPUs that can be executing
+simultaneously and returns the previous setting. It defaults to
+the value of runtime.NumCPU. If n &lt; 1, it does not change the current setting.
+This call will go away when the scheduler improves.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="GOROOT" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/extern.go;l=243">GOROOT</a> <a class="Documentation-idLink" href="#GOROOT">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func GOROOT() <a href="/builtin#string">string</a></pre>
+    </div>
+  <p>GOROOT returns the root of the Go tree. It uses the
+GOROOT environment variable, if set at process start,
+or else the root used during the Go build.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="Goexit" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/panic.go;l=448">Goexit</a> <a class="Documentation-idLink" href="#Goexit">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func Goexit()</pre>
+    </div>
+  <p>Goexit terminates the goroutine that calls it. No other goroutine is affected.
+Goexit runs all deferred calls before terminating the goroutine. Because Goexit
+is not a panic, any recover calls in those deferred functions will return nil.
+</p><p>Calling Goexit from the main goroutine terminates that goroutine
+without func main returning. Since func main has not returned,
+the program continues execution of other goroutines.
+If all other goroutines exit, the program crashes.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="GoroutineProfile" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=831">GoroutineProfile</a> <a class="Documentation-idLink" href="#GoroutineProfile">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func GoroutineProfile(p []<a href="#StackRecord">StackRecord</a>) (n <a href="/builtin#int">int</a>, ok <a href="/builtin#bool">bool</a>)</pre>
+    </div>
+  <p>GoroutineProfile returns n, the number of records in the active goroutine stack profile.
+If len(p) &gt;= n, GoroutineProfile copies the profile into p and returns n, true.
+If len(p) &lt; n, GoroutineProfile does not change p and returns n, false.
+</p><p>Most clients should use the runtime/pprof package instead
+of calling GoroutineProfile directly.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="Gosched" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/proc.go;l=315">Gosched</a> <a class="Documentation-idLink" href="#Gosched">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func Gosched()</pre>
+    </div>
+  <p>Gosched yields the processor, allowing other goroutines to run. It does not
+suspend the current goroutine, so execution resumes automatically.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="KeepAlive" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mfinal.go;l=467">KeepAlive</a> <a class="Documentation-idLink" href="#KeepAlive">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.7</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func KeepAlive(x <a href="/builtin#any">any</a>)</pre>
+    </div>
+  <p>KeepAlive marks its argument as currently reachable.
+This ensures that the object is not freed, and its finalizer is not run,
+before the point in the program where KeepAlive is called.
+</p><p>A very simplified example showing where KeepAlive is required:
+</p><pre>type File struct { d int }
+d, err := syscall.Open(&#34;/file/path&#34;, syscall.O_RDONLY, 0)
+// ... do something if err != nil ...
+p := &amp;File{d}
+runtime.SetFinalizer(p, func(p *File) { syscall.Close(p.d) })
+var buf [10]byte
+n, err := syscall.Read(p.d, buf[:])
+// Ensure p is not finalized until Read returns.
+runtime.KeepAlive(p)
+// No more uses of p after this point.
+</pre><p>Without the KeepAlive call, the finalizer could run at the start of
+syscall.Read, closing the file descriptor before syscall.Read makes
+the actual system call.
+</p><p>Note: KeepAlive should only be used to prevent finalizers from
+running prematurely. In particular, when used with unsafe.Pointer,
+the rules for valid uses of unsafe.Pointer still apply.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="LockOSThread" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/proc.go;l=4334">LockOSThread</a> <a class="Documentation-idLink" href="#LockOSThread">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func LockOSThread()</pre>
+    </div>
+  <p>LockOSThread wires the calling goroutine to its current operating system thread.
+The calling goroutine will always execute in that thread,
+and no other goroutine will execute in it,
+until the calling goroutine has made as many calls to
+UnlockOSThread as to LockOSThread.
+If the calling goroutine exits without unlocking the thread,
+the thread will be terminated.
+</p><p>All init functions are run on the startup thread. Calling LockOSThread
+from an init function will cause the main function to be invoked on
+that thread.
+</p><p>A goroutine should call LockOSThread before calling OS services or
+non-Go library functions that depend on per-thread state.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="MemProfile" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=569">MemProfile</a> <a class="Documentation-idLink" href="#MemProfile">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func MemProfile(p []<a href="#MemProfileRecord">MemProfileRecord</a>, inuseZero <a href="/builtin#bool">bool</a>) (n <a href="/builtin#int">int</a>, ok <a href="/builtin#bool">bool</a>)</pre>
+    </div>
+  <p>MemProfile returns a profile of memory allocated and freed per allocation
+site.
+</p><p>MemProfile returns n, the number of records in the current memory profile.
+If len(p) &gt;= n, MemProfile copies the profile into p and returns n, true.
+If len(p) &lt; n, MemProfile does not change p and returns n, false.
+</p><p>If inuseZero is true, the profile includes allocation records
+where r.AllocBytes &gt; 0 but r.AllocBytes == r.FreeBytes.
+These are sites where memory was allocated, but it has all
+been released back to the runtime.
+</p><p>The returned profile may be up to two garbage collection cycles old.
+This is to avoid skewing the profile toward allocations; because
+allocations happen in real time but frees are delayed until the garbage
+collector performs sweeping, the profile only accounts for allocations
+that have had a chance to be freed by the garbage collector.
+</p><p>Most clients should use the runtime/pprof package or
+the testing package&#39;s -test.memprofile flag instead
+of calling MemProfile directly.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="MutexProfile" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=706">MutexProfile</a> <a class="Documentation-idLink" href="#MutexProfile">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.8</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func MutexProfile(p []<a href="#BlockProfileRecord">BlockProfileRecord</a>) (n <a href="/builtin#int">int</a>, ok <a href="/builtin#bool">bool</a>)</pre>
+    </div>
+  <p>MutexProfile returns n, the number of records in the current mutex profile.
+If len(p) &gt;= n, MutexProfile copies the profile into p and returns n, true.
+Otherwise, MutexProfile does not change p, and returns n, false.
+</p><p>Most clients should use the runtime/pprof package
+instead of calling MutexProfile directly.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="NumCPU" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debug.go;l=42">NumCPU</a> <a class="Documentation-idLink" href="#NumCPU">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func NumCPU() <a href="/builtin#int">int</a></pre>
+    </div>
+  <p>NumCPU returns the number of logical CPUs usable by the current process.
+</p><p>The set of available CPUs is checked by querying the operating system
+at process startup. Changes to operating system CPU allocation after
+process startup are not reflected.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="NumCgoCall" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debug.go;l=47">NumCgoCall</a> <a class="Documentation-idLink" href="#NumCgoCall">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func NumCgoCall() <a href="/builtin#int64">int64</a></pre>
+    </div>
+  <p>NumCgoCall returns the number of cgo calls made by the current process.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="NumGoroutine" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debug.go;l=56">NumGoroutine</a> <a class="Documentation-idLink" href="#NumGoroutine">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func NumGoroutine() <a href="/builtin#int">int</a></pre>
+    </div>
+  <p>NumGoroutine returns the number of goroutines that currently exist.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="ReadMemStats" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mstats.go;l=402">ReadMemStats</a> <a class="Documentation-idLink" href="#ReadMemStats">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func ReadMemStats(m *<a href="#MemStats">MemStats</a>)</pre>
+    </div>
+  <p>ReadMemStats populates m with memory allocator statistics.
+</p><p>The returned memory allocator statistics are up to date as of the
+call to ReadMemStats. This is in contrast with a heap profile,
+which is a snapshot as of the most recently completed garbage
+collection cycle.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="ReadTrace" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/trace.go;l=378">ReadTrace</a> <a class="Documentation-idLink" href="#ReadTrace">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.5</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func ReadTrace() []<a href="/builtin#byte">byte</a></pre>
+    </div>
+  <p>ReadTrace returns the next chunk of binary tracing data, blocking until data
+is available. If tracing is turned off and all the data accumulated while it
+was on has been returned, ReadTrace returns nil. The caller must copy the
+returned data before calling ReadTrace again.
+ReadTrace must be called from one goroutine at a time.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="SetBlockProfileRate" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=381">SetBlockProfileRate</a> <a class="Documentation-idLink" href="#SetBlockProfileRate">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.1</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func SetBlockProfileRate(rate <a href="/builtin#int">int</a>)</pre>
+    </div>
+  <p>SetBlockProfileRate controls the fraction of goroutine blocking events
+that are reported in the blocking profile. The profiler aims to sample
+an average of one blocking event per rate nanoseconds spent blocked.
+</p><p>To include every blocking event in the profile, pass rate = 1.
+To turn off profiling entirely, pass rate &lt;= 0.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="SetCPUProfileRate" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cpuprof.go;l=55">SetCPUProfileRate</a> <a class="Documentation-idLink" href="#SetCPUProfileRate">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func SetCPUProfileRate(hz <a href="/builtin#int">int</a>)</pre>
+    </div>
+  <p>SetCPUProfileRate sets the CPU profiling rate to hz samples per second.
+If hz &lt;= 0, SetCPUProfileRate turns off profiling.
+If the profiler is on, the rate cannot be changed without first turning it off.
+</p><p>Most clients should use the runtime/pprof package or
+the testing package&#39;s -test.cpuprofile flag instead of calling
+SetCPUProfileRate directly.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="SetCgoTraceback" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/traceback.go;l=1294">SetCgoTraceback</a> <a class="Documentation-idLink" href="#SetCgoTraceback">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.7</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func SetCgoTraceback(version <a href="/builtin#int">int</a>, traceback, context, symbolizer <a href="/unsafe">unsafe</a>.<a href="/unsafe#Pointer">Pointer</a>)</pre>
+    </div>
+  <p>SetCgoTraceback records three C functions to use to gather
+traceback information from C code and to convert that traceback
+information into symbolic information. These are used when printing
+stack traces for a program that uses cgo.
+</p><p>The traceback and context functions may be called from a signal
+handler, and must therefore use only async-signal safe functions.
+The symbolizer function may be called while the program is
+crashing, and so must be cautious about using memory.  None of the
+functions may call back into Go.
+</p><p>The context function will be called with a single argument, a
+pointer to a struct:
+</p><pre>struct {
+	Context uintptr
+}
+</pre><p>In C syntax, this struct will be
+</p><pre>struct {
+	uintptr_t Context;
+};
+</pre><p>If the Context field is 0, the context function is being called to
+record the current traceback context. It should record in the
+Context field whatever information is needed about the current
+point of execution to later produce a stack trace, probably the
+stack pointer and PC. In this case the context function will be
+called from C code.
+</p><p>If the Context field is not 0, then it is a value returned by a
+previous call to the context function. This case is called when the
+context is no longer needed; that is, when the Go code is returning
+to its C code caller. This permits the context function to release
+any associated resources.
+</p><p>While it would be correct for the context function to record a
+complete a stack trace whenever it is called, and simply copy that
+out in the traceback function, in a typical program the context
+function will be called many times without ever recording a
+traceback for that context. Recording a complete stack trace in a
+call to the context function is likely to be inefficient.
+</p><p>The traceback function will be called with a single argument, a
+pointer to a struct:
+</p><pre>struct {
+	Context    uintptr
+	SigContext uintptr
+	Buf        *uintptr
+	Max        uintptr
+}
+</pre><p>In C syntax, this struct will be
+</p><pre>struct {
+	uintptr_t  Context;
+	uintptr_t  SigContext;
+	uintptr_t* Buf;
+	uintptr_t  Max;
+};
+</pre><p>The Context field will be zero to gather a traceback from the
+current program execution point. In this case, the traceback
+function will be called from C code.
+</p><p>Otherwise Context will be a value previously returned by a call to
+the context function. The traceback function should gather a stack
+trace from that saved point in the program execution. The traceback
+function may be called from an execution thread other than the one
+that recorded the context, but only when the context is known to be
+valid and unchanging. The traceback function may also be called
+deeper in the call stack on the same thread that recorded the
+context. The traceback function may be called multiple times with
+the same Context value; it will usually be appropriate to cache the
+result, if possible, the first time this is called for a specific
+context value.
+</p><p>If the traceback function is called from a signal handler on a Unix
+system, SigContext will be the signal context argument passed to
+the signal handler (a C ucontext_t* cast to uintptr_t). This may be
+used to start tracing at the point where the signal occurred. If
+the traceback function is not called from a signal handler,
+SigContext will be zero.
+</p><p>Buf is where the traceback information should be stored. It should
+be PC values, such that Buf[0] is the PC of the caller, Buf[1] is
+the PC of that function&#39;s caller, and so on.  Max is the maximum
+number of entries to store.  The function should store a zero to
+indicate the top of the stack, or that the caller is on a different
+stack, presumably a Go stack.
+</p><p>Unlike runtime.Callers, the PC values returned should, when passed
+to the symbolizer function, return the file/line of the call
+instruction.  No additional subtraction is required or appropriate.
+</p><p>On all platforms, the traceback function is invoked when a call from
+Go to C to Go requests a stack trace. On linux/amd64, linux/ppc64le,
+and freebsd/amd64, the traceback function is also invoked when a
+signal is received by a thread that is executing a cgo call. The
+traceback function should not make assumptions about when it is
+called, as future versions of Go may make additional calls.
+</p><p>The symbolizer function will be called with a single argument, a
+pointer to a struct:
+</p><pre>struct {
+	PC      uintptr // program counter to fetch information for
+	File    *byte   // file name (NUL terminated)
+	Lineno  uintptr // line number
+	Func    *byte   // function name (NUL terminated)
+	Entry   uintptr // function entry point
+	More    uintptr // set non-zero if more info for this PC
+	Data    uintptr // unused by runtime, available for function
+}
+</pre><p>In C syntax, this struct will be
+</p><pre>struct {
+	uintptr_t PC;
+	char*     File;
+	uintptr_t Lineno;
+	char*     Func;
+	uintptr_t Entry;
+	uintptr_t More;
+	uintptr_t Data;
+};
+</pre><p>The PC field will be a value returned by a call to the traceback
+function.
+</p><p>The first time the function is called for a particular traceback,
+all the fields except PC will be 0. The function should fill in the
+other fields if possible, setting them to 0/nil if the information
+is not available. The Data field may be used to store any useful
+information across calls. The More field should be set to non-zero
+if there is more information for this PC, zero otherwise. If More
+is set non-zero, the function will be called again with the same
+PC, and may return different information (this is intended for use
+with inlined functions). If More is zero, the function will be
+called with the next PC value in the traceback. When the traceback
+is complete, the function will be called once more with PC set to
+zero; this may be used to free any information. Each call will
+leave the fields of the struct set to the same values they had upon
+return, except for the PC field when the More field is zero. The
+function must not keep a copy of the struct pointer between calls.
+</p><p>When calling SetCgoTraceback, the version argument is the version
+number of the structs that the functions expect to receive.
+Currently this must be zero.
+</p><p>The symbolizer function may be nil, in which case the results of
+the traceback function will be displayed as numbers. If the
+traceback function is nil, the symbolizer function will never be
+called. The context function may be nil, in which case the
+traceback function will only be called with the context field set
+to zero.  If the context function is nil, then calls from Go to C
+to Go will not show a traceback for the C portion of the call stack.
+</p><p>SetCgoTraceback should be called only once, ideally from an init function.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="SetFinalizer" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mfinal.go;l=326">SetFinalizer</a> <a class="Documentation-idLink" href="#SetFinalizer">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func SetFinalizer(obj <a href="/builtin#any">any</a>, finalizer <a href="/builtin#any">any</a>)</pre>
+    </div>
+  <p>SetFinalizer sets the finalizer associated with obj to the provided
+finalizer function. When the garbage collector finds an unreachable block
+with an associated finalizer, it clears the association and runs
+finalizer(obj) in a separate goroutine. This makes obj reachable again,
+but now without an associated finalizer. Assuming that SetFinalizer
+is not called again, the next time the garbage collector sees
+that obj is unreachable, it will free obj.
+</p><p>SetFinalizer(obj, nil) clears any finalizer associated with obj.
+</p><p>The argument obj must be a pointer to an object allocated by calling
+new, by taking the address of a composite literal, or by taking the
+address of a local variable.
+The argument finalizer must be a function that takes a single argument
+to which obj&#39;s type can be assigned, and can have arbitrary ignored return
+values. If either of these is not true, SetFinalizer may abort the
+program.
+</p><p>Finalizers are run in dependency order: if A points at B, both have
+finalizers, and they are otherwise unreachable, only the finalizer
+for A runs; once A is freed, the finalizer for B can run.
+If a cyclic structure includes a block with a finalizer, that
+cycle is not guaranteed to be garbage collected and the finalizer
+is not guaranteed to run, because there is no ordering that
+respects the dependencies.
+</p><p>The finalizer is scheduled to run at some arbitrary time after the
+program can no longer reach the object to which obj points.
+There is no guarantee that finalizers will run before a program exits,
+so typically they are useful only for releasing non-memory resources
+associated with an object during a long-running program.
+For example, an os.File object could use a finalizer to close the
+associated operating system file descriptor when a program discards
+an os.File without calling Close, but it would be a mistake
+to depend on a finalizer to flush an in-memory I/O buffer such as a
+bufio.Writer, because the buffer would not be flushed at program exit.
+</p><p>It is not guaranteed that a finalizer will run if the size of *obj is
+zero bytes.
+</p><p>It is not guaranteed that a finalizer will run for objects allocated
+in initializers for package-level variables. Such objects may be
+linker-allocated, not heap-allocated.
+</p><p>A finalizer may run as soon as an object becomes unreachable.
+In order to use finalizers correctly, the program must ensure that
+the object is reachable until it is no longer required.
+Objects stored in global variables, or that can be found by tracing
+pointers from a global variable, are reachable. For other objects,
+pass the object to a call of the KeepAlive function to mark the
+last point in the function where the object must be reachable.
+</p><p>For example, if p points to a struct, such as os.File, that contains
+a file descriptor d, and p has a finalizer that closes that file
+descriptor, and if the last use of p in a function is a call to
+syscall.Write(p.d, buf, size), then p may be unreachable as soon as
+the program enters syscall.Write. The finalizer may run at that moment,
+closing p.d, causing syscall.Write to fail because it is writing to
+a closed file descriptor (or, worse, to an entirely different
+file descriptor opened by a different goroutine). To avoid this problem,
+call runtime.KeepAlive(p) after the call to syscall.Write.
+</p><p>A single goroutine runs all finalizers for a program, sequentially.
+If a finalizer must run for a long time, it should do so by starting
+a new goroutine.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="SetMutexProfileFraction" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=450">SetMutexProfileFraction</a> <a class="Documentation-idLink" href="#SetMutexProfileFraction">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.8</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func SetMutexProfileFraction(rate <a href="/builtin#int">int</a>) <a href="/builtin#int">int</a></pre>
+    </div>
+  <p>SetMutexProfileFraction controls the fraction of mutex contention events
+that are reported in the mutex profile. On average 1/rate events are
+reported. The previous rate is returned.
+</p><p>To turn off profiling entirely, pass rate 0.
+To just read the current rate, pass rate &lt; 0.
+(For n&gt;1 the details of sampling may change.)
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="Stack" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=847">Stack</a> <a class="Documentation-idLink" href="#Stack">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func Stack(buf []<a href="/builtin#byte">byte</a>, all <a href="/builtin#bool">bool</a>) <a href="/builtin#int">int</a></pre>
+    </div>
+  <p>Stack formats a stack trace of the calling goroutine into buf
+and returns the number of bytes written to buf.
+If all is true, Stack formats stack traces of all other goroutines
+into buf after the trace for the current goroutine.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="StartTrace" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/trace.go;l=184">StartTrace</a> <a class="Documentation-idLink" href="#StartTrace">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.5</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func StartTrace() <a href="/builtin#error">error</a></pre>
+    </div>
+  <p>StartTrace enables tracing for the current process.
+While tracing, the data will be buffered and available via ReadTrace.
+StartTrace returns an error if tracing is already enabled.
+Most clients should use the runtime/trace package or the testing package&#39;s
+-test.trace flag instead of calling StartTrace directly.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="StopTrace" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/trace.go;l=285">StopTrace</a> <a class="Documentation-idLink" href="#StopTrace">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.5</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func StopTrace()</pre>
+    </div>
+  <p>StopTrace stops tracing, if it was previously enabled.
+StopTrace only returns after all the reads for the trace have completed.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="ThreadCreateProfile" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=735">ThreadCreateProfile</a> <a class="Documentation-idLink" href="#ThreadCreateProfile">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func ThreadCreateProfile(p []<a href="#StackRecord">StackRecord</a>) (n <a href="/builtin#int">int</a>, ok <a href="/builtin#bool">bool</a>)</pre>
+    </div>
+  <p>ThreadCreateProfile returns n, the number of records in the thread creation profile.
+If len(p) &gt;= n, ThreadCreateProfile copies the profile into p and returns n, true.
+If len(p) &lt; n, ThreadCreateProfile does not change p and returns n, false.
+</p><p>Most clients should use the runtime/pprof package instead
+of calling ThreadCreateProfile directly.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="UnlockOSThread" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/proc.go;l=4386">UnlockOSThread</a> <a class="Documentation-idLink" href="#UnlockOSThread">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func UnlockOSThread()</pre>
+    </div>
+  <p>UnlockOSThread undoes an earlier call to LockOSThread.
+If this drops the number of active LockOSThread calls on the
+calling goroutine to zero, it unwires the calling goroutine from
+its fixed operating system thread.
+If there are no active LockOSThread calls, this is a no-op.
+</p><p>Before calling UnlockOSThread, the caller must ensure that the OS
+thread is suitable for running other goroutines. If the caller made
+any permanent changes to the state of the thread that would affect
+other goroutines, it should not call this function and thus leave
+the goroutine locked to the OS thread until the goroutine (and
+hence the thread) exits.
+</p>
+
+  
+
+        </div><div class="Documentation-function">
+	  
+  
+  
+    <h4 tabindex="-1" id="Version" data-kind="function" class="Documentation-functionHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/extern.go;l=264">Version</a> <a class="Documentation-idLink" href="#Version">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func Version() <a href="/builtin#string">string</a></pre>
+    </div>
+  <p>Version returns the Go tree&#39;s version string.
+It is either the commit hash and date at the time of the build or,
+when possible, a release tag like &#34;go1.3&#34;.
+</p>
+
+  
+
+        </div></section>
+
+  <h3 tabindex="-1" id="pkg-types" class="Documentation-typesHeader">Types <a href="#pkg-types">¶</a></h3>
+
+  <section class="Documentation-types"><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="BlockProfileRecord" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=650">BlockProfileRecord</a> <a class="Documentation-idLink" href="#BlockProfileRecord">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.1</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type BlockProfileRecord struct {
+<span id="BlockProfileRecord.Count" data-kind="field">	Count  <a href="/builtin#int64">int64</a>
+</span><span id="BlockProfileRecord.Cycles" data-kind="field">	Cycles <a href="/builtin#int64">int64</a>
+</span><span id="BlockProfileRecord.StackRecord" data-kind="field">	<a href="#StackRecord">StackRecord</a>
+</span>}</pre>
+    </div>
+  <p>BlockProfileRecord describes blocking events originated
+at a particular call sequence (stack trace).
+</p>
+
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="Error" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/error.go;l=10">Error</a> <a class="Documentation-idLink" href="#Error">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type Error interface {
+	<a href="/builtin#error">error</a>
+
+<span id="Error.RuntimeError" data-kind="method">	<span class="comment">// RuntimeError is a no-op function but</span>
+</span>	<span class="comment">// serves to distinguish types that are run time</span>
+	<span class="comment">// errors from ordinary errors: a type is a</span>
+	<span class="comment">// run time error if it has a RuntimeError method.</span>
+	RuntimeError()
+}</pre>
+    </div>
+  <p>The Error interface identifies a run time error.
+</p>
+
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="Frame" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=26">Frame</a> <a class="Documentation-idLink" href="#Frame">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.7</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type Frame struct {
+<span id="Frame.PC" data-kind="field">	<span class="comment">// PC is the program counter for the location in this frame.</span>
+</span>	<span class="comment">// For a frame that calls another frame, this will be the</span>
+	<span class="comment">// program counter of a call instruction. Because of inlining,</span>
+	<span class="comment">// multiple frames may have the same PC value, but different</span>
+	<span class="comment">// symbolic information.</span>
+	PC <a href="/builtin#uintptr">uintptr</a>
+
+<span id="Frame.Func" data-kind="field">	<span class="comment">// Func is the Func value of this call frame. This may be nil</span>
+</span>	<span class="comment">// for non-Go code or fully inlined functions.</span>
+	Func *<a href="#Func">Func</a>
+
+<span id="Frame.Function" data-kind="field">	<span class="comment">// Function is the package path-qualified function name of</span>
+</span>	<span class="comment">// this call frame. If non-empty, this string uniquely</span>
+	<span class="comment">// identifies a single function in the program.</span>
+	<span class="comment">// This may be the empty string if not known.</span>
+	<span class="comment">// If Func is not nil then Function == Func.Name().</span>
+	Function <a href="/builtin#string">string</a>
+
+	<span class="comment">// File and Line are the file name and line number of the</span>
+	<span class="comment">// location in this frame. For non-leaf frames, this will be</span>
+	<span class="comment">// the location of a call. These may be the empty string and</span>
+	<span class="comment">// zero, respectively, if not known.</span>
+<span id="Frame.File" data-kind="field">	File <a href="/builtin#string">string</a>
+</span><span id="Frame.Line" data-kind="field">	Line <a href="/builtin#int">int</a>
+</span>
+<span id="Frame.Entry" data-kind="field">	<span class="comment">// Entry point program counter for the function; may be zero</span>
+</span>	<span class="comment">// if not known. If Func is not nil then Entry ==</span>
+	<span class="comment">// Func.Entry().</span>
+	Entry <a href="/builtin#uintptr">uintptr</a>
+	<span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+    </div>
+  <p>Frame is the information returned by Frames for each call frame.
+</p>
+
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="Frames" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=16">Frames</a> <a class="Documentation-idLink" href="#Frames">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.7</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type Frames struct {
+	<span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+    </div>
+  <p>Frames may be used to get function/file/line information for a
+slice of PC values returned by Callers.
+</p>
+<details tabindex="-1" id="example-Frames" class="Documentation-exampleDetails js-exampleContainer">
+<summary class="Documentation-exampleDetailsHeader">Example <a href="#example-Frames">¶</a></summary>
+<div class="Documentation-exampleDetailsBody">
+
+<pre class="Documentation-exampleCode">
+package main
+
+import (
+	&#34;fmt&#34;
+	&#34;runtime&#34;
+	&#34;strings&#34;
+)
+
+func main() {
+	c := func() {
+		// Ask runtime.Callers for up to 10 PCs, including runtime.Callers itself.
+		pc := make([]uintptr, 10)
+		n := runtime.Callers(0, pc)
+		if n == 0 {
+			// No PCs available. This can happen if the first argument to
+			// runtime.Callers is large.
+			//
+			// Return now to avoid processing the zero Frame that would
+			// otherwise be returned by frames.Next below.
+			return
+		}
+
+		pc = pc[:n] // pass only valid pcs to runtime.CallersFrames
+		frames := runtime.CallersFrames(pc)
+
+		// Loop to get frames.
+		// A fixed number of PCs can expand to an indefinite number of Frames.
+		for {
+			frame, more := frames.Next()
+
+			// Process this frame.
+			//
+			// To keep this example&#39;s output stable
+			// even if there are changes in the testing package,
+			// stop unwinding when we leave package runtime.
+			if !strings.Contains(frame.File, &#34;runtime/&#34;) {
+				break
+			}
+			fmt.Printf(&#34;- more:%v | %s\n&#34;, more, frame.Function)
+
+			// Check whether there are more frames to process after this one.
+			if !more {
+				break
+			}
+		}
+	}
+
+	b := func() { c() }
+	a := func() { b() }
+
+	a()
+}
+</pre>
+
+<pre><span class="Documentation-exampleOutputLabel">Output:</span>
+
+<span class="Documentation-exampleOutput">- more:true | runtime.Callers
+- more:true | runtime_test.ExampleFrames.func1
+- more:true | runtime_test.ExampleFrames.func2
+- more:true | runtime_test.ExampleFrames.func3
+- more:true | runtime_test.ExampleFrames
+</span></pre>
+</div>
+<div class="Documentation-exampleButtonsContainer">
+        <p class="Documentation-exampleError" role="alert" aria-atomic="true"></p>
+        <button class="Documentation-exampleShareButton" aria-label="Share Code">Share</button>
+        <button class="Documentation-exampleFormatButton" aria-label="Format Code">Format</button>
+        <button class="Documentation-exampleRunButton" aria-label="Run Code">Run</button>
+      </div></details>
+
+<div class="Documentation-typeFunc">
+    
+  
+  
+    <h4 tabindex="-1" id="CallersFrames" data-kind="function" class="Documentation-typeFuncHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=66">CallersFrames</a> <a class="Documentation-idLink" href="#CallersFrames">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.7</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func CallersFrames(callers []<a href="/builtin#uintptr">uintptr</a>) *<a href="#Frames">Frames</a></pre>
+    </div>
+  <p>CallersFrames takes a slice of PC values returned by Callers and
+prepares to return function/file/line information.
+Do not change the slice until you are done with the Frames.
+</p>
+
+  
+
+  </div><div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="Frames.Next" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*Frames) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=81">Next</a> <a class="Documentation-idLink" href="#Frames.Next">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+      <span class="Documentation-sinceVersionLabel">added in</span>
+      <span class="Documentation-sinceVersionVersion">go1.7</span>
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (ci *<a href="#Frames">Frames</a>) Next() (frame <a href="#Frame">Frame</a>, more <a href="/builtin#bool">bool</a>)</pre>
+    </div>
+  <p>Next returns a Frame representing the next call frame in the slice
+of PC values. If it has already returned all call frames, Next
+returns a zero Frame.
+</p><p>The more result indicates whether the next call to Next will return
+a valid Frame. It does not necessarily indicate whether this call
+returned one.
+</p><p>See the Frames example for idiomatic usage.
+</p>
+
+  
+
+  </div>
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="Func" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=266">Func</a> <a class="Documentation-idLink" href="#Func">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type Func struct {
+	<span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+    </div>
+  <p>A Func represents a Go function in the running binary.
+</p>
+<div class="Documentation-typeFunc">
+    
+  
+  
+    <h4 tabindex="-1" id="FuncForPC" data-kind="function" class="Documentation-typeFuncHeader">
+      <span>func <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=715">FuncForPC</a> <a class="Documentation-idLink" href="#FuncForPC">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func FuncForPC(pc <a href="/builtin#uintptr">uintptr</a>) *<a href="#Func">Func</a></pre>
+    </div>
+  <p>FuncForPC returns a *Func describing the function that contains the
+given program counter address, or else nil.
+</p><p>If pc represents multiple functions because of inlining, it returns
+the *Func describing the innermost function, but with an entry of
+the outermost function.
+</p>
+
+  
+
+  </div><div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="Func.Entry" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*Func) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=756">Entry</a> <a class="Documentation-idLink" href="#Func.Entry">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (f *<a href="#Func">Func</a>) Entry() <a href="/builtin#uintptr">uintptr</a></pre>
+    </div>
+  <p>Entry returns the entry address of the function.
+</p>
+
+  
+
+  </div><div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="Func.FileLine" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*Func) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=769">FileLine</a> <a class="Documentation-idLink" href="#Func.FileLine">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (f *<a href="#Func">Func</a>) FileLine(pc <a href="/builtin#uintptr">uintptr</a>) (file <a href="/builtin#string">string</a>, line <a href="/builtin#int">int</a>)</pre>
+    </div>
+  <p>FileLine returns the file name and line number of the
+source code corresponding to the program counter pc.
+The result will not be accurate if pc is not a program
+counter within f.
+</p>
+
+  
+
+  </div><div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="Func.Name" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*Func) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go;l=743">Name</a> <a class="Documentation-idLink" href="#Func.Name">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (f *<a href="#Func">Func</a>) Name() <a href="/builtin#string">string</a></pre>
+    </div>
+  <p>Name returns the name of the function.
+</p>
+
+  
+
+  </div>
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="MemProfileRecord" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=523">MemProfileRecord</a> <a class="Documentation-idLink" href="#MemProfileRecord">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type MemProfileRecord struct {
+<span id="MemProfileRecord.AllocBytes" data-kind="field"><span id="MemProfileRecord.FreeBytes" data-kind="field">	AllocBytes, FreeBytes     <a href="/builtin#int64">int64</a>       <span class="comment">// number of bytes allocated, freed</span>
+</span><span id="MemProfileRecord.AllocObjects" data-kind="field"><span id="MemProfileRecord.FreeObjects" data-kind="field">	AllocObjects, FreeObjects <a href="/builtin#int64">int64</a>       <span class="comment">// number of objects allocated, freed</span>
+</span><span id="MemProfileRecord.Stack0" data-kind="field">	Stack0                    [32]<a href="/builtin#uintptr">uintptr</a> <span class="comment">// stack trace for this record; ends at first 0 entry</span>
+</span>}</pre>
+    </div>
+  <p>A MemProfileRecord describes the live objects allocated
+by a particular call sequence (stack trace).
+</p>
+<div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="MemProfileRecord.InUseBytes" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*MemProfileRecord) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=530">InUseBytes</a> <a class="Documentation-idLink" href="#MemProfileRecord.InUseBytes">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (r *<a href="#MemProfileRecord">MemProfileRecord</a>) InUseBytes() <a href="/builtin#int64">int64</a></pre>
+    </div>
+  <p>InUseBytes returns the number of bytes in use (AllocBytes - FreeBytes).
+</p>
+
+  
+
+  </div><div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="MemProfileRecord.InUseObjects" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*MemProfileRecord) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=533">InUseObjects</a> <a class="Documentation-idLink" href="#MemProfileRecord.InUseObjects">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (r *<a href="#MemProfileRecord">MemProfileRecord</a>) InUseObjects() <a href="/builtin#int64">int64</a></pre>
+    </div>
+  <p>InUseObjects returns the number of objects in use (AllocObjects - FreeObjects).
+</p>
+
+  
+
+  </div><div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="MemProfileRecord.Stack" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*MemProfileRecord) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=539">Stack</a> <a class="Documentation-idLink" href="#MemProfileRecord.Stack">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (r *<a href="#MemProfileRecord">MemProfileRecord</a>) Stack() []<a href="/builtin#uintptr">uintptr</a></pre>
+    </div>
+  <p>Stack returns the stack trace associated with the record,
+a prefix of r.Stack0.
+</p>
+
+  
+
+  </div>
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="MemStats" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mstats.go;l=107">MemStats</a> <a class="Documentation-idLink" href="#MemStats">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type MemStats struct {
+
+<span id="MemStats.Alloc" data-kind="field">	<span class="comment">// Alloc is bytes of allocated heap objects.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// This is the same as HeapAlloc (see below).</span>
+	Alloc <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.TotalAlloc" data-kind="field">	<span class="comment">// TotalAlloc is cumulative bytes allocated for heap objects.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// TotalAlloc increases as heap objects are allocated, but</span>
+	<span class="comment">// unlike Alloc and HeapAlloc, it does not decrease when</span>
+	<span class="comment">// objects are freed.</span>
+	TotalAlloc <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.Sys" data-kind="field">	<span class="comment">// Sys is the total bytes of memory obtained from the OS.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// Sys is the sum of the XSys fields below. Sys measures the</span>
+	<span class="comment">// virtual address space reserved by the Go runtime for the</span>
+	<span class="comment">// heap, stacks, and other internal data structures. It&#39;s</span>
+	<span class="comment">// likely that not all of the virtual address space is backed</span>
+	<span class="comment">// by physical memory at any given moment, though in general</span>
+	<span class="comment">// it all was at some point.</span>
+	Sys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.Lookups" data-kind="field">	<span class="comment">// Lookups is the number of pointer lookups performed by the</span>
+</span>	<span class="comment">// runtime.</span>
+	<span class="comment">//</span>
+	<span class="comment">// This is primarily useful for debugging runtime internals.</span>
+	Lookups <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.Mallocs" data-kind="field">	<span class="comment">// Mallocs is the cumulative count of heap objects allocated.</span>
+</span>	<span class="comment">// The number of live objects is Mallocs - Frees.</span>
+	Mallocs <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.Frees" data-kind="field">	<span class="comment">// Frees is the cumulative count of heap objects freed.</span>
+</span>	Frees <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.HeapAlloc" data-kind="field">	<span class="comment">// HeapAlloc is bytes of allocated heap objects.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// &#34;Allocated&#34; heap objects include all reachable objects, as</span>
+	<span class="comment">// well as unreachable objects that the garbage collector has</span>
+	<span class="comment">// not yet freed. Specifically, HeapAlloc increases as heap</span>
+	<span class="comment">// objects are allocated and decreases as the heap is swept</span>
+	<span class="comment">// and unreachable objects are freed. Sweeping occurs</span>
+	<span class="comment">// incrementally between GC cycles, so these two processes</span>
+	<span class="comment">// occur simultaneously, and as a result HeapAlloc tends to</span>
+	<span class="comment">// change smoothly (in contrast with the sawtooth that is</span>
+	<span class="comment">// typical of stop-the-world garbage collectors).</span>
+	HeapAlloc <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.HeapSys" data-kind="field">	<span class="comment">// HeapSys is bytes of heap memory obtained from the OS.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// HeapSys measures the amount of virtual address space</span>
+	<span class="comment">// reserved for the heap. This includes virtual address space</span>
+	<span class="comment">// that has been reserved but not yet used, which consumes no</span>
+	<span class="comment">// physical memory, but tends to be small, as well as virtual</span>
+	<span class="comment">// address space for which the physical memory has been</span>
+	<span class="comment">// returned to the OS after it became unused (see HeapReleased</span>
+	<span class="comment">// for a measure of the latter).</span>
+	<span class="comment">//</span>
+	<span class="comment">// HeapSys estimates the largest size the heap has had.</span>
+	HeapSys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.HeapIdle" data-kind="field">	<span class="comment">// HeapIdle is bytes in idle (unused) spans.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// Idle spans have no objects in them. These spans could be</span>
+	<span class="comment">// (and may already have been) returned to the OS, or they can</span>
+	<span class="comment">// be reused for heap allocations, or they can be reused as</span>
+	<span class="comment">// stack memory.</span>
+	<span class="comment">//</span>
+	<span class="comment">// HeapIdle minus HeapReleased estimates the amount of memory</span>
+	<span class="comment">// that could be returned to the OS, but is being retained by</span>
+	<span class="comment">// the runtime so it can grow the heap without requesting more</span>
+	<span class="comment">// memory from the OS. If this difference is significantly</span>
+	<span class="comment">// larger than the heap size, it indicates there was a recent</span>
+	<span class="comment">// transient spike in live heap size.</span>
+	HeapIdle <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.HeapInuse" data-kind="field">	<span class="comment">// HeapInuse is bytes in in-use spans.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// In-use spans have at least one object in them. These spans</span>
+	<span class="comment">// can only be used for other objects of roughly the same</span>
+	<span class="comment">// size.</span>
+	<span class="comment">//</span>
+	<span class="comment">// HeapInuse minus HeapAlloc estimates the amount of memory</span>
+	<span class="comment">// that has been dedicated to particular size classes, but is</span>
+	<span class="comment">// not currently being used. This is an upper bound on</span>
+	<span class="comment">// fragmentation, but in general this memory can be reused</span>
+	<span class="comment">// efficiently.</span>
+	HeapInuse <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.HeapReleased" data-kind="field">	<span class="comment">// HeapReleased is bytes of physical memory returned to the OS.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// This counts heap memory from idle spans that was returned</span>
+	<span class="comment">// to the OS and has not yet been reacquired for the heap.</span>
+	HeapReleased <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.HeapObjects" data-kind="field">	<span class="comment">// HeapObjects is the number of allocated heap objects.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// Like HeapAlloc, this increases as objects are allocated and</span>
+	<span class="comment">// decreases as the heap is swept and unreachable objects are</span>
+	<span class="comment">// freed.</span>
+	HeapObjects <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.StackInuse" data-kind="field">	<span class="comment">// StackInuse is bytes in stack spans.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// In-use stack spans have at least one stack in them. These</span>
+	<span class="comment">// spans can only be used for other stacks of the same size.</span>
+	<span class="comment">//</span>
+	<span class="comment">// There is no StackIdle because unused stack spans are</span>
+	<span class="comment">// returned to the heap (and hence counted toward HeapIdle).</span>
+	StackInuse <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.StackSys" data-kind="field">	<span class="comment">// StackSys is bytes of stack memory obtained from the OS.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// StackSys is StackInuse, plus any memory obtained directly</span>
+	<span class="comment">// from the OS for OS thread stacks (which should be minimal).</span>
+	StackSys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.MSpanInuse" data-kind="field">	<span class="comment">// MSpanInuse is bytes of allocated mspan structures.</span>
+</span>	MSpanInuse <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.MSpanSys" data-kind="field">	<span class="comment">// MSpanSys is bytes of memory obtained from the OS for mspan</span>
+</span>	<span class="comment">// structures.</span>
+	MSpanSys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.MCacheInuse" data-kind="field">	<span class="comment">// MCacheInuse is bytes of allocated mcache structures.</span>
+</span>	MCacheInuse <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.MCacheSys" data-kind="field">	<span class="comment">// MCacheSys is bytes of memory obtained from the OS for</span>
+</span>	<span class="comment">// mcache structures.</span>
+	MCacheSys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.BuckHashSys" data-kind="field">	<span class="comment">// BuckHashSys is bytes of memory in profiling bucket hash tables.</span>
+</span>	BuckHashSys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.GCSys" data-kind="field">	<span class="comment">// GCSys is bytes of memory in garbage collection metadata.</span>
+</span>	GCSys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.OtherSys" data-kind="field">	<span class="comment">// OtherSys is bytes of memory in miscellaneous off-heap</span>
+</span>	<span class="comment">// runtime allocations.</span>
+	OtherSys <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.NextGC" data-kind="field">	<span class="comment">// NextGC is the target heap size of the next GC cycle.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// The garbage collector&#39;s goal is to keep HeapAlloc ≤ NextGC.</span>
+	<span class="comment">// At the end of each GC cycle, the target for the next cycle</span>
+	<span class="comment">// is computed based on the amount of reachable data and the</span>
+	<span class="comment">// value of GOGC.</span>
+	NextGC <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.LastGC" data-kind="field">	<span class="comment">// LastGC is the time the last garbage collection finished, as</span>
+</span>	<span class="comment">// nanoseconds since 1970 (the UNIX epoch).</span>
+	LastGC <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.PauseTotalNs" data-kind="field">	<span class="comment">// PauseTotalNs is the cumulative nanoseconds in GC</span>
+</span>	<span class="comment">// stop-the-world pauses since the program started.</span>
+	<span class="comment">//</span>
+	<span class="comment">// During a stop-the-world pause, all goroutines are paused</span>
+	<span class="comment">// and only the garbage collector can run.</span>
+	PauseTotalNs <a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.PauseNs" data-kind="field">	<span class="comment">// PauseNs is a circular buffer of recent GC stop-the-world</span>
+</span>	<span class="comment">// pause times in nanoseconds.</span>
+	<span class="comment">//</span>
+	<span class="comment">// The most recent pause is at PauseNs[(NumGC+255)%256]. In</span>
+	<span class="comment">// general, PauseNs[N%256] records the time paused in the most</span>
+	<span class="comment">// recent N%256th GC cycle. There may be multiple pauses per</span>
+	<span class="comment">// GC cycle; this is the sum of all pauses during a cycle.</span>
+	PauseNs [256]<a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.PauseEnd" data-kind="field">	<span class="comment">// PauseEnd is a circular buffer of recent GC pause end times,</span>
+</span>	<span class="comment">// as nanoseconds since 1970 (the UNIX epoch).</span>
+	<span class="comment">//</span>
+	<span class="comment">// This buffer is filled the same way as PauseNs. There may be</span>
+	<span class="comment">// multiple pauses per GC cycle; this records the end of the</span>
+	<span class="comment">// last pause in a cycle.</span>
+	PauseEnd [256]<a href="/builtin#uint64">uint64</a>
+
+<span id="MemStats.NumGC" data-kind="field">	<span class="comment">// NumGC is the number of completed GC cycles.</span>
+</span>	NumGC <a href="/builtin#uint32">uint32</a>
+
+<span id="MemStats.NumForcedGC" data-kind="field">	<span class="comment">// NumForcedGC is the number of GC cycles that were forced by</span>
+</span>	<span class="comment">// the application calling the GC function.</span>
+	NumForcedGC <a href="/builtin#uint32">uint32</a>
+
+<span id="MemStats.GCCPUFraction" data-kind="field">	<span class="comment">// GCCPUFraction is the fraction of this program&#39;s available</span>
+</span>	<span class="comment">// CPU time used by the GC since the program started.</span>
+	<span class="comment">//</span>
+	<span class="comment">// GCCPUFraction is expressed as a number between 0 and 1,</span>
+	<span class="comment">// where 0 means GC has consumed none of this program&#39;s CPU. A</span>
+	<span class="comment">// program&#39;s available CPU time is defined as the integral of</span>
+	<span class="comment">// GOMAXPROCS since the program started. That is, if</span>
+	<span class="comment">// GOMAXPROCS is 2 and a program has been running for 10</span>
+	<span class="comment">// seconds, its &#34;available CPU&#34; is 20 seconds. GCCPUFraction</span>
+	<span class="comment">// does not include CPU time used for write barrier activity.</span>
+	<span class="comment">//</span>
+	<span class="comment">// This is the same as the fraction of CPU reported by</span>
+	<span class="comment">// GODEBUG=gctrace=1.</span>
+	GCCPUFraction <a href="/builtin#float64">float64</a>
+
+<span id="MemStats.EnableGC" data-kind="field">	<span class="comment">// EnableGC indicates that GC is enabled. It is always true,</span>
+</span>	<span class="comment">// even if GOGC=off.</span>
+	EnableGC <a href="/builtin#bool">bool</a>
+
+<span id="MemStats.DebugGC" data-kind="field">	<span class="comment">// DebugGC is currently unused.</span>
+</span>	DebugGC <a href="/builtin#bool">bool</a>
+
+<span id="MemStats.BySize" data-kind="field">	<span class="comment">// BySize reports per-size class allocation statistics.</span>
+</span>	<span class="comment">//</span>
+	<span class="comment">// BySize[N] gives statistics for allocations of size S where</span>
+	<span class="comment">// BySize[N-1].Size &lt; S ≤ BySize[N].Size.</span>
+	<span class="comment">//</span>
+	<span class="comment">// This does not report allocations larger than BySize[60].Size.</span>
+	BySize [61]struct {
+		<span class="comment">// Size is the maximum byte size of an object in this</span>
+		<span class="comment">// size class.</span>
+		Size <a href="/builtin#uint32">uint32</a>
+
+		<span class="comment">// Mallocs is the cumulative count of heap objects</span>
+		<span class="comment">// allocated in this size class. The cumulative bytes</span>
+		<span class="comment">// of allocation is Size*Mallocs. The number of live</span>
+		<span class="comment">// objects in this size class is Mallocs - Frees.</span>
+		Mallocs <a href="/builtin#uint64">uint64</a>
+
+		<span class="comment">// Frees is the cumulative count of heap objects freed</span>
+		<span class="comment">// in this size class.</span>
+		Frees <a href="/builtin#uint64">uint64</a>
+	}
+}</pre>
+    </div>
+  <p>A MemStats records statistics about the memory allocator.
+</p>
+
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="StackRecord" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=475">StackRecord</a> <a class="Documentation-idLink" href="#StackRecord">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type StackRecord struct {
+<span id="StackRecord.Stack0" data-kind="field">	Stack0 [32]<a href="/builtin#uintptr">uintptr</a> <span class="comment">// stack trace for this record; ends at first 0 entry</span>
+</span>}</pre>
+    </div>
+  <p>A StackRecord describes a single execution stack.
+</p>
+<div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="StackRecord.Stack" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*StackRecord) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go;l=481">Stack</a> <a class="Documentation-idLink" href="#StackRecord.Stack">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (r *<a href="#StackRecord">StackRecord</a>) Stack() []<a href="/builtin#uintptr">uintptr</a></pre>
+    </div>
+  <p>Stack returns the stack trace associated with the record,
+a prefix of r.Stack0.
+</p>
+
+  
+
+  </div>
+  
+
+    </div><div class="Documentation-type">
+      
+  
+  
+    <h4 tabindex="-1" id="TypeAssertionError" data-kind="type" class="Documentation-typeHeader">
+      <span>type <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/error.go;l=21">TypeAssertionError</a> <a class="Documentation-idLink" href="#TypeAssertionError">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>type TypeAssertionError struct {
+	<span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+    </div>
+  <p>A TypeAssertionError explains a failed type assertion.
+</p>
+<div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="TypeAssertionError.Error" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*TypeAssertionError) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/error.go;l=30">Error</a> <a class="Documentation-idLink" href="#TypeAssertionError.Error">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (e *<a href="#TypeAssertionError">TypeAssertionError</a>) Error() <a href="/builtin#string">string</a></pre>
+    </div>
+  
+
+  
+
+  </div><div class="Documentation-typeMethod">
+    
+  
+  
+    <h4 tabindex="-1" id="TypeAssertionError.RuntimeError" data-kind="method" class="Documentation-typeMethodHeader">
+      <span>func (*TypeAssertionError) <a class="Documentation-source" href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/error.go;l=28">RuntimeError</a> <a class="Documentation-idLink" href="#TypeAssertionError.RuntimeError">¶</a></span>
+  <span class="Documentation-sinceVersion">
+    
+  </span>
+</h4>
+
+    
+    <div class="Documentation-declaration">
+      <pre>func (*<a href="#TypeAssertionError">TypeAssertionError</a>) RuntimeError()</pre>
+    </div>
+  
+
+  
+
+  </div>
+  
+
+    </div></section></div> 
+
+
+
+
+      
+    </div>
+  </div>
+
+        
+      
+      
+        
+  <div class="UnitFiles js-unitFiles">
+    <h2 class="UnitFiles-title" id="section-sourcefiles">
+      <img class="go-Icon" height="24" width="24" src="/static/shared/icon/insert_drive_file_gm_grey_24dp.svg" alt="">
+      Source Files
+      <a class="UnitFiles-idLink" href="#section-sourcefiles">¶</a>
+    </h2>
+    <div class="UnitFiles-titleLink">
+      <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime" target="_blank" rel="noopener">View all</a>
+    </div>
+    <div>
+      <ul class="UnitFiles-fileList"><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/alg.go" target="_blank" rel="noopener" title="alg.go">alg.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/asan0.go" target="_blank" rel="noopener" title="asan0.go">asan0.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/atomic_pointer.go" target="_blank" rel="noopener" title="atomic_pointer.go">atomic_pointer.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cgo.go" target="_blank" rel="noopener" title="cgo.go">cgo.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cgo_mmap.go" target="_blank" rel="noopener" title="cgo_mmap.go">cgo_mmap.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cgo_sigaction.go" target="_blank" rel="noopener" title="cgo_sigaction.go">cgo_sigaction.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cgocall.go" target="_blank" rel="noopener" title="cgocall.go">cgocall.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cgocallback.go" target="_blank" rel="noopener" title="cgocallback.go">cgocallback.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cgocheck.go" target="_blank" rel="noopener" title="cgocheck.go">cgocheck.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/chan.go" target="_blank" rel="noopener" title="chan.go">chan.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/checkptr.go" target="_blank" rel="noopener" title="checkptr.go">checkptr.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/compiler.go" target="_blank" rel="noopener" title="compiler.go">compiler.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/complex.go" target="_blank" rel="noopener" title="complex.go">complex.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cpuflags.go" target="_blank" rel="noopener" title="cpuflags.go">cpuflags.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cpuflags_amd64.go" target="_blank" rel="noopener" title="cpuflags_amd64.go">cpuflags_amd64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cpuprof.go" target="_blank" rel="noopener" title="cpuprof.go">cpuprof.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/cputicks.go" target="_blank" rel="noopener" title="cputicks.go">cputicks.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debug.go" target="_blank" rel="noopener" title="debug.go">debug.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debugcall.go" target="_blank" rel="noopener" title="debugcall.go">debugcall.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debuglog.go" target="_blank" rel="noopener" title="debuglog.go">debuglog.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/debuglog_off.go" target="_blank" rel="noopener" title="debuglog_off.go">debuglog_off.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/defs_linux_amd64.go" target="_blank" rel="noopener" title="defs_linux_amd64.go">defs_linux_amd64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/env_posix.go" target="_blank" rel="noopener" title="env_posix.go">env_posix.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/error.go" target="_blank" rel="noopener" title="error.go">error.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/extern.go" target="_blank" rel="noopener" title="extern.go">extern.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/fastlog2.go" target="_blank" rel="noopener" title="fastlog2.go">fastlog2.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/fastlog2table.go" target="_blank" rel="noopener" title="fastlog2table.go">fastlog2table.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/float.go" target="_blank" rel="noopener" title="float.go">float.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/hash64.go" target="_blank" rel="noopener" title="hash64.go">hash64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/heapdump.go" target="_blank" rel="noopener" title="heapdump.go">heapdump.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/histogram.go" target="_blank" rel="noopener" title="histogram.go">histogram.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/iface.go" target="_blank" rel="noopener" title="iface.go">iface.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/lfstack.go" target="_blank" rel="noopener" title="lfstack.go">lfstack.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/lfstack_64bit.go" target="_blank" rel="noopener" title="lfstack_64bit.go">lfstack_64bit.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/lock_futex.go" target="_blank" rel="noopener" title="lock_futex.go">lock_futex.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/lockrank.go" target="_blank" rel="noopener" title="lockrank.go">lockrank.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/lockrank_off.go" target="_blank" rel="noopener" title="lockrank_off.go">lockrank_off.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/malloc.go" target="_blank" rel="noopener" title="malloc.go">malloc.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/map.go" target="_blank" rel="noopener" title="map.go">map.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/map_fast32.go" target="_blank" rel="noopener" title="map_fast32.go">map_fast32.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/map_fast64.go" target="_blank" rel="noopener" title="map_fast64.go">map_fast64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/map_faststr.go" target="_blank" rel="noopener" title="map_faststr.go">map_faststr.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mbarrier.go" target="_blank" rel="noopener" title="mbarrier.go">mbarrier.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mbitmap.go" target="_blank" rel="noopener" title="mbitmap.go">mbitmap.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mcache.go" target="_blank" rel="noopener" title="mcache.go">mcache.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mcentral.go" target="_blank" rel="noopener" title="mcentral.go">mcentral.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mcheckmark.go" target="_blank" rel="noopener" title="mcheckmark.go">mcheckmark.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mem_linux.go" target="_blank" rel="noopener" title="mem_linux.go">mem_linux.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/metrics.go" target="_blank" rel="noopener" title="metrics.go">metrics.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mfinal.go" target="_blank" rel="noopener" title="mfinal.go">mfinal.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mfixalloc.go" target="_blank" rel="noopener" title="mfixalloc.go">mfixalloc.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgc.go" target="_blank" rel="noopener" title="mgc.go">mgc.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgcmark.go" target="_blank" rel="noopener" title="mgcmark.go">mgcmark.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgcpacer.go" target="_blank" rel="noopener" title="mgcpacer.go">mgcpacer.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgcscavenge.go" target="_blank" rel="noopener" title="mgcscavenge.go">mgcscavenge.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgcstack.go" target="_blank" rel="noopener" title="mgcstack.go">mgcstack.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgcsweep.go" target="_blank" rel="noopener" title="mgcsweep.go">mgcsweep.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mgcwork.go" target="_blank" rel="noopener" title="mgcwork.go">mgcwork.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mheap.go" target="_blank" rel="noopener" title="mheap.go">mheap.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mpagealloc.go" target="_blank" rel="noopener" title="mpagealloc.go">mpagealloc.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mpagealloc_64bit.go" target="_blank" rel="noopener" title="mpagealloc_64bit.go">mpagealloc_64bit.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mpagecache.go" target="_blank" rel="noopener" title="mpagecache.go">mpagecache.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mpallocbits.go" target="_blank" rel="noopener" title="mpallocbits.go">mpallocbits.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mprof.go" target="_blank" rel="noopener" title="mprof.go">mprof.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mranges.go" target="_blank" rel="noopener" title="mranges.go">mranges.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/msan0.go" target="_blank" rel="noopener" title="msan0.go">msan0.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/msize.go" target="_blank" rel="noopener" title="msize.go">msize.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mspanset.go" target="_blank" rel="noopener" title="mspanset.go">mspanset.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mstats.go" target="_blank" rel="noopener" title="mstats.go">mstats.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/mwbbuf.go" target="_blank" rel="noopener" title="mwbbuf.go">mwbbuf.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/nbpipe_pipe2.go" target="_blank" rel="noopener" title="nbpipe_pipe2.go">nbpipe_pipe2.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/netpoll.go" target="_blank" rel="noopener" title="netpoll.go">netpoll.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/netpoll_epoll.go" target="_blank" rel="noopener" title="netpoll_epoll.go">netpoll_epoll.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/os_linux.go" target="_blank" rel="noopener" title="os_linux.go">os_linux.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/os_linux_generic.go" target="_blank" rel="noopener" title="os_linux_generic.go">os_linux_generic.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/os_linux_noauxv.go" target="_blank" rel="noopener" title="os_linux_noauxv.go">os_linux_noauxv.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/os_linux_x86.go" target="_blank" rel="noopener" title="os_linux_x86.go">os_linux_x86.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/os_nonopenbsd.go" target="_blank" rel="noopener" title="os_nonopenbsd.go">os_nonopenbsd.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/panic.go" target="_blank" rel="noopener" title="panic.go">panic.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/plugin.go" target="_blank" rel="noopener" title="plugin.go">plugin.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/preempt.go" target="_blank" rel="noopener" title="preempt.go">preempt.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/preempt_nonwindows.go" target="_blank" rel="noopener" title="preempt_nonwindows.go">preempt_nonwindows.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/print.go" target="_blank" rel="noopener" title="print.go">print.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/proc.go" target="_blank" rel="noopener" title="proc.go">proc.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/profbuf.go" target="_blank" rel="noopener" title="profbuf.go">profbuf.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/proflabel.go" target="_blank" rel="noopener" title="proflabel.go">proflabel.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/race0.go" target="_blank" rel="noopener" title="race0.go">race0.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/rdebug.go" target="_blank" rel="noopener" title="rdebug.go">rdebug.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/relax_stub.go" target="_blank" rel="noopener" title="relax_stub.go">relax_stub.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/runtime.go" target="_blank" rel="noopener" title="runtime.go">runtime.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/runtime1.go" target="_blank" rel="noopener" title="runtime1.go">runtime1.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/runtime2.go" target="_blank" rel="noopener" title="runtime2.go">runtime2.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/rwmutex.go" target="_blank" rel="noopener" title="rwmutex.go">rwmutex.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/select.go" target="_blank" rel="noopener" title="select.go">select.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/sema.go" target="_blank" rel="noopener" title="sema.go">sema.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/signal_amd64.go" target="_blank" rel="noopener" title="signal_amd64.go">signal_amd64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/signal_linux_amd64.go" target="_blank" rel="noopener" title="signal_linux_amd64.go">signal_linux_amd64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/signal_unix.go" target="_blank" rel="noopener" title="signal_unix.go">signal_unix.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/sigqueue.go" target="_blank" rel="noopener" title="sigqueue.go">sigqueue.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/sigqueue_note.go" target="_blank" rel="noopener" title="sigqueue_note.go">sigqueue_note.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/sigtab_linux_generic.go" target="_blank" rel="noopener" title="sigtab_linux_generic.go">sigtab_linux_generic.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/sizeclasses.go" target="_blank" rel="noopener" title="sizeclasses.go">sizeclasses.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/slice.go" target="_blank" rel="noopener" title="slice.go">slice.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/softfloat64.go" target="_blank" rel="noopener" title="softfloat64.go">softfloat64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/stack.go" target="_blank" rel="noopener" title="stack.go">stack.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/string.go" target="_blank" rel="noopener" title="string.go">string.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/stubs.go" target="_blank" rel="noopener" title="stubs.go">stubs.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/stubs2.go" target="_blank" rel="noopener" title="stubs2.go">stubs2.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/stubs3.go" target="_blank" rel="noopener" title="stubs3.go">stubs3.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/stubs_amd64.go" target="_blank" rel="noopener" title="stubs_amd64.go">stubs_amd64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/stubs_linux.go" target="_blank" rel="noopener" title="stubs_linux.go">stubs_linux.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/symtab.go" target="_blank" rel="noopener" title="symtab.go">symtab.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/sys_nonppc64x.go" target="_blank" rel="noopener" title="sys_nonppc64x.go">sys_nonppc64x.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/sys_x86.go" target="_blank" rel="noopener" title="sys_x86.go">sys_x86.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/time.go" target="_blank" rel="noopener" title="time.go">time.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/time_nofake.go" target="_blank" rel="noopener" title="time_nofake.go">time_nofake.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/timeasm.go" target="_blank" rel="noopener" title="timeasm.go">timeasm.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/tls_stub.go" target="_blank" rel="noopener" title="tls_stub.go">tls_stub.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/trace.go" target="_blank" rel="noopener" title="trace.go">trace.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/traceback.go" target="_blank" rel="noopener" title="traceback.go">traceback.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/type.go" target="_blank" rel="noopener" title="type.go">type.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/typekind.go" target="_blank" rel="noopener" title="typekind.go">typekind.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/utf8.go" target="_blank" rel="noopener" title="utf8.go">utf8.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/vdso_elf64.go" target="_blank" rel="noopener" title="vdso_elf64.go">vdso_elf64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/vdso_linux.go" target="_blank" rel="noopener" title="vdso_linux.go">vdso_linux.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/vdso_linux_amd64.go" target="_blank" rel="noopener" title="vdso_linux_amd64.go">vdso_linux_amd64.go</a>
+          </li><li>
+            <a href="https://cs.opensource.google/go/go/+/go1.18.3:src/runtime/write_err.go" target="_blank" rel="noopener" title="write_err.go">write_err.go</a>
+          </li></ul>
+    </div>
+  </div>
+
+      
+      
+        
+  <div class="UnitDirectories js-unitDirectories">
+    <h2 class="UnitDirectories-title" id="section-directories">
+      <img class="go-Icon" height="24" width="24" src="/static/shared/icon/folder_gm_grey_24dp.svg" alt="">
+      Directories
+      <a class="UnitDirectories-idLink" href="#section-directories">¶</a>
+    </h2>
+    <div class="UnitDirectories-expandButton">
+      <button class="js-expandAllDirectories" data-test-id="directories-toggle"
+          data-gtmc="directories button" aria-label="Expand All Directories">
+        Expand all
+      </button>
+    </div>
+    <table class="UnitDirectories-table UnitDirectories-table--tree js-expandableTable"
+          data-test-id="UnitDirectories-table">
+      <tr class="UnitDirectories-tableHeader UnitDirectories-tableHeader--tree">
+        <th>Path</th>
+        <th class="UnitDirectories-desktopSynopsis">Synopsis</th>
+      </tr>
+      
+          
+  
+  <tr>
+    <td data-id="cgo" data-aria-owns="">
+      <div class="UnitDirectories-pathCell">
+        <div><a href="/runtime/cgo@go1.18.3">cgo</a>
+            
+          </div>
+          <div class="UnitDirectories-mobileSynopsis">Package cgo contains runtime support for code generated by the cgo tool.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package cgo contains runtime support for code generated by the cgo tool.</td></tr></tr>
+
+      
+          
+  
+  <tr>
+    <td data-id="debug" data-aria-owns="">
+      <div class="UnitDirectories-pathCell">
+        <div><a href="/runtime/debug@go1.18.3">debug</a>
+            
+          </div>
+          <div class="UnitDirectories-mobileSynopsis">Package debug contains facilities for programs to debug themselves while they are running.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package debug contains facilities for programs to debug themselves while they are running.</td></tr></tr>
+
+      
+          
+  
+  <tr>
+    <td data-id="metrics" data-aria-owns="">
+      <div class="UnitDirectories-pathCell">
+        <div><a href="/runtime/metrics@go1.18.3">metrics</a>
+            
+          </div>
+          <div class="UnitDirectories-mobileSynopsis">Package metrics provides a stable interface to access implementation-defined metrics exported by the Go runtime.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package metrics provides a stable interface to access implementation-defined metrics exported by the Go runtime.</td></tr></tr>
+
+      
+          
+  
+  <tr>
+    <td data-id="pprof" data-aria-owns="">
+      <div class="UnitDirectories-pathCell">
+        <div><a href="/runtime/pprof@go1.18.3">pprof</a>
+            
+          </div>
+          <div class="UnitDirectories-mobileSynopsis">Package pprof writes runtime profiling data in the format expected by the pprof visualization tool.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package pprof writes runtime profiling data in the format expected by the pprof visualization tool.</td></tr></tr>
+
+      
+          
+  
+  <tr>
+    <td data-id="race" data-aria-owns="">
+      <div class="UnitDirectories-pathCell">
+        <div><a href="/runtime/race@go1.18.3">race</a>
+            
+          </div>
+          <div class="UnitDirectories-mobileSynopsis">Package race implements data race detection logic.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package race implements data race detection logic.</td></tr></tr>
+
+      
+          
+  
+  <tr>
+    <td data-id="trace" data-aria-owns="">
+      <div class="UnitDirectories-pathCell">
+        <div><a href="/runtime/trace@go1.18.3">trace</a>
+            
+          </div>
+          <div class="UnitDirectories-mobileSynopsis">Package trace contains facilities for programs to generate traces for the Go execution tracer.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package trace contains facilities for programs to generate traces for the Go execution tracer.</td></tr></tr>
+
+      
+      
+          
+  
+  <tr data-aria-controls="internal-atomic internal-math internal-sys internal-syscall ">
+    <td data-id="internal" data-aria-owns="internal-atomic internal-math internal-sys internal-syscall ">
+      <div class="UnitDirectories-pathCell">
+        <div><button type="button" class="go-Button go-Button--inline UnitDirectories-toggleButton"
+                aria-expanded="false"
+                aria-label="4 more from"
+                data-aria-controls="internal-atomic internal-math internal-sys internal-syscall "
+                data-aria-labelledby="internal-button internal"
+                data-id="internal-button">
+              <img class="go-Icon" height="24" width="24" src="/static/shared/icon/arrow_right_gm_grey_24dp.svg"
+                  alt="">
+            </button><span>internal</span>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis"></td></tr><tr data-id="internal-atomic">
+      <td>
+        <div class="UnitDirectories-subdirectory">
+          <span>
+            <a href="/runtime/internal/atomic@go1.18.3">atomic</a>
+            
+          </span>
+          <div class="UnitDirectories-mobileSynopsis">Package atomic provides atomic operations, independent of sync/atomic, to the runtime.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package atomic provides atomic operations, independent of sync/atomic, to the runtime.</td><tr data-id="internal-math">
+      <td>
+        <div class="UnitDirectories-subdirectory">
+          <span>
+            <a href="/runtime/internal/math@go1.18.3">math</a>
+            
+          </span>
+          <div class="UnitDirectories-mobileSynopsis"></div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis"></td><tr data-id="internal-sys">
+      <td>
+        <div class="UnitDirectories-subdirectory">
+          <span>
+            <a href="/runtime/internal/sys@go1.18.3">sys</a>
+            
+          </span>
+          <div class="UnitDirectories-mobileSynopsis">package sys contains system- and configuration- and architecture-specific constants used by the runtime.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">package sys contains system- and configuration- and architecture-specific constants used by the runtime.</td><tr data-id="internal-syscall">
+      <td>
+        <div class="UnitDirectories-subdirectory">
+          <span>
+            <a href="/runtime/internal/syscall@go1.18.3">syscall</a>
+            
+          </span>
+          <div class="UnitDirectories-mobileSynopsis">Package syscall provides the syscall primitives required for the runtime.</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">Package syscall provides the syscall primitives required for the runtime.</td></tr>
+
+      
+    </table>
+  </div>
+
+      
+    </div>
+  </div>
+</article>
+    <footer class="go-Main-footer"></footer>
+  </main>
+
+    
+  <footer class="go-Footer">
+    
+    <div class="go-Footer-links">
+      <div class="go-Footer-linkColumn">
+        <a href="https://go.dev/solutions" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Why Go
+        </a>
+        <a href="https://go.dev/solutions#use-cases" class="go-Footer-link"
+            data-gtmc="footer link">
+          Use Cases
+        </a>
+        <a href="https://go.dev/solutions#case-studies" class="go-Footer-link"
+            data-gtmc="footer link">
+          Case Studies
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://learn.go.dev/" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Get Started
+        </a>
+        <a href="https://play.golang.org" class="go-Footer-link" data-gtmc="footer link">
+          Playground
+        </a>
+        <a href="https://tour.golang.org" class="go-Footer-link" data-gtmc="footer link">
+          Tour
+        </a>
+        <a href="https://stackoverflow.com/questions/tagged/go?tab=Newest" class="go-Footer-link"
+            data-gtmc="footer link">
+          Stack Overflow
+        </a>
+        <a href="https://go.dev/help" class="go-Footer-link"
+            data-gtmc="footer link">
+          Help
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://pkg.go.dev" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Packages
+        </a>
+        <a href="/std" class="go-Footer-link" data-gtmc="footer link">
+          Standard Library
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://go.dev/project" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          About
+        </a>
+        <a href="https://go.dev/dl/" class="go-Footer-link" data-gtmc="footer link">Download</a>
+        <a href="https://go.dev/blog" class="go-Footer-link" data-gtmc="footer link">Blog</a>
+        <a href="https://github.com/golang/go/issues" class="go-Footer-link" data-gtmc="footer link">
+          Issue Tracker
+        </a>
+        <a href="https://go.dev/doc/devel/release.html" class="go-Footer-link"
+            data-gtmc="footer link">
+          Release Notes
+        </a>
+        <a href="https://blog.golang.org/go-brand" class="go-Footer-link" data-gtmc="footer link">
+          Brand Guidelines
+        </a>
+        <a href="https://go.dev/conduct" class="go-Footer-link" data-gtmc="footer link">
+          Code of Conduct
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://www.twitter.com/golang" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Connect
+        </a>
+        <a href="https://www.twitter.com/golang" class="go-Footer-link" data-gtmc="footer link">
+          Twitter
+        </a>
+        <a href="https://github.com/golang" class="go-Footer-link" data-gtmc="footer link">GitHub</a>
+        <a href="https://invite.slack.golangbridge.org/" class="go-Footer-link"
+            data-gtmc="footer link">
+          Slack
+        </a>
+        <a href="https://reddit.com/r/golang" class="go-Footer-link" data-gtmc="footer link">
+          r/golang
+        </a>
+        <a href="https://www.meetup.com/pro/go" class="go-Footer-link" data-gtmc="footer link">
+          Meetup
+        </a>
+        <a href="https://golangweekly.com/" class="go-Footer-link" data-gtmc="footer link">
+          Golang Weekly
+        </a>
+      </div>
+    </div>
+    <div class="go-Footer-bottom">
+      <img class="go-Footer-gopher"  width="1431" height="901"
+          src="/static/shared/gopher/pilot-bust-1431x901.svg" alt="Gopher in flight goggles">
+      <ul class="go-Footer-listRow">
+        <li class="go-Footer-listItem">
+          <a href="https://go.dev/copyright" data-gtmc="footer link">Copyright</a>
+        </li>
+        <li class="go-Footer-listItem">
+          <a href="https://go.dev/tos" data-gtmc="footer link">Terms of Service</a>
+        </li>
+        <li class="go-Footer-listItem">
+          <a href="http://www.google.com/intl/en/policies/privacy/" data-gtmc="footer link"
+              target="_blank" rel="noopener">
+            Privacy Policy
+          </a>
+        </li>
+        <li class="go-Footer-listItem">
+          <a href="https://go.dev/s/pkgsite-feedback" target="_blank" rel="noopener"
+              data-gtmc="footer link">
+            Report an Issue
+          </a>
+        </li>
+        <li class="go-Footer-listItem">
+          <button class="go-Button go-Button--text go-Footer-toggleTheme js-toggleTheme" aria-label="Toggle theme">
+            <img data-value="auto" class="go-Icon go-Icon--inverted" height="24" width="24" src="/static/shared/icon/brightness_6_gm_grey_24dp.svg" alt="System theme">
+            <img data-value="dark" class="go-Icon go-Icon--inverted" height="24" width="24" src="/static/shared/icon/brightness_2_gm_grey_24dp.svg" alt="Dark theme">
+            <img data-value="light" class="go-Icon go-Icon--inverted" height="24" width="24" src="/static/shared/icon/light_mode_gm_grey_24dp.svg" alt="Light theme">
+          </button>
+          <button class="go-Button go-Button--text go-Footer-keyboard js-openShortcuts" aria-label="Open shorcuts modal">
+            <img class="go-Icon go-Icon--inverted" height="24" width="24" src="/static/shared/icon/keyboard_grey_24dp.svg" alt="">
+          </button>
+        </li>
+      </ul>
+      <a class="go-Footer-googleLogo" href="https://google.com" target="_blank"rel="noopener"
+          data-gtmc="footer link">
+        <img class="go-Footer-googleLogoImg" height="24" width="72"
+            src="/static/shared/logo/google-white.svg" alt="Google logo">
+      </a>
+    </div>
+  </footer>
+
+    
+  <dialog id="jump-to-modal" class="JumpDialog go-Modal go-Modal--md js-modal">
+    <form method="dialog" data-gmtc="jump to form" aria-label="Jump to Identifier">
+      <div class="Dialog-title go-Modal-header">
+        <h2>Jump to</h2>
+        <button
+          class="go-Button go-Button--inline"
+          type="button"
+          data-modal-close
+          data-gtmc="modal button"
+          aria-label="Close"
+        >
+          <img
+            class="go-Icon"
+            height="24"
+            width="24"
+            src="/static/shared/icon/close_gm_grey_24dp.svg"
+            alt=""
+          />
+        </button>
+      </div>
+      <div class="JumpDialog-filter">
+        <input class="JumpDialog-input go-Input" autocomplete="off" type="text">
+      </div>
+      <div class="JumpDialog-body go-Modal-body">
+        <div class="JumpDialog-list"></div>
+      </div>
+      <div class="go-Modal-actions">
+        <button class="go-Button" data-test-id="close-dialog">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="ShortcutsDialog go-Modal go-Modal--sm js-modal">
+    <form method="dialog">
+      <div class="go-Modal-header">
+        <h2>Keyboard shortcuts</h2>
+        <button
+          class="go-Button go-Button--inline"
+          type="button"
+          data-modal-close
+          data-gtmc="modal button"
+          aria-label="Close"
+        >
+          <img
+            class="go-Icon"
+            height="24"
+            width="24"
+            src="/static/shared/icon/close_gm_grey_24dp.svg"
+            alt=""
+          />
+        </button>
+      </div>
+      <div class="go-Modal-body">
+        <table>
+          <tbody>
+            <tr><td class="ShortcutsDialog-key">
+              <strong>?</strong></td><td> : This menu</td>
+            </tr>
+            <tr><td class="ShortcutsDialog-key">
+              <strong>/</strong></td><td> : Search site</td>
+            </tr>
+            <tr><td class="ShortcutsDialog-key">
+              <strong>f</strong> or <strong>F</strong></td><td> : Jump to</td>
+            </tr>
+            <tr>
+              <td class="ShortcutsDialog-key"><strong>y</strong> or <strong>Y</strong></td>
+              <td> : Canonical URL</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="go-Modal-actions">
+        <button class="go-Button" data-test-id="close-dialog">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+    
+      <script>
+        // this will throw if the querySelector can’t find the element
+        const gtmId = document.querySelector('.js-gtmID').dataset.gtmid;
+        if (!gtmId) {
+          throw new Error('Google Tag Manager ID not found');
+        }
+        loadScript(`https://www.googletagmanager.com/gtm.js?id=${gtmId}`);
+      </script>
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8MVQXG"
+                height="0" width="0" style="display:none;visibility:hidden">
+        </iframe>
+      </noscript>
+    
+    
+  
+  <div class="js-canonicalURLPath" data-canonical-url-path="/runtime@go1.18.3" hidden></div>
+  <script>
+    loadScript('/static/frontend/unit/main/main.js')
+  </script>
+
+  <script>
+    loadScript('/static/frontend/unit/unit.js')
+  </script>
+
+  </body>
+</html>�,׳^8      b��~b���Do�4b��   ?    O^partitionKey=%28https%2Cgo.dev%29,:https://pkg.go.dev/runtime strongly-framed 1 security-info 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 request-method GET response-head HTTP/2 200 OK
+content-security-policy: object-src 'none'; base-uri 'none'; script-src 'unsafe-inline' 'strict-dynamic' https: http: 'sha256-DVdvl49HC0iGx/YKQq/kVNATnEdzGfExbJVTHqT95l8=' 'sha256-CoGrkqEM1Kjjf5b1bpcnDLl8ZZLAsVX+BoAzZ5+AOmc=' 'sha256-QqhlxKosyquihHG/Jahbski3BB1pDss2/CDgLzKKbmE=' 'sha256-karKh1IrXOF1g+uoSxK+k9BuciCwYY/ytGuQVUiRzcM=' 'sha256-mxm3e8M0u3nPPBmLIBgGuMvGUIL5LGv+HzV3bLAIBgw=' 'sha256-+iS8jRq15Ez/Kzz0/G+SNc0geLNvTyf2NZC7MyJgpRE=' 'sha256-bL+cN9GtUg5dqjPwDiPJq4yfiEvOyEJ3rfw/YkNIAWc=' 'sha256-UiVwSVJIK9udADqG5GZe+nRUXWK9wEot2vrxL4D2pQs=' 'sha256-cB+y/oSfWGFf7lHk8KX+ZX2CZQz/dPamIICuPvHcB6w=' 'sha256-7mi5SPcD1cogj2+ju8J/+/qJG99F6Qo+3pO4xQkRf6Q=' 'sha256-rEbn/zvLCsDDvDrVWQuUkKGEQsjQjFvIvJK4NVIMqZ4='
+x-content-type-options: nosniff
+x-frame-options: deny
+content-type: text/html; charset=utf-8
+date: Tue, 28 Jun 2022 23:15:11 GMT
+server: Google Frontend
+via: 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+X-Firefox-Spdy: h2
+ original-response-headers content-security-policy: object-src 'none'; base-uri 'none'; script-src 'unsafe-inline' 'strict-dynamic' https: http: 'sha256-DVdvl49HC0iGx/YKQq/kVNATnEdzGfExbJVTHqT95l8=' 'sha256-CoGrkqEM1Kjjf5b1bpcnDLl8ZZLAsVX+BoAzZ5+AOmc=' 'sha256-QqhlxKosyquihHG/Jahbski3BB1pDss2/CDgLzKKbmE=' 'sha256-karKh1IrXOF1g+uoSxK+k9BuciCwYY/ytGuQVUiRzcM=' 'sha256-mxm3e8M0u3nPPBmLIBgGuMvGUIL5LGv+HzV3bLAIBgw=' 'sha256-+iS8jRq15Ez/Kzz0/G+SNc0geLNvTyf2NZC7MyJgpRE=' 'sha256-bL+cN9GtUg5dqjPwDiPJq4yfiEvOyEJ3rfw/YkNIAWc=' 'sha256-UiVwSVJIK9udADqG5GZe+nRUXWK9wEot2vrxL4D2pQs=' 'sha256-cB+y/oSfWGFf7lHk8KX+ZX2CZQz/dPamIICuPvHcB6w=' 'sha256-7mi5SPcD1cogj2+ju8J/+/qJG99F6Qo+3pO4xQkRf6Q=' 'sha256-rEbn/zvLCsDDvDrVWQuUkKGEQsjQjFvIvJK4NVIMqZ4='
+x-content-type-options: nosniff
+x-frame-options: deny
+content-type: text/html; charset=utf-8
+date: Tue, 28 Jun 2022 23:15:11 GMT
+server: Google Frontend
+via: 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+X-Firefox-Spdy: h2
+ ctid 1 uncompressed-len 0 net-response-time-onstart 1787 net-response-time-onstop 1991  �k

@@ -1,0 +1,45 @@
+00:00:00.000771 main     VirtualBox XPCOM Server 6.1.34 r150636 linux.amd64 (May 30 2022 06:37:05) release log
+00:00:00.000774 main     Log opened 2022-06-13T09:40:36.922914000Z
+00:00:00.000776 main     Build Type: release
+00:00:00.000780 main     OS Product: Linux
+00:00:00.000782 main     OS Release: 5.18.3-arch1-1
+00:00:00.000784 main     OS Version: #1 SMP PREEMPT_DYNAMIC Thu, 09 Jun 2022 16:14:10 +0000
+00:00:00.000811 main     DMI Product Name: 82EY
+00:00:00.000819 main     DMI Product Version: IdeaPad Gaming 3 15ARH05
+00:00:00.000826 main     Firmware type: UEFI
+00:00:00.001218 main     Secure Boot: Disabled
+00:00:00.001252 main     Host RAM: 15363MB (15.0GB) total, 13717MB (13.3GB) available
+00:00:00.001258 main     Executable: /usr/lib/virtualbox/VBoxSVC
+00:00:00.001260 main     Process ID: 84834
+00:00:00.001262 main     Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.002790 main     IPC socket path: /tmp/.vbox-synerr-ipc/ipcd
+00:00:00.110490 nspr-2   VirtualBox: object creation starts
+00:00:00.110596 nspr-2   Home directory: '/home/synerr/.config/VirtualBox'
+00:00:00.132807 nspr-2   NetIfAdpCtlOut: VBoxNetAdpCtl: Error while retrieving link speed for wlp4s0: VBoxNetAdpCtl: ioctl failed: Operation not supported
+00:00:00.135114 nspr-2   HostDnsMonitor: initializing
+00:00:00.135436 nspr-2   NAT: resolv.conf: nameserver 192.168.1.1
+00:00:00.135463 nspr-2   HostDnsMonitor: updating information
+00:00:00.135490 nspr-2   HostDnsMonitor: old information
+00:00:00.135498 nspr-2     no server entries
+00:00:00.135506 nspr-2     no domain set
+00:00:00.135513 nspr-2     no search string entries
+00:00:00.135520 nspr-2   HostDnsMonitor: new information
+00:00:00.135527 nspr-2     server 1: 192.168.1.1
+00:00:00.135535 nspr-2     no domain set
+00:00:00.135542 nspr-2     no search string entries
+00:00:00.140079 nspr-2   VD: VDInit finished with VINF_SUCCESS
+00:00:00.140513 nspr-2   ERROR [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={027bc463-929c-40e8-bf16-fea557cd8e7e} aComponent={SystemPropertiesWrap} aText={Cannot determine default Guest Additions ISO location. Most likely they are not available}, preserve=false aResultDetail=0
+00:00:00.141485 nspr-2   VirtualBox: object created
+00:00:03.381946 nspr-3   Saving settings file "/home/synerr/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:03.387984 nspr-2   Saving settings file "/home/synerr/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:03.393045 nspr-3   Saving settings file "/home/synerr/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:03.401742 nspr-3   Saving settings file "/home/synerr/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:03.406458 nspr-3   Saving settings file "/home/synerr/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:03.410866 nspr-2   Saving settings file "/home/synerr/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:03.415120 nspr-2   Saving settings file "/home/synerr/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:08.928314 main     VirtualBox: object deletion starts
+00:00:08.928644 main     HostDnsMonitor: shutting down ...
+00:00:08.940817 main     HostDnsMonitor: shut down
+00:00:09.143555 Watcher  ERROR [COM]: aRC=E_ACCESSDENIED (0x80070005) aIID={d0a0163f-e254-4e5b-a1f2-011cf991c38d} aComponent={VirtualBoxWrap} aText={The object is not ready}, preserve=false aResultDetail=0
+00:00:13.941067 main     {00007ff7640160a0} HostPowerServiceLinux::~HostPowerServiceLinux: RTThreadWait() for 5000 ms failed with VERR_TIMEOUT
+00:00:13.941475 main     VirtualBox: object deleted

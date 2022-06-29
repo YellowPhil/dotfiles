@@ -1,0 +1,7 @@
+[2022-05-20 10:55:55.565] [info] Checking for update
+[2022-05-20 10:55:55.631] [info] Generated new staging user ID: 23331858-b3d6-5c48-b528-49bb5d4310b8
+[2022-05-20 10:55:56.925] [info] Update for version 0.2.1-beta.17 is not available (latest version: 0.2.1-beta.17, downgrade is disallowed).
+[2022-05-20 10:55:56.926] [debug] checkForUpdatesAndNotify called, downloadPromise is null
+[2022-05-20 12:27:56.419] [info] Checking for update
+[2022-05-20 12:27:58.737] [info] Update for version 0.2.1-beta.17 is not available (latest version: 0.2.1-beta.17, downgrade is disallowed).
+[2022-05-20 12:27:58.738] [debug] checkForUpdatesAndNotify called, downloadPromise is null

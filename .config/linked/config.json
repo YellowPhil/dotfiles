@@ -1,0 +1,9 @@
+{
+	"isSetupFinished": false,
+	"language": "en-US",
+	"theme": "light",
+	"searchMode": "forward",
+	"enableUpdates": true,
+	"updateInterval": 86400000,
+	"dataPath": "/home/synerr/linked"
+}

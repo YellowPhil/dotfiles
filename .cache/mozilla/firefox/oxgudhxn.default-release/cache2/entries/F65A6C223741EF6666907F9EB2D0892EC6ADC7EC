@@ -1,0 +1,226 @@
+/*
+	By Osvaldas Valutis, www.osvaldas.info
+	Available for use under the MIT License
+*/
+
+
+
+;(function( $, window, document, undefined )
+{
+	var isTouch		  = 'ontouchstart' in window,
+		eStart		  = isTouch ? 'touchstart'	: 'mousedown',
+		eMove		  = isTouch ? 'touchmove'	: 'mousemove',
+		eEnd		  = isTouch ? 'touchend'	: 'mouseup',
+		eCancel		  = isTouch ? 'touchcancel'	: 'mouseup',
+		secondsToTime = function( secs )
+		{
+			var hoursDiv = secs / 3600, hours = Math.floor( hoursDiv ), minutesDiv = secs % 3600 / 60, minutes = Math.floor( minutesDiv ), seconds = Math.ceil( secs % 3600 % 60 );
+			if( seconds > 59 ) { seconds = 0; minutes = Math.ceil( minutesDiv ); }
+			if( minutes > 59 ) { minutes = 0; hours = Math.ceil( hoursDiv ); }
+			return ( hours == 0 ? '' : hours > 0 && hours.toString().length < 2 ? '0'+hours+':' : hours+':' ) + ( minutes.toString().length < 2 ? '0'+minutes : minutes ) + ':' + ( seconds.toString().length < 2 ? '0'+seconds : seconds );
+		},
+		canPlayType	  = function( file )
+		{
+			var audioElement = document.createElement( 'audio' );
+			return !!( audioElement.canPlayType && audioElement.canPlayType( 'audio/' + file.split( '.' ).pop().toLowerCase() + ';' ).replace( /no/, '' ) );
+		};
+
+	$.fn.audioPlayer = function( params )
+	{
+		var params		= $.extend( { classPrefix: 'audioplayer', strPlay: 'Play', strPause: 'Pause', strVolume: 'Volume' }, params ),
+			cssClass	= {},
+			cssClassSub =
+			{
+				playPause:	 	'playpause',
+				playing:		'playing',
+				stopped:		'stopped',
+				time:		 	'time',
+				timeCurrent:	'time-current',
+				timeDuration: 	'time-duration',
+				bar: 			'bar',
+				barLoaded:		'bar-loaded',
+				barPlayed:		'bar-played',
+				volume:		 	'volume',
+				volumeButton: 	'volume-button',
+				volumeAdjust: 	'volume-adjust',
+				noVolume: 		'novolume',
+				muted: 			'muted',
+				mini: 			'mini'
+			};
+
+		for( var subName in cssClassSub )
+			cssClass[ subName ] = params.classPrefix + '-' + cssClassSub[ subName ];
+
+		this.each( function()
+		{
+			if( $( this ).prop( 'tagName' ).toLowerCase() != 'audio' )
+				return false;
+
+			var $this	   = $( this ),
+				audioFile  = $this.attr( 'src' ),
+				isAutoPlay = $this.get( 0 ).getAttribute( 'autoplay' ), isAutoPlay = isAutoPlay === '' || isAutoPlay === 'autoplay' ? true : false,
+				isLoop	   = $this.get( 0 ).getAttribute( 'loop' ),		isLoop	   = isLoop		=== '' || isLoop	 === 'loop'		? true : false,
+				isSupport  = false;
+
+			if( typeof audioFile === 'undefined' )
+			{
+				$this.find( 'source' ).each( function()
+				{
+					audioFile = $( this ).attr( 'src' );
+					if( typeof audioFile !== 'undefined' && canPlayType( audioFile ) )
+					{
+						isSupport = true;
+						return false;
+					}
+				});
+			}
+			else if( canPlayType( audioFile ) ) isSupport = true;
+
+			var thePlayer = $( '<div class="' + params.classPrefix + '">' + ( isSupport ? $( '<div>' ).append( $this.eq( 0 ).clone() ).html() : '<embed src="' + audioFile + '" width="0" height="0" volume="100" autostart="' + isAutoPlay.toString() +'" loop="' + isLoop.toString() + '" />' ) + '<div class="' + cssClass.playPause + '" title="' + params.strPlay + '"><a href="#">' + params.strPlay + '</a></div></div>' ),
+				theAudio  = isSupport ? thePlayer.find( 'audio' ) : thePlayer.find( 'embed' ), theAudio = theAudio.get( 0 );
+
+			if( isSupport )
+			{
+				thePlayer.find( 'audio' ).css( { 'width': 0, 'height': 0, 'visibility': 'hidden' } );
+				thePlayer.append( '<div class="' + cssClass.time + ' ' + cssClass.timeCurrent + '"></div><div class="' + cssClass.bar + '"><div class="' + cssClass.barLoaded + '"></div><div class="' + cssClass.barPlayed + '"></div></div><div class="' + cssClass.time + ' ' + cssClass.timeDuration + '"></div><div class="' + cssClass.volume + '"><div class="' + cssClass.volumeButton + '" title="' + params.strVolume + '"><a href="#">' + params.strVolume + '</a></div><div class="' + cssClass.volumeAdjust + '"><div><div></div></div></div></div>' );
+
+				var theBar			  = thePlayer.find( '.' + cssClass.bar ),
+					barPlayed	 	  = thePlayer.find( '.' + cssClass.barPlayed ),
+					barLoaded	 	  = thePlayer.find( '.' + cssClass.barLoaded ),
+					timeCurrent		  = thePlayer.find( '.' + cssClass.timeCurrent ),
+					timeDuration	  = thePlayer.find( '.' + cssClass.timeDuration ),
+					volumeButton	  = thePlayer.find( '.' + cssClass.volumeButton ),
+					volumeAdjuster	  = thePlayer.find( '.' + cssClass.volumeAdjust + ' > div' ),
+					volumeDefault	  = 0,
+					adjustCurrentTime = function( e )
+					{
+						theRealEvent		 = isTouch ? e.originalEvent.touches[ 0 ] : e;
+						theAudio.currentTime = Math.round( ( theAudio.duration * ( theRealEvent.pageX - theBar.offset().left ) ) / theBar.width() );
+					},
+					adjustVolume = function( e )
+					{
+						theRealEvent	= isTouch ? e.originalEvent.touches[ 0 ] : e;
+						theAudio.volume = Math.abs( ( theRealEvent.pageY - ( volumeAdjuster.offset().top + volumeAdjuster.height() ) ) / volumeAdjuster.height() );
+					},
+					updateLoadBar = function()
+					{
+						var interval = setInterval( function()
+						{
+							if( theAudio.buffered.length < 1 ) return true;
+							barLoaded.width( ( theAudio.buffered.end( 0 ) / theAudio.duration ) * 100 + '%' );
+							if( Math.floor( theAudio.buffered.end( 0 ) ) >= Math.floor( theAudio.duration ) ) clearInterval( interval );
+						}, 100 );
+					};
+
+				var volumeTestDefault = theAudio.volume, volumeTestValue = theAudio.volume = 0.111;
+				if( Math.round( theAudio.volume * 1000 ) / 1000 == volumeTestValue ) theAudio.volume = volumeTestDefault;
+				else thePlayer.addClass( cssClass.noVolume );
+
+				timeDuration.html( '&hellip;' );
+				timeCurrent.html( secondsToTime( 0 ) );
+
+				theAudio.addEventListener( 'loadeddata', function()
+				{
+					updateLoadBar();
+					timeDuration.html( $.isNumeric( theAudio.duration ) ? secondsToTime( theAudio.duration ) : '&hellip;' );
+					volumeAdjuster.find( 'div' ).height( theAudio.volume * 100 + '%' );
+					volumeDefault = theAudio.volume;
+				});
+
+				theAudio.addEventListener( 'timeupdate', function()
+				{
+					timeCurrent.html( secondsToTime( theAudio.currentTime ) );
+					barPlayed.width( ( theAudio.currentTime / theAudio.duration ) * 100 + '%' );
+				});
+
+				theAudio.addEventListener( 'volumechange', function()
+				{
+					volumeAdjuster.find( 'div' ).height( theAudio.volume * 100 + '%' );
+					if( theAudio.volume > 0 && thePlayer.hasClass( cssClass.muted ) ) thePlayer.removeClass( cssClass.muted );
+					if( theAudio.volume <= 0 && !thePlayer.hasClass( cssClass.muted ) ) thePlayer.addClass( cssClass.muted );
+				});
+
+				theAudio.addEventListener( 'ended', function()
+				{
+					thePlayer.removeClass( cssClass.playing ).addClass( cssClass.stopped );
+				});
+
+				theBar.on( eStart, function( e )
+				{
+					adjustCurrentTime( e );
+					theBar.on( eMove, function( e ) { adjustCurrentTime( e ); } );
+				})
+				.on( eCancel, function()
+				{
+					theBar.unbind( eMove );
+				});
+
+				volumeButton.on( 'click', function()
+				{
+					if( thePlayer.hasClass( cssClass.muted ) )
+					{
+						thePlayer.removeClass( cssClass.muted );
+						theAudio.volume = volumeDefault;
+					}
+					else
+					{
+						thePlayer.addClass( cssClass.muted );
+						volumeDefault = theAudio.volume;
+						theAudio.volume = 0;
+					}
+					return false;
+				});
+
+				volumeAdjuster.on( eStart, function( e )
+				{
+					adjustVolume( e );
+					volumeAdjuster.on( eMove, function( e ) { adjustVolume( e ); } );
+				})
+				.on( eCancel, function()
+				{
+					volumeAdjuster.unbind( eMove );
+				});
+			}
+			else thePlayer.addClass( cssClass.mini );
+
+			thePlayer.addClass( isAutoPlay ? cssClass.playing : cssClass.stopped );
+
+			thePlayer.find( '.' + cssClass.playPause ).on( 'click', function()
+			{
+				if( thePlayer.hasClass( cssClass.playing ) )
+				{
+					$( this ).attr( 'title', params.strPlay ).find( 'a' ).html( params.strPlay );
+					thePlayer.removeClass( cssClass.playing ).addClass( cssClass.stopped );
+					isSupport ? theAudio.pause() : theAudio.Stop();
+				}
+				else
+				{
+					$( this ).attr( 'title', params.strPause ).find( 'a' ).html( params.strPause );
+					thePlayer.addClass( cssClass.playing ).removeClass( cssClass.stopped );
+					isSupport ? theAudio.play() : theAudio.Play();
+				}
+				return false;
+			});
+
+			$this.replaceWith( thePlayer );
+		});
+		return this;
+	};
+})( jQuery, window, document );u1´ÆÑ      b»@‚b»@‚Dpb'bÄzë   ^    :https://www.skoltech.ru/app/data/plugins/skoltech_media/assets/scripts/audioplayer.js?ver=5.0 necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Date: Tue, 28 Jun 2022 17:54:51 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16
+Last-Modified: Thu, 07 Apr 2016 15:00:20 GMT
+ETag: "2096-52fe656468900"
+Accept-Ranges: bytes
+Content-Length: 8342
+Content-Type: application/javascript
+ original-response-headers Date: Tue, 28 Jun 2022 17:54:51 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16
+Last-Modified: Thu, 07 Apr 2016 15:00:20 GMT
+ETag: "2096-52fe656468900"
+Accept-Ranges: bytes
+Content-Length: 8342
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/javascript
+ ctid 2 uncompressed-len 0 net-response-time-onstart 65 net-response-time-onstop 66    –

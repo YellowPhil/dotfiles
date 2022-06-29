@@ -1,0 +1,239 @@
+<application>
+  <component name="KeyPromoterXStatistic">
+    <option name="statistics">
+      <Statistic Action="Commit...">
+        <Item>
+          <IdeaActionID>CheckinProject</IdeaActionID>
+          <ShortCut>'Ctrl+K'</ShortCut>
+          <Description>Commit...</Description>
+          <Count>1</Count>
+          <Hit>1</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Debug">
+        <Item>
+          <IdeaActionID>Debug</IdeaActionID>
+          <ShortCut>'Shift+F9'</ShortCut>
+          <Description>Debug</Description>
+          <Count>40</Count>
+          <Hit>13</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Find Action...">
+        <Item>
+          <IdeaActionID>GotoAction</IdeaActionID>
+          <ShortCut>'Ctrl+Shift+A'</ShortCut>
+          <Description>Find Action...</Description>
+          <Count>7</Count>
+          <Hit>9</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Hide All Windows">
+        <Item>
+          <IdeaActionID>HideAllWindows</IdeaActionID>
+          <ShortCut>'Ctrl+Shift+F12'</ShortCut>
+          <Description>Hide All Windows</Description>
+          <Count>8</Count>
+          <Hit>15</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="New Directory...">
+        <Item>
+          <IdeaActionID>FileChooser.NewFolder</IdeaActionID>
+          <ShortCut>'Alt+Insert' or 'Ctrl+N'</ShortCut>
+          <Description>New Directory...</Description>
+          <Count>1</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Problems">
+        <Item>
+          <IdeaActionID>ActivateProblemsViewToolWindow</IdeaActionID>
+          <ShortCut>'Alt+6'</ShortCut>
+          <Description>Problems</Description>
+          <Count>3</Count>
+          <Hit>9</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Project">
+        <Item>
+          <IdeaActionID>ActivateProjectToolWindow</IdeaActionID>
+          <ShortCut>'Alt+1'</ShortCut>
+          <Description>Project</Description>
+          <Count>55</Count>
+          <Hit>110</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Project Directory">
+        <Item>
+          <IdeaActionID>FileChooser.GotoProject</IdeaActionID>
+          <ShortCut>'Ctrl+2'</ShortCut>
+          <Description>Project Directory</Description>
+          <Count>2</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Push...">
+        <Item>
+          <IdeaActionID>Vcs.Push</IdeaActionID>
+          <ShortCut>'Ctrl+Shift+K'</ShortCut>
+          <Description>Push...</Description>
+          <Count>1</Count>
+          <Hit>5</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Rerun 'lab4a'">
+        <Item>
+          <IdeaActionID>Rerun</IdeaActionID>
+          <ShortCut>'Ctrl+F5'</ShortCut>
+          <Description>Rerun 'lab4a'</Description>
+          <Count>1</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Resume Program">
+        <Item>
+          <IdeaActionID>Resume</IdeaActionID>
+          <ShortCut>'F9'</ShortCut>
+          <Description>Resume Program</Description>
+          <Count>17</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Run">
+        <Item>
+          <IdeaActionID>Run</IdeaActionID>
+          <ShortCut>'Shift+F10'</ShortCut>
+          <Description>Run</Description>
+          <Count>140</Count>
+          <Hit>239</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Run Valgrind Memcheck">
+        <Item>
+          <IdeaActionID>ActivateRunToolWindow</IdeaActionID>
+          <ShortCut>'Alt+4'</ShortCut>
+          <Description>Run Valgrind Memcheck</Description>
+          <Count>1</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Run to Cursor">
+        <Item>
+          <IdeaActionID>RunToCursor</IdeaActionID>
+          <ShortCut>'Alt+Shift+9'</ShortCut>
+          <Description>Run to Cursor</Description>
+          <Count>1</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Scratch File">
+        <Item>
+          <IdeaActionID>NewScratchFile</IdeaActionID>
+          <ShortCut>'Ctrl+Alt+Shift+Insert'</ShortCut>
+          <Description>Scratch File</Description>
+          <Count>1</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Show Context Actions">
+        <Item>
+          <IdeaActionID>ShowIntentionActions</IdeaActionID>
+          <ShortCut>'Alt+Enter'</ShortCut>
+          <Description>Show Context Actions</Description>
+          <Count>3</Count>
+          <Hit>18</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Step Into">
+        <Item>
+          <IdeaActionID>StepInto</IdeaActionID>
+          <ShortCut>'F7'</ShortCut>
+          <Description>Step Into</Description>
+          <Count>3</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Step Over">
+        <Item>
+          <IdeaActionID>StepOver</IdeaActionID>
+          <ShortCut>'F8'</ShortCut>
+          <Description>Step Over</Description>
+          <Count>60</Count>
+          <Hit>158</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Stop 'lab4a'">
+        <Item>
+          <IdeaActionID>Stop</IdeaActionID>
+          <ShortCut>'Ctrl+F2'</ShortCut>
+          <Description>Stop 'lab4a'</Description>
+          <Count>26</Count>
+          <Hit>9</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Stop 'lab4b'">
+        <Item>
+          <IdeaActionID>Stop</IdeaActionID>
+          <ShortCut>'Ctrl+F2'</ShortCut>
+          <Description>Stop 'lab4b'</Description>
+          <Count>6</Count>
+          <Hit>12</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Stop 'lab5'">
+        <Item>
+          <IdeaActionID>Stop</IdeaActionID>
+          <ShortCut>'Ctrl+F2'</ShortCut>
+          <Description>Stop 'lab5'</Description>
+          <Count>1</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Stop 'scratch'">
+        <Item>
+          <IdeaActionID>Stop</IdeaActionID>
+          <ShortCut>'Ctrl+F2'</ShortCut>
+          <Description>Stop 'scratch'</Description>
+          <Count>4</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="Terminal">
+        <Item>
+          <IdeaActionID>ActivateTerminalToolWindow</IdeaActionID>
+          <ShortCut>'Alt+F12'</ShortCut>
+          <Description>Terminal</Description>
+          <Count>9</Count>
+          <Hit>8</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Toggle Line Breakpoint">
+        <Item>
+          <IdeaActionID>ToggleLineBreakpoint</IdeaActionID>
+          <ShortCut>'Ctrl+F8'</ShortCut>
+          <Description>Toggle Line Breakpoint</Description>
+          <Count>22</Count>
+          <Hit>46</Hit>
+        </Item>
+      </Statistic>
+      <Statistic Action="Version Control">
+        <Item>
+          <IdeaActionID>ActivateVersionControlToolWindow</IdeaActionID>
+          <ShortCut>'Alt+9'</ShortCut>
+          <Description>Version Control</Description>
+          <Count>3</Count>
+        </Item>
+      </Statistic>
+      <Statistic Action="View Breakpoints...">
+        <Item>
+          <IdeaActionID>ViewBreakpoints</IdeaActionID>
+          <ShortCut>'Ctrl+Shift+F8'</ShortCut>
+          <Description>View Breakpoints...</Description>
+          <Count>2</Count>
+        </Item>
+      </Statistic>
+    </option>
+    <option name="suppressed">
+      <Statistic Action="Restore Windows">
+        <Item>
+          <IdeaActionID>HideAllWindows</IdeaActionID>
+          <ShortCut>'Ctrl+Shift+F12'</ShortCut>
+          <Description>Restore Windows</Description>
+          <Count>2</Count>
+          <Hit>7</Hit>
+        </Item>
+      </Statistic>
+    </option>
+  </component>
+</application>

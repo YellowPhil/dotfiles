@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/synerr/Pictures/Wallpaper/wallpaper_leaf.jpg",
+    "alpha": "1",
+    "special": {
+        "background": "#090B14",
+        "foreground": "#bedfd5",
+        "cursor": "#bedfd5"
+    },
+    "colors": {
+        "color0": "#090B14",
+        "color1": "#224D4E",
+        "color2": "#19526A",
+        "color3": "#1D9468",
+        "color4": "#196392",
+        "color5": "#4E588F",
+        "color6": "#42ABA8",
+        "color7": "#bedfd5",
+        "color8": "#859c95",
+        "color9": "#224D4E",
+        "color10": "#19526A",
+        "color11": "#1D9468",
+        "color12": "#196392",
+        "color13": "#4E588F",
+        "color14": "#42ABA8",
+        "color15": "#bedfd5"
+    }
+}
