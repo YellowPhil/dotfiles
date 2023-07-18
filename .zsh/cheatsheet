@@ -1,0 +1,21 @@
+1) copyfile - copy content of the file to clipboard
+2)CTRL + o - copy command line content to clipboard
+3)d64 - decode base64; e64 - encode base64
+4)extract - extracts archive
+6)sudo - ESC ESC to repeate with "sudo" prefix
+
+
+apg - automated password generator
+pass - passoword manager
+
+bmon - traffic viewer
+
+ncdu - disk space analysation
+
+rmlint - remove duplicates
+
+catgirl - IRC client
+
+nnn - just watch
+
+zathura - viewer
