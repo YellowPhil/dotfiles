@@ -1,0 +1,26 @@
+(defwindow powermenu
+    :monitor 0
+    :stacking "fg"
+    :windowtype "normal"
+    :win-ignore true
+    :geometry (
+        geometry
+            :width "50%"
+            :height "50%"
+    )
+    (option-buttons))
+
+(defwidget option-container [?name path]
+    (box
+        :spacing 5
+        :vexpand true :hexpand true
+        :valign "center" :halign "center"
+        :focusable true
+    name))
+
+(defwidget option-buttons[]
+    (box 
+        :vexpand true
+        (option-container :name "shutdown"  :path "nigger")
+        (option-container :name "lock"  :path "nigger")
+        (option-container :name "reboot"    :path "nogger")))

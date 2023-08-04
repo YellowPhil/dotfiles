@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+symbol() {
+[ $(cat /sys/class/net/w*/operstate) = down ] && echo 󰖪  && exit
+echo 󰖩
+}
+
+name() {
+#nmcli | grep "^wlp" | sed 's/\ connected\ to\ /Connected to /g' | cut -d ':' -f2
+    serv=$(connmanctl services)
+    serv=${serv%   *}
+    serv=${hh}
+}
+
+[ "$1" = "icon" ] && symbol && exit
+[ "$1" = "name" ] && name && exit
