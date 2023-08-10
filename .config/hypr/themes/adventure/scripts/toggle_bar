@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+activeMons=$(hyprctl monitors | grep 'Monitor ' | wc -l )
+for ((num=0; num < $activeMons; num++));
+do
+    eww -c ~/.config/hypr/themes/adventure/eww/bar open --toggle $num
+done
