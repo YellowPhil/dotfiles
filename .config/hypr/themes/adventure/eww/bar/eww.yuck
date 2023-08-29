@@ -140,23 +140,23 @@
 
 	(button   	:class "button-bspres"  			
 				:tooltip "BSPWM Restart" 
-				:onclick "bspc wm -r" "" )
+				:onclick "systemctl restart" "" )
 
   	(button		:class "button-reb"					
 	  			:tooltip "Reboot"		 
-				:onclick "reboot"	"")
+				:onclick "systemctl reboot"	"")
 
 	(button		:class "button-quit" 				
 				:tooltip "Logout" 		 
-				:onclick "killall bspwm" "")
+				:onclick "systemctl logout" "")
 
 	(button		:class "button-lock" 				
 				:tooltip "Lock Screen"	 
-				:onclick "betterlockscreen -l"	"")))
+				:onclick "swaylock"	"")))
 
 	(button		:class "button-off"					
 				:tooltip "Shutdown"		 
-				:onclick "shutdown now"	""))))
+				:onclick "systemctl poweroff"	""))))
 (defvar power false)
 
 ;; Top Widgets ;;
@@ -204,10 +204,24 @@
 	:monitor 0
 	:reserve (struts :distance "35px" 
 					 :side "left")
+    :exclusive false
 	:wm-ignore false
 	:hexpand "false"
 	:vexpand "false"
 (bar))
+
+(defwindow bar-external
+	:geometry (geometry :x "0" 
+						:y "0" 
+						:height "100%" 
+						:width "47px")
+	:monitor 1
+	:wm-ignore false
+	:hexpand "false"
+	:vexpand "false"
+    :windowtype "dock"
+(bar))
+
 
 ;; Calendar Windows ;;
 (defwindow calendar
@@ -216,8 +230,3 @@
 						:width "270px" 
 						:height "60px")
 (cal))
-
-
-
-
-

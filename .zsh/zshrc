@@ -94,7 +94,6 @@ function disablemon()
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-. /home/synerr/.zsh/aliases.zsh
-. /home/synerr/.zsh/exports.zsh
-. /home/synerr/.zsh/docker_funcs.zsh
-
+. /$HOME/.zsh/aliases.zsh
+. /$HOME/.zsh/exports.zsh
+. /$HOME/.zsh/docker_funcs.zsh

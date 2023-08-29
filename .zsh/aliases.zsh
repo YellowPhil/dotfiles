@@ -42,7 +42,8 @@ alias ROPgadget="ROPgadget --binary"
 alias forkbomb="echo ':(){ :|:& };:' | wl-copy"
 
 #connect to remote server
-alias server="ssh -p 2228 root@188.120.248.116"
+alias old_server="ssh root@188.120.248.116"
+alias server="ssh root@62.109.24.105"
 
 # dump errors to /dev/null
 alias find="find 2>/dev/null "
@@ -76,3 +77,5 @@ alias run_neo4j='docker run --publish=7474:7474  --publish=7687:7687 --volume=/h
 #evil winrm in docker
 
 alias winrm='docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm'
+alias feh="sxiv"
+alias nigger="ssh root@79.137.195.227"
