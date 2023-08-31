@@ -8,11 +8,7 @@ window {
 button {
     background-repeat: no-repeat;
     background-position: center;
-<<<<<<< HEAD
-    background-size: 25%;
-=======
     background-size: 20%;
->>>>>>> 97ae560 (aaaaaaaaaaaa help)
     border: none;
     background-color: rgba(30, 30, 46, 0);
     margin: 5px;
