@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 SWWW_TRANSITION=random
+export video_papers="$2"
 export stills="$1"
 
 wallpaper () {
@@ -10,6 +11,9 @@ wallpaper () {
 #Function to select a random file from $stills directory
 randstill() {
     find "$stills" -maxdepth 1 -type f | shuf -n 1
+}
+randvideo() {
+    find "$video_papers" -maxdepth 2 -type f | shuf -n 1
 }
 
 #Switches wallpaper based on charging status

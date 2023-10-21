@@ -1,5 +1,5 @@
 #Just PATH env
-export PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin:$HOME/go/bin:$HOME/Scripts/python_scripts:$HOME/.npm-global/bin
+export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.npm-global/bin/:$PATH #:$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin:$HOME/go/bin::$HOME/.npm-global/bin
 
 export ZSH="$HOME/.oh-my-zsh"
 

@@ -97,3 +97,10 @@ source $ZSH/oh-my-zsh.sh
 . /$HOME/.zsh/aliases.zsh
 . /$HOME/.zsh/exports.zsh
 . /$HOME/.zsh/docker_funcs.zsh
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/home/synerr/yandex-cloud/path.bash.inc' ]; then source '/home/synerr/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/home/synerr/yandex-cloud/completion.zsh.inc' ]; then source '/home/synerr/yandex-cloud/completion.zsh.inc'; fi
+

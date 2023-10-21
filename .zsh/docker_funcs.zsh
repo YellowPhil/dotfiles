@@ -7,3 +7,7 @@ function docker-clear() {
 }
 
 alias dps="docker ps"
+
+function dexec() {
+    docker exec -it "$1" bash;
+}

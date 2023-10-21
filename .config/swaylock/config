@@ -1,9 +1,10 @@
 clock
+screenshot
 indicator-idle-visible
 indicator
 ignore-empty-password
 
-effect-blur=8x5
+effect-blur=12x10
 effect-vignette=0.5:0.5
 
 inside-color=292b2e
@@ -36,7 +37,5 @@ text-caps-lock=Maj
 text-ver=Checking
 text-wrong=Cheh
 
-
-image=/home/synerr/Pictures/Wallpaper/spirit3.jpg
 
 bs-hl-color=292b2e

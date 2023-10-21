@@ -78,4 +78,9 @@ alias run_neo4j='docker run --publish=7474:7474  --publish=7687:7687 --volume=/h
 
 alias winrm='docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm'
 alias feh="sxiv"
-alias nigger="ssh root@79.137.195.227"
+
+#VPN
+function vpn-on() { wg-quick up $HOME/Trash/wireguard/eat_people.conf }
+
+function vpn-off() { wg-quick down $HOME/Trash/wireguard/eat_people.conf }
+
