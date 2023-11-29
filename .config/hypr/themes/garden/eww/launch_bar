@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Files and cmd
-EWW="eww -c $HOME/.config/hypr/themes/fun9ral/eww/bar"
+EWW="eww -c  $HOME/.config/hypr/themes/garden/eww"
 focusmon=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .id')
 
 ## Run eww daemon if not running already

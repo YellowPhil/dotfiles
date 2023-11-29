@@ -79,3 +79,8 @@ alias run_neo4j='docker run --publish=7474:7474  --publish=7687:7687 --volume=/h
 alias winrm='docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm'
 alias feh="sxiv"
 alias nigger="ssh root@79.137.195.227"
+
+#diff
+alias diff='diff-so-fancy'
+
+alias kali_work='ssh davydov-m@10.20.1.10 -i ~/.ssh/kali_keys'

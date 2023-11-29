@@ -1,4 +1,5 @@
 clock
+screenshots
 indicator-idle-visible
 indicator
 ignore-empty-password
@@ -35,8 +36,5 @@ text-clear=Cleared
 text-caps-lock=Maj
 text-ver=Checking
 text-wrong=Cheh
-
-
-image=/home/synerr/Pictures/Wallpaper/spirit3.jpg
 
 bs-hl-color=292b2e

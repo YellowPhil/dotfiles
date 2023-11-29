@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 hyprctl dispatch focusmonitor 0
-eww -c ~/.config/hypr/themes/adventure/eww/bar open bar --toggle --screen 0
+eww -c ~/.config/hypr/themes/adventure/eww/bar open bar --toggle
 
-NB_MONITORS=$(hyprctl monitors -j | jq length)
-if [ "$NB_MONITORS" -eq "2" ]; then
-    hyprctl dispatch focusmonitor 1
-    eww -c ~/.config/hypr/themes/adventure/eww/bar open bar-external --toggle --screen 1
-fi
->>>>>>> 97ae560 (aaaaaaaaaaaa help)
+ NB_MONITORS=$(hyprctl monitors -j | jq length)
+ if [ "$NB_MONITORS" -eq "2" ]; then
+     hyprctl dispatch focusmonitor 1
+     eww -c ~/.config/hypr/themes/adventure/eww/bar open bar-external --toggle
+ fi
