@@ -1,0 +1,38 @@
+$icons: "/home/synerr/.config/hypr/themes/night/eww/icons/";
+
+$background-accent-p: #e53265;
+$background-accent: #1793D1;
+$text-accent: #2fd6b5;
+$background-base: #16141c;
+$background-muted: #1a1926;
+$background-inverse: #252635;
+$text-base: #ffffff;
+$text-muted: #ededee;
+$text-inverse: #979bb0;
+
+$rounded-full: 9999px;
+$rounded-large: 24px;
+$rounded-medium: 8px;
+
+@import "./scss/powermenu.scss";
+@import "./scss/screenshot.scss";
+@import "./scss/system-menu.scss";
+@import "./scss/menu.scss";
+@import "./scss/bar.scss";
+@import "./scss/calendar.scss";
+@import "./scss/control-panel.scss";
+@import "./scss/music.scss";
+@import "./scss/app-launcher.scss";
+@import "./scss/about.scss";
+@import "./scss/dashboard.scss";
+
+
+* {
+    all: unset;
+    font-family: 'Fira Code';
+    font-size: 14;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    min-width: 0;
+}

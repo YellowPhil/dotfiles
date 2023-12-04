@@ -1,0 +1,26 @@
+(defwindow wallpaper0
+  :monitor 0
+  :stacking "bg"
+  :focusable false
+  :geometry (geometry
+    :width  "100%"
+    :height "100%"
+  )
+  (wp)
+)
+
+(defwidget wp []
+  (box
+    :class "wallpaper"
+  )
+)
+
+(defwindow wallpaper1
+  :monitor 1
+  :stacking "bg"
+  :geometry (geometry
+    :width "100%"
+    :height "100%"
+  )
+  (wp)
+)

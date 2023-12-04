@@ -1,0 +1,27 @@
+.control-panel {
+    border-radius: 16px;
+
+    &:hover {
+        background: $background-inverse;
+    }
+
+    .network {
+        color: #BB9AF7;
+    }
+
+    .volume {
+        color: #73DACA;
+    }
+
+    .microphone {
+        color: #F7768E;
+    }
+
+    .battery {
+        color: #7AA2F7;
+    }
+}
+
+.volume {
+    font-size: 1.2em;
+}

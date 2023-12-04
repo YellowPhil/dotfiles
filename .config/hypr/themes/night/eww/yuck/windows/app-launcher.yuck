@@ -1,0 +1,72 @@
+(defwidget application [app]
+  (button
+    :onclick "gtk-launch ${app.desktop} && actions --launcher"
+    (box
+      :space-evenly false
+      :spacing 10
+      (box
+        :class "icon"
+        :style "background-image: url('${app.icon}');"
+        :halign "center"
+        :valign "center"
+      )
+      (box :orientation "v" :halign "start" :space-evenly false :spacing 5
+        (label :text {app.name} :class "name" :halign "start")
+        (label
+          :visible {app.comment != "null"}
+          :class "comment"
+          :text {app.comment}
+          :halign "start"
+          :wrap true
+          :xalign 0
+        )
+      )
+    )
+  )
+)
+
+(defwindow launcher
+  :monitor 0
+  :focusable true
+  :stacking "fg"
+  :geometry (geometry :height "60%" :width "30%" :anchor "center")
+  (launcher)
+)
+
+(defwidget launcher []
+  (box
+    :class "launcher"
+    :orientation "v"
+    :space-evenly false
+    :spacing 10
+    (box
+      :class "search"
+      :space-evenly false
+      :hexpand true
+      :spacing 15
+      (label :text "" :class "icon")
+      (input
+        :class "input"
+        :hexpand true
+        :onchange "scripts/apps.py --query {}"
+        :onaccept "gtk-launch ${apps[0].desktop} && actions --launcher"
+      )
+    )
+    (scroll
+      :vscroll true
+      :vexpand true
+      :class "scroll"
+      (box
+        :orientation "v"
+        :space-evenly false
+        (for app in {apps.apps}
+          (eventbox
+            :class "app"
+            :cursor "pointer"
+            (application :app app)
+          )
+        )
+      )
+    )
+  )
+)

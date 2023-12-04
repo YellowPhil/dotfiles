@@ -1,0 +1,8 @@
+(defwindow todo
+  :monitor 0
+  :stacking "bg"
+  :geometry (geometry
+    :anchor "top right"
+  )
+  (_todo)
+)

@@ -1,0 +1,233 @@
+(defwidget sysslider_volume []
+  (box
+    :space-evenly false
+    :spacing 15
+    :class "sysslider volume"
+    (eventbox
+      :cursor "pointer"
+      :onclick "pamixer -t"
+      (box
+        :class "sicon"
+        (_volume)
+      )
+    )
+    (eventbox
+      :cursor "pointer"
+      :hexpand true
+      (scale
+        :min 0
+        :value volume
+        :max 101
+        :onchange "pamixer --set-volume {}"
+      )
+    )
+    (label
+      :class "val"
+      :xalign 1
+      :text "${volume}%"
+    )
+  )
+)
+(defwidget sysslider_brightness []
+  (box
+    :space-evenly false
+    :spacing 15
+    :class "sysslider brightness"
+    (box
+      :class "sicon"
+      (label
+        :text {
+        brightness < 124 ? "󱩎" :
+        brightness < 250 ? "󱩒" : "󰛨"
+      })
+    )
+    (eventbox
+      :cursor "pointer"
+      :hexpand true
+      (scale
+        :min 1
+        :value brightness
+        :max 256
+        :onchange "brightnessctl s {}"
+      )
+    )
+    (label
+      :class "pval val"
+      :xalign 1
+    :text "${brightnessP}")
+  )
+)
+
+
+(defwidget sysprogress [data css tip icon]
+  (box
+    :class "sys ${css}"
+    (circular-progress
+      :class "prog ${css}"
+      :value data
+      :start-at 75
+      :thickness 7
+      :clockwise false
+      :tooltip tip
+      (overlay
+        (label
+          :xalign 0.5
+          :class "icon"
+          :text icon
+        )
+      )
+    )
+  )
+)
+
+(defwidget arrowbutton [action1 action2 icon css]
+  (centerbox
+    :class "arrowbutton ${css}"
+    (eventbox
+      :halign "center"
+      :class "eventbox"
+      :cursor "pointer"
+      :onclick action1
+      (label
+        :class "label ${css}"
+        :text icon
+      )
+    )
+    (overlay
+      (label :text "|")
+    )
+    (eventbox
+      :halign "center"
+      :class "eventbox"
+      :cursor "pointer"
+      :onclick action2
+      (label
+        :class "label"
+        :text ""
+      )
+    )
+  )
+)
+
+
+(defwidget _system-menu []
+  (eventbox
+    :onhoverlost "scripts/toggle.sh system-menu"
+    :class "event-sys"
+    (box
+      :class "system"
+      :space-evenly false
+      :orientation "v"
+      :spacing 15
+      (box
+        :space-evenly false
+        :spacing 10
+        :orientation "v"
+        :class "muted"
+        (sysslider_volume)
+        (sysslider_brightness)
+      )
+      (box
+        :space-evenly true
+        :spacing 30
+        :class "muted"
+        ; Wi-Fi
+        (arrowbutton
+          :action1 {
+          WiFistatus == "enabled" ?
+          "nmcli r wifi off" :
+          "nmcli r wifi on"}
+          :action2 "nm-connection-editor &"
+          :icon  {
+          WiFistatus == "disabled" ||  strength == "" ? "󰤭" :
+          strength < 26 ? "󰤟" :
+          strength < 51 ? "󰤢" :
+          strength < 76 ? "󰤥" :
+          "󰤨"}
+          :css {
+          WiFistatus == "disabled" ?
+          "wifi" : "wifi active"
+          }
+        )
+        ; Bluetooth
+        (arrowbutton
+          :action1 {
+          bluetoothstatus == "yes" ?
+          "bluetoothctl power off" :
+          "bluetoothctl power on"}
+          :action2 "blueberry"
+          :icon {bluetoothstatus == "yes" ? "󰂯" : "󰂲" }
+          :css {
+          bluetoothstatus == "no" ?
+          "blue" : "blue active"
+          }
+        )
+        ; Microphone
+        (arrowbutton
+          :action1 "pamixer --default-source -t"
+          :action2 "pavucontrol &"
+          :icon {mic == true ? "󰍭" : "󰍬"}
+          :css {
+          mic == true ?
+          "mic" : "mic active"
+          }
+        )
+      )
+      (box
+        :orientation "h"
+        :class "syslevels muted"
+        
+        (sysprogress
+          :css "cpu"
+          :tip "CPU ${round(EWW_CPU.avg,0)}%"
+          :data {EWW_CPU.avg}
+          :icon ""
+        )
+        (sysprogress
+          :css "ram"
+          :tip "RAM ${round(EWW_RAM.used_mem / EWW_RAM.total_mem * 100, 0)}%"
+          :data {EWW_RAM.used_mem / EWW_RAM.total_mem * 100}
+          :icon ""
+        )
+        (sysprogress
+          :css "temp"
+          :tip "Temperature ${EWW_TEMPS["ACPITZ_TEMP1"]}°C"
+          :data {EWW_TEMPS["ACPITZ_TEMP1"]}
+          :icon "󰈸"
+        )
+        (sysprogress
+          :css "battery ${BATstatus}"
+          :tip "Battery ${BATcapacity}%"
+          :data BATcapacity
+          :icon {EWW_BATTERY.BAT1.status == "Charging" ? "󰂄" : "󰁹"}
+        )
+      )
+      (box
+        :orientation "v"
+        :space-evenly false
+        :spacing 20
+        (for sink in sinkCount
+          (eventbox
+            :cursor "pointer"
+            :width 10
+            :class "sink"
+            :style {
+            activeSink == switchSinks[sink - 1] ?
+            "background-color: #e53265;" : ""
+            }
+            :onclick {
+            switchSinks[sink - 1] != 0 ? `pactl set-default-sink ${switchSinks[sink - 1]}` : ""
+            }
+            (label
+              :text {
+              sinks[sink - 1] != 0 ? sinks[sink - 1] : ""
+              }
+              :xalign 0
+              :wrap true
+            )
+          )
+        )
+      )
+    )
+  )
+)

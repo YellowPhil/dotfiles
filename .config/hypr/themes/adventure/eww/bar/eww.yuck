@@ -1,9 +1,5 @@
-;; Created   by https://github.com/rxyhn
-;; Designed  by https://github.com/rxyhn
-;; Maintaned by https://github.com/rxyhn
-
 ;; put path to aesthetic bar config files here ;;
-(defvar eww "$HOME/.local/bin/eww -c $HOME/.config/eww/bar")
+(defvar eww "$HOME/.local/bin/eww -c $HOME/.config/hypr/themes/adventure/eww/bar")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;							Widget Section's							 ;;	
@@ -14,7 +10,7 @@
 		 :space-evenly "false" 
 		 :spacing -15
   	(button :class "launcher_icon" 
-		   	:onclick "scripts/popup launcher"  "󰣇")))
+		   	:onclick "scripts/launcher"  "")))
 
 ;; Workspaces Widgets ;;
 (defwidget workspaces []
@@ -138,25 +134,21 @@
 	(box		:orientation "v"					
 				:space-evenly "false"
 
-	(button   	:class "button-bspres"  			
-				:tooltip "BSPWM Restart" 
-				:onclick "systemctl restart" "" )
-
   	(button		:class "button-reb"					
 	  			:tooltip "Reboot"		 
-				:onclick "systemctl reboot"	"")
+				:onclick "systemctl reboot"	"")
 
 	(button		:class "button-quit" 				
 				:tooltip "Logout" 		 
-				:onclick "systemctl logout" "")
+				:onclick "systemctl logout" "")
 
 	(button		:class "button-lock" 				
 				:tooltip "Lock Screen"	 
-				:onclick "swaylock"	"")))
+				:onclick "scripts/login"	"")))
 
 	(button		:class "button-off"					
 				:tooltip "Shutdown"		 
-				:onclick "systemctl poweroff"	""))))
+				:onclick "systemctl poweroff"	""))))
 (defvar power false)
 
 ;; Top Widgets ;;

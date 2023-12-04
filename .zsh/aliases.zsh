@@ -9,10 +9,6 @@ alias open_ports="sudo lsof -i -n -P"
 alias gdb='gdb -q'
 
 # pretty ls
-alias la='exa -lah'
-alias l='exa -l'
-alias ls='exa'
-
 # obvious ones
 alias vim="nvim"
 alias vi="nvim"
@@ -62,14 +58,11 @@ alias ......="cd ../../../../.."
 alias cls="clear"
 
 # to remember
-alias neofetch="macchina"
-
-alias scam="ssh root@82.146.55.138"
 
 alias npp="notepad++"
 
 #dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.config/.cfg/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 #run neo4j
 alias run_neo4j='docker run --publish=7474:7474  --publish=7687:7687 --volume=/home/synerr/Documents/db/neo4j/data:/data neo4j'
@@ -83,4 +76,17 @@ alias feh="sxiv"
 function vpn-on() { wg-quick up $HOME/Trash/wireguard/eat_people.conf }
 
 function vpn-off() { wg-quick down $HOME/Trash/wireguard/eat_people.conf }
+
+# pyenv
+alias pyenv='source ~/pyvenv/bin/activate'
+
+# MODERN ALTERNATIVES
+alias la='exa -lah'
+alias l='exa -l'
+alias ls='exa'
+alias du='dust'
+#alias curl='curlie'
+#alias dig='dog'
+alias ccat='bat'
+alias neofetch="macchina"
 

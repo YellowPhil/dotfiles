@@ -1,0 +1,160 @@
+(defwidget _menu []
+  (eventbox
+    :cursor "pointer"
+    :onclick "scripts/toggle.sh menu"
+    :class "menu"
+    (label
+      :text ""
+    )
+  )
+)
+
+(defwidget _workspaces []
+  (eventbox
+    :cursor "pointer"
+    :class "workspaces"
+    :onscroll "echo {} | sed -e \"s/up/-1/g\" -e \"s/down/+1/g\" | xargs hyprctl dispatch workspace"
+    (box
+      :orientation "h"
+      :spacing 15
+      (for ws in my-workspaces
+        (button :onclick "hyprctl dispatch workspace ${ws}"
+          (label
+            :class {
+            workspaces[ws - 1] == 1 ? "active" :
+            workspaces[ws - 1] == 2 ? "used" :
+            ""
+            }
+            :text {
+            workspaces[ws - 1] == 1 ? "" :
+            workspaces[ws - 1] == 2 ? "" :
+            ""
+            }
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget _music []
+  (eventbox
+    :cursor "pointer"
+    :class "f"
+    (eventbox
+      :cursor "pointer"
+      :onclick "scripts/toggle.sh music"
+      (box
+        :space-evenly false
+        :spacing 15
+        (label :text "󰎈")
+        (label :text artist)
+        (box
+          :spacing 8
+          :style "font-size: 1.3em;"
+          (button
+            :onclick "playerctl previous"
+            :class "music-btn"
+            (label :text "󰙤")
+          )
+          (button
+            :onclick "playerctl play-pause"
+            :class "music-btn"
+            (label :text {
+              playerStatus == "Playing" ? "󰏦" : "󰐍"
+            })
+          )
+          (button
+            :onclick "playerctl next"
+            :class "music-btn"
+            (label :text "󰙢")
+          )
+        )
+      )
+    )
+  )
+)
+
+
+(defvar active "nic")
+(defwidget _datetime []
+  (eventbox
+    :class "datetime ${active}"
+    :onclick {active == "nic" ?
+    "eww update active=active; scripts/toggle.sh calendar" :
+    "eww update active=nic; scripts/toggle.sh calendar"}
+    :cursor "pointer"
+    (label :text panel_clock)
+  )
+)
+
+(defwidget _colorpicker []
+  (eventbox
+    :cursor "pointer"
+    :class "colorpicker"
+    (button
+      :timeout 30000
+      :onclick "hyprpicker -n -a"
+      :tooltip "Color picker"
+      (label :text "")
+    )
+  )
+)
+
+(defwidget _screenshot []
+  (eventbox
+    :class "screenshot"
+    :cursor "pointer"
+    :onclick "scripts/toggle.sh screenshot"
+    :tooltip "Screenshot"
+    (label :text "")
+  )
+)
+
+(defwidget _system_tray []
+  (systray
+    :pack_direction "ltr"
+  )
+)
+
+(defwidget _separator []
+  (label
+    :class "separator"
+    :text "|"
+  )
+)
+
+(defwidget bar []
+  (box
+    :space-evenly true
+    :class "bar"
+    (box
+      :space-evenly false
+      :spacing 30
+      :halign "start"
+      (_menu)
+      (_separator)
+      (_workspaces)
+      (_separator)
+      (_music)
+    )
+    (box
+      :space-evenly false
+      :spacing 20
+      :halign "end"
+      (box
+        :space-evenly false
+        :spacing 20
+        (_system_tray)
+        (_colorpicker)
+        (_screenshot)
+      )
+      (_separator)
+      (_control_panel)
+      (_separator)
+      (box
+        (_datetime)
+      )
+    )
+  )
+)

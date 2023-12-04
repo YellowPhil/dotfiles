@@ -1,0 +1,68 @@
+.bar {
+    padding: .5em 1.5em;
+    border-radius: 16px;
+    color: $text-muted;
+    margin: 1em 1em 0;
+    background: $background-base;
+
+    .separator {
+        color: $text-inverse;
+    }
+
+    .menu {
+        font-size: 1.5em;
+        color: #7DCFFF;
+
+    }
+
+    .workspaces {
+
+        & box button label {
+
+            &.active {
+                color: $text-muted;
+            }
+        }
+    }
+
+    .screenshot {
+        color: #E0AF68;
+    }
+
+    .colorpicker {
+        color: #9eb9cb;
+    }
+
+    .datetime {
+        color: $text-muted;
+        border-radius: $rounded-large;
+
+        label {
+            padding: 0 1em;
+        }
+
+        &:hover {
+            background: $background-inverse;
+        }
+    }
+
+    .datetime.active {
+        background: $background-inverse;
+    }
+}
+
+label {
+    font-size: 1.2em;
+}
+
+.menu {
+    border-radius: 16px;
+
+    label {
+        padding: 0 .5em;
+    }
+
+    &:hover {
+        background: $background-inverse;
+    }
+}

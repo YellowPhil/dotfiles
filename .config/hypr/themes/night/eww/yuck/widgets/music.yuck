@@ -1,0 +1,67 @@
+; (defwidget _music []
+  ;   (eventbox
+    ;     :onhoverlost "scripts/toggle.sh music"
+    ;     (box
+      ;       :class "music"
+      ;       :orientation "h"
+      ;       :space-evenly false
+      ;       :halign "center"
+      ;       :spacing 20
+      ;       (box
+        ;         :class "thumbnail"
+        ;         :style "background-image: url('${picture}');"
+      ;       )
+      ;       (box
+        ;         :orientation "v"
+        ;         :style "min-width: 5em"
+        ;         (label :wrap true :text music)
+        ;         ; (box
+          ;           ;   :space-evenly false
+          ;           ;   :spacing 15
+          
+          ;           ;   (label :text atPosition)
+          ;           ;   (scale
+            ;             ;     :hexpand true
+            ;             ;     :min 0
+            ;             ;     :value atPositionP
+            ;             ;     :max 101
+            ;             ;     :orientation "h"
+          ;           ;   )
+          ;           ;   (label :text duration)
+        ;         ; )
+        ;         (box
+          ;           :class "buttons"
+          ;           (eventbox
+            ;             :cursor "pointer"
+            ;             :onclick "playerctl previous"
+            ;             :class "music-btn"
+            ;             (label :text "󰙤")
+          ;           )
+          ;           (eventbox
+            ;             :cursor "pointer"
+            ;             :onclick "playerctl play-pause"
+            ;             :class "music-btn"
+            ;             (label :text {
+              ;               playerStatus == "Playing" ? "󰏦" : "󰐍"
+            ;             })
+          ;           )
+          ;           (eventbox
+            ;             :cursor "pointer"
+            ;             :onclick "playerctl next"
+            ;             :class "music-btn"
+            ;             (label :text "󰙢")
+          ;           )
+        ;         )
+      ;       )
+    ;     )
+  ;   )
+; )
+
+(defwidget music []
+  (eventbox
+    :onhoverlost "scripts/toggle.sh music"
+    (literal
+      :content bitch
+    )
+  )
+)

@@ -1,0 +1,23 @@
+(defwindow system-menu0
+  :monitor 0
+  :stacking "fg"
+  :geometry (geometry
+    :x "7%"
+    :width "21%"
+    :height "10.41%"
+    :anchor "top right"
+  )
+  (_system-menu)
+)
+
+(defwindow system-menu1
+  :monitor 1
+  :stacking "fg"
+  :geometry (geometry
+    :x "7%"
+    :width "21%"
+    :height "10.41%"
+    :anchor "top right"
+  )
+  (_system-menu)
+)
