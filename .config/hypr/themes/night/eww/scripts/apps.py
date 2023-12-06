@@ -13,17 +13,17 @@ from gi.repository import Gtk
 from configparser import ConfigParser
 
 # XDG_CACHE_HOME = os.path.expandvars("$XDG_CACHE_HOME")
-CACHE_FILE = os.path.join("/home/synerr/.cache", "apps.json")
+CACHE_FILE = os.path.join("/home/winter/.cache", "apps.json")
 DESKTOP_DIR = "/usr/share/applications"
 PREFERRED_APPS = [
     "spotify",
     "discord",
-    "alacritty",
+    "foot",
     "kotatogram desktop",
     "code - oss",
     "thunar file manager",
-    "firefox",
-    "aria2c"
+    "brave web browser (beta)",
+    "transmission"
 ]
 
 def get_gtk_icon(icon_name):

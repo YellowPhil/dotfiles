@@ -26,8 +26,7 @@
             ""
             }
             :text {
-            workspaces[ws - 1] == 1 ? "" :
-            workspaces[ws - 1] == 2 ? "" :
+            workspaces[ws - 1] == 1 ? "X" : workspaces[ws - 1] == 2 ? "" :
             ""
             }
           )

@@ -4,7 +4,7 @@
     :class "battery"
     (label :text "${BATcapacity}% ")
     (image :path {
-      BATstatus == "charging" ? "./icons/battery-charging-fill.svg" :
+      BATstatus == "Charging" ? "./icons/battery-charging-fill.svg" :
       BATcapacity < 10 ? "./icons/battery-empty-fill.svg" :
       BATcapacity < 31 ? "./icons/battery-low-fill.svg" :
       BATcapacity < 60 ? "./icons/battery-medium-fill.svg" :

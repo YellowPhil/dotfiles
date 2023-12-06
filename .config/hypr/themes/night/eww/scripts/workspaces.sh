@@ -1,6 +1,6 @@
 #!/bin/bash
 
-n=7
+n=10
 
 # Initialize an associative array
 declare -A array

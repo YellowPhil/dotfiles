@@ -70,7 +70,7 @@
         :class "not"
         
         (eventbox
-          :onclick "systemctl suspend"
+          :onclick "systemctl hibernate"
           :cursor "pointer"
           :class "item"
           :onhover "eww close location0 || eww close location1"
@@ -108,7 +108,7 @@
         :class "not"
         
         (eventbox
-          :onclick "gtklock &"
+          :onclick "swaylock &"
           :cursor "pointer"
           :class "item"
           

@@ -28,7 +28,7 @@
           :icon "shutdown"
         )
         (powerbuttond
-          :action "gtklock &"
+          :action "swaylock &"
           :icon "lock"
         )
       )

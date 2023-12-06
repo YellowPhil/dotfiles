@@ -55,12 +55,12 @@
         :space-evenly false
         :orientation "h"
         (powerbutton
-          :action "systemctl poweroff"
+          :action "poweroff"
           :icon "shutdown"
           :label "Shut Down"
         )
         (powerbutton
-          :action "systemctl reboot"
+          :action "reboot"
           :icon "reboot"
           :label "Restart"
         )
@@ -75,7 +75,7 @@
           :label "Logout"
         )
         (powerbutton
-          :action "eww close powermenu0 || eww close powermenu1; swaylock &"
+          :action "swaylock &"
           :icon "lock"
           :label "Lock"
         )
