@@ -5,7 +5,7 @@ color_schemes:
 
 window:
   dynamic_padding: true
-  opacity: 0.9
+  opacity: 0.6
   padding:
     x: 25
     y: 25
@@ -27,7 +27,7 @@ font:
     family: Iosevka Nerd Font Mono
     style: Bold Italic
 
-  size: 12
+  size: 13
 
   offset:
     x: 0
@@ -498,6 +498,6 @@ key_bindings:
 live_config_reload: true
 
 
-  #colors: *hyper
-colors: *tender
+colors: *hyper
+  #colors: *tender
 
