@@ -38,7 +38,6 @@ cursor:
 
 # Colors (Tender)
 schemes:
-
   hyper: &hyper
     primary:
       background: '#282a36'

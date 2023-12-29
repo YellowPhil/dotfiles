@@ -1,0 +1,333 @@
+[schemes.latte]
+[[schemes.latte.indexed_colors]]
+index = 16
+color = "#FE640B"
+
+[[schemes.latte.indexed_colors]]
+index = 17
+color = "#DC8A78"
+
+[schemes.frappe]
+[[schemes.frappe.indexed_colors]]
+index = 16
+color = "#EF9F76"
+
+[[schemes.frappe.indexed_colors]]
+index = 17
+color = "#F2D5CF"
+
+[schemes.macchiato]
+[[schemes.macchiato.indexed_colors]]
+index = 16
+color = "#F5A97F"
+
+[[schemes.macchiato.indexed_colors]]
+index = 17
+color = "#F4DBD6"
+
+[schemes.hyper.primary]
+background = "#282a36"
+foreground = "#eff0eb"
+
+[schemes.hyper.cursor]
+cursor = "#97979b"
+
+[schemes.hyper.selection]
+text = "#282a36"
+background = "#feffff"
+
+[schemes.hyper.normal]
+black = "#282a36"
+red = "#ff5c57"
+green = "#5af78e"
+yellow = "#f3f99d"
+blue = "#57c7ff"
+magenta = "#ff6ac1"
+cyan = "#9aedfe"
+white = "#f1f1f0"
+
+[schemes.hyper.bright]
+black = "#686868"
+red = "#ff5c57"
+green = "#5af78e"
+yellow = "#f3f99d"
+blue = "#57c7ff"
+magenta = "#ff6ac1"
+cyan = "#9aedfe"
+white = "#eff0eb"
+
+[schemes.tokyo-night.primary]
+background = "0x1a1b26"
+foreground = "0xa9b1d6"
+
+[schemes.tokyo-night.normal]
+black = "0x32344a"
+red = "0xf7768e"
+green = "0x9ece6a"
+yellow = "0xe0af68"
+blue = "0x7aa2f7"
+magenta = "0xad8ee6"
+cyan = "0x449dab"
+white = "0x787c99"
+
+[schemes.tokyo-night.bright]
+black = "0x444b6a"
+red = "0xff7a93"
+green = "0xb9f27c"
+yellow = "0xff9e64"
+blue = "0x7da6ff"
+magenta = "0xbb9af7"
+cyan = "0x0db9d7"
+white = "0xacb0d0"
+
+[schemes.tokyo-night-storm.primary]
+background = "0x2b213a"
+foreground = "0xa9b1d6"
+
+[schemes.tokyo-night-storm.normal]
+black = "0x32344a"
+red = "0xf7768e"
+green = "0x9ece6a"
+yellow = "0xe0af68"
+blue = "0x7aa2f7"
+magenta = "0xad8ee6"
+cyan = "0x449dab"
+white = "0x9699a8"
+
+[schemes.tokyo-night-storm.bright]
+black = "0x444b6a"
+red = "0xff7a93"
+green = "0xb9f27c"
+yellow = "0xff9e64"
+blue = "0x7da6ff"
+magenta = "0xbb9af7"
+cyan = "0x0db9d7"
+white = "0xacb0d0"
+
+[schemes.latte.primary]
+background = "#EFF1F5"
+foreground = "#4C4F69"
+dim_foreground = "#4C4F69"
+bright_foreground = "#4C4F69"
+
+[schemes.latte.cursor]
+text = "#EFF1F5"
+cursor = "#DC8A78"
+
+[schemes.latte.vi_mode_cursor]
+text = "#EFF1F5"
+cursor = "#7287FD"
+
+[schemes.latte.selection]
+text = "#EFF1F5"
+background = "#DC8A78"
+
+[schemes.latte.normal]
+black = "#5C5F77"
+red = "#D20F39"
+green = "#40A02B"
+yellow = "#DF8E1D"
+blue = "#1E66F5"
+magenta = "#EA76CB"
+cyan = "#179299"
+white = "#ACB0BE"
+
+[schemes.latte.bright]
+black = "#6C6F85"
+red = "#D20F39"
+green = "#40A02B"
+yellow = "#DF8E1D"
+blue = "#1E66F5"
+magenta = "#EA76CB"
+cyan = "#179299"
+white = "#BCC0CC"
+
+[schemes.latte.dim]
+black = "#5C5F77"
+red = "#D20F39"
+green = "#40A02B"
+yellow = "#DF8E1D"
+blue = "#1E66F5"
+magenta = "#EA76CB"
+cyan = "#179299"
+white = "#ACB0BE"
+
+[schemes.frappe.primary]
+background = "#303446"
+foreground = "#C6D0F5"
+dim_foreground = "#C6D0F5"
+bright_foreground = "#C6D0F5"
+
+[schemes.frappe.cursor]
+text = "#303446"
+cursor = "#F2D5CF"
+
+[schemes.frappe.vi_mode_cursor]
+text = "#303446"
+cursor = "#BABBF1"
+
+[schemes.frappe.selection]
+text = "#303446"
+background = "#F2D5CF"
+
+[schemes.frappe.normal]
+black = "#51576D"
+red = "#E78284"
+green = "#A6D189"
+yellow = "#E5C890"
+blue = "#8CAAEE"
+magenta = "#F4B8E4"
+cyan = "#81C8BE"
+white = "#B5BFE2"
+
+[schemes.frappe.bright]
+black = "#626880"
+red = "#E78284"
+green = "#A6D189"
+yellow = "#E5C890"
+blue = "#8CAAEE"
+magenta = "#F4B8E4"
+cyan = "#81C8BE"
+white = "#A5ADCE"
+
+[schemes.frappe.dim]
+black = "#51576D"
+red = "#E78284"
+green = "#A6D189"
+yellow = "#E5C890"
+blue = "#8CAAEE"
+magenta = "#F4B8E4"
+cyan = "#81C8BE"
+white = "#B5BFE2"
+
+[schemes.macchiato.primary]
+background = "#24273A"
+foreground = "#CAD3F5"
+dim_foreground = "#CAD3F5"
+bright_foreground = "#CAD3F5"
+
+[schemes.macchiato.cursor]
+text = "#24273A"
+cursor = "#F4DBD6"
+
+[schemes.macchiato.vi_mode_cursor]
+text = "#24273A"
+cursor = "#B7BDF8"
+
+[schemes.macchiato.selection]
+text = "#24273A"
+background = "#F4DBD6"
+
+[schemes.macchiato.normal]
+black = "#494D64"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#B8C0E0"
+
+[schemes.macchiato.bright]
+black = "#5B6078"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#A5ADCB"
+
+[schemes.macchiato.dim]
+black = "#494D64"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#B8C0E0"
+
+[schemes.tender.colors.primary]
+background = "0x2b213a"
+foreground = "0xeeeeee"
+
+[schemes.tender.colors.normal]
+black = "0x282828"
+red = "0xf43753"
+green = "0xc9d05c"
+yellow = "0xffc24b"
+blue = "0xb3deef"
+magenta = "0xd3b987"
+cyan = "0x73cef4"
+white = "0xeeeeee"
+
+[schemes.tender.colors.bright]
+black = "0x4c4c4c"
+red = "0xf43753"
+green = "0xc9d05c"
+yellow = "0xffc24b"
+blue = "0xb3deef"
+magenta = "0xd3b987"
+cyan = "0x73cef4"
+white = "0xfeffff"
+
+[schemes.latte.search.matches]
+foreground = "#EFF1F5"
+background = "#6C6F85"
+
+[schemes.latte.search.focused_match]
+foreground = "#EFF1F5"
+background = "#40A02B"
+
+[schemes.latte.search.footer_bar]
+foreground = "#EFF1F5"
+background = "#6C6F85"
+
+[schemes.latte.hints.start]
+foreground = "#EFF1F5"
+background = "#DF8E1D"
+
+[schemes.latte.hints.end]
+foreground = "#EFF1F5"
+background = "#6C6F85"
+
+[schemes.frappe.search.matches]
+foreground = "#303446"
+background = "#A5ADCE"
+
+[schemes.frappe.search.focused_match]
+foreground = "#303446"
+background = "#A6D189"
+
+[schemes.frappe.search.footer_bar]
+foreground = "#303446"
+background = "#A5ADCE"
+
+[schemes.frappe.hints.start]
+foreground = "#303446"
+background = "#E5C890"
+
+[schemes.frappe.hints.end]
+foreground = "#303446"
+background = "#A5ADCE"
+
+[schemes.macchiato.search.matches]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[schemes.macchiato.search.focused_match]
+foreground = "#24273A"
+background = "#A6DA95"
+
+[schemes.macchiato.search.footer_bar]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[schemes.macchiato.hints.start]
+foreground = "#24273A"
+background = "#EED49F"
+
+[schemes.macchiato.hints.end]
+foreground = "#24273A"
+background = "#A5ADCB"

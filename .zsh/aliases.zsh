@@ -1,5 +1,6 @@
 # add COLOR
-alias diff="colordiff"
+#alias diff="colordiff"
+
 alias ip="ip -c "
 
 # show open ports
@@ -72,15 +73,27 @@ alias npp="notepad++"
 alias config='/usr/bin/git --git-dir=$HOME/.config/.cfg/ --work-tree=$HOME'
 
 #run neo4j
-alias run_neo4j='docker run --publish=7474:7474  --publish=7687:7687 --volume=/home/synerr/Documents/db/neo4j/data:/data neo4j'
+alias run_neo4j='docker run --publish=7474:7474  --publish=7687:7687 --volume=~/Documents/db/neo4j/data:/data neo4j'
 
 #evil winrm in docker
-
-alias winrm='docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm'
+#alias winrm='docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm'
+alias winrm='evil-winrm'
+#
 alias feh="sxiv"
 alias nigger="ssh root@79.137.195.227"
 
 #diff
-alias diff='diff-so-fancy'
-
+#alias diff='diff-so-fancy'
+#
 alias kali_work='ssh davydov-m@10.20.1.10 -i ~/.ssh/kali_keys'
+
+alias pch='proxychains'
+
+alias open='xdg-open'
+
+alias gtp='graftcp'
+
+# #function rm() {
+# #  echo "$1"
+#   echo "$@"
+# }

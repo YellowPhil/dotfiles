@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: yaml2toml
+Version: 1.0.2
+Summary: Convert YAML to TOML
+Home-page: https://github.com/hiljusti/yaml2toml
+Author: J.R. "hiljusti" Hill
+Author-email: hiljusti@pm.me
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/hiljusti/yaml2toml/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyyaml
+Requires-Dist: toml
+
+# yaml2toml
+
+Convert yaml files to toml files.
+
+Project: https://github.com/hiljusti/yaml2toml
+
+By: J.R. Hill
+
+License: MIT
+
+
+

@@ -1,6 +1,6 @@
 #Just PATH env
 NPM_PACKAGES="${HOME}/.npm-packages"
-export PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin:$HOME/go/bin
+export PATH=$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/go/bin:$HOME/.gem/ruby/3.0.0/bin
 export PATH="$PATH:$NPM_PACKAGES/bin"
 
 export ZSH="$HOME/.oh-my-zsh"
