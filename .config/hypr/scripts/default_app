@@ -6,7 +6,6 @@ FILE=nautilus #Tag 4
 PLAYER=vlc          #Tag 5
 GAME=steam-native   #Tag 6
 PHOTO=nomacs#Tag 7
-SANDBOX="mailspring --no-sandbox"  #Tag 8
 DEV=nvim#Tag 9
 
 #Lookup Focused tag
@@ -21,6 +20,5 @@ case "$TAG" in
   5) $PLAYER &> /dev/null ;;
   6) $GAME &> /dev/null ;;
   7) $PHOTO &> /dev/null ;;
-  8) $SANDBOX &> /dev/null ;;
   9) $DEV &> /dev/null ;;
 esac

@@ -1,40 +1,30 @@
-clock
-screenshots
-indicator-idle-visible
-indicator
 ignore-empty-password
 
-effect-blur=8x5
-effect-vignette=0.5:0.5
+color=1d1f21
+indicator-idle-visible
+indicator-radius=150
+indicator-thickness=30
 
-inside-color=292b2e
-inside-clear-color=292b2e
-inside-ver-color=292b2e
-inside-wrong-color=292b2e
+inside-color=1d1f21
+inside-clear-color=1d1f21
+inside-ver-color=1d1f21
+inside-wrong-color=1d1f21
 
-key-hl-color=292b2e
+key-hl-color=7aa6daaa
+bs-hl-color=d54e53aa
 
-line-color=292b2e
-line-clear-color=292b2e
-line-ver-color=292b2e
-line-wrong-color=292b2e
+separator-color=55555555
 
-ring-color=a8118a
-ring-clear-color=292b2e
-ring-ver-color=292b2e
-ring-wrong-color=292b2e
-separator-color=292b2e
+line-color=1d1f21
+line-uses-ring
 
-indicator-thickness=7
+text-color=81a2be
+text-clear-color=b5bd68
+text-caps-lock-color=f0c674
+text-ver-color=81a2be
+text-wrong-color=cc6666
 
-text-color=ffffff
-text-clear-color=ffffff
-text-ver-color=ffffff
-text-wrong-color=ff6961
-
-text-clear=Cleared
-text-caps-lock=Maj
-text-ver=Checking
-text-wrong=Cheh
-
-bs-hl-color=292b2e
+ring-color=81a2be55
+ring-ver-color=81a2be
+ring-clear-color=b5bd6811
+ring-wrong-color=cc6666

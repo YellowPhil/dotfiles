@@ -33,8 +33,9 @@ TRAPWINCH() {
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-plugins=(colored-man-pages colorize command-not-found copybuffer copyfile encode64 extract sudo themes z zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+# zsh-syntax-highlighting
+plugins=(colored-man-pages colorize command-not-found copybuffer copyfile encode64 extract sudo themes z zsh-autosuggestions  zsh-history-substring-search
+  zsh-syntax-highlighting)
 
 COMPLETION_WAITING_DOTS="true"
 
