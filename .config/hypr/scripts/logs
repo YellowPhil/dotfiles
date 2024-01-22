@@ -1,0 +1,30 @@
+/bin/sh: line 1: wl-clipboard-history: command not found
+/bin/sh: line 1: /home/fishe/bin/hypr: No such file or directory
+Hyprland: symbol lookup error: /home/ebalka/.local/share/hyprload/hyprload.so: undefined symbol: _ZN5Debug3logE8LogLevelPKcz
+compositor doesn't support wlr-gamma-control-unstable-v1
+The compositor does not seem to implement seat, which is required for wl-clipboard to work
+
+(avizo-service:3385): Gtk-WARNING **: 14:56:08.253: cannot open display: :0
+
+(com.github.Aylur.ags:3351): Gtk-WARNING **: 14:56:08.253: cannot open display: :0
+
+(polkit-gnome-authentication-agent-1:3353): Gtk-WARNING **: 14:56:08.253: cannot open display: :0
+Error: "Socket file not found. Are you sure swww-daemon is running?"
+xdg-desktop-portal-hyprland: no process found
+Error: "Socket file not found. Are you sure swww-daemon is running?"
+xdg-desktop-portal-wlr: no process found
+Error: "Socket file not found. Are you sure swww-daemon is running?"
+
+(/usr/lib/xdg-desktop-portal:3489): xdg-desktop-portal-WARNING **: 14:56:11.210: No skeleton to export
+
+(blueman-applet:3361): Gtk-CRITICAL **: 14:56:13.218: gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed
+Traceback (most recent call last):
+  File "/sbin/blueman-applet", line 40, in <module>
+    app = BluemanApplet()
+          ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/blueman/main/Applet.py", line 19, in __init__
+    setup_icon_path()
+  File "/usr/lib/python3.11/site-packages/blueman/Functions.py", line 155, in setup_icon_path
+    ic.prepend_search_path(ICON_PATH)
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'prepend_search_path'
