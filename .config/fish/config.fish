@@ -1,0 +1,36 @@
+function fish_prompt -d "Write out the prompt"
+    # This shows up as USER@HOST /home/user/ >, with the directory colored
+    # $USER and $hostname are set by fish, so you can just use them
+    # instead of using `whoami` and `hostname`
+    printf '%s@%s %s%s%s > ' $USER $hostname \
+        (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+end
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    set fish_greeting
+
+end
+
+
+function update_cwd_osc --on-variable PWD --description 'Notify terminals when $PWD changes'
+    if status --is-command-substitution || set -q INSIDE_EMACS
+        return
+    end
+    printf \e\]7\;file://%s%s\e\\ $hostname (string escape --style=url $PWD)
+end
+
+update_cwd_osc # Run once since we might have inherited PWD from a parent shell
+
+
+starship init fish | source
+zoxide init fish | source
+source $HOME/.config/fish/custom_imports/exports.fish
+source $HOME/.config/fish/custom_imports/aliases.fish
+source $HOME/.config/fish/custom_imports/path.fish
+
+# function fish_prompt
+#   set_color cyan; echo (pwd) 
+#
+   set_color green; echo '> '
+# end
