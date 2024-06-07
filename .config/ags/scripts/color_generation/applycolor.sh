@@ -148,8 +148,8 @@ apply_ags() {
 }
 
 # apply_svgs
-apply_ags &
-apply_hyprland &
+# apply_ags &
+# apply_hyprland &
 apply_gtk &
 apply_gtklock &
 apply_fuzzel &

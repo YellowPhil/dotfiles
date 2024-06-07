@@ -23,13 +23,13 @@ fi
 
 cd "$HOME/.config/ags/scripts/" || exit
 if [[ "$1" = "#"* ]]; then # this is a color
-    color_generation/generate_colors_material.py --color "$1" "$lightdark" > $HOME/.cache/ags/user/generated_colors.txt
+    python color_generation/generate_colors_material.py --color "$1" "$lightdark" > $HOME/.cache/ags/user/generated_colors.txt
     if [ "$2" = "--apply" ]; then
         cp $HOME/.cache/ags/user/generated_colors.txt "$HOME/.config/ags/scss/_material.scss"
         color_generation/applycolor.sh
     fi
 elif [ "$backend" = "material" ]; then
-    color_generation/generate_colors_material.py --path "$1" "$lightdark" > $HOME/.cache/ags/user/generated_colors.txt
+    python color_generation/generate_colors_material.py --path "$1" "$lightdark" > $HOME/.cache/ags/user/generated_colors.txt
     if [ "$2" = "--apply" ]; then
         cp $HOME/.cache/ags/user/generated_colors.txt "$HOME/.config/ags/scss/_material.scss"
         color_generation/applycolor.sh
