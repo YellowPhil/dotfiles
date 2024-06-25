@@ -1,15 +1,37 @@
 {
-    "height": 40, // Waybar height (to be removed for auto height)
     "layer": "top", // Waybar at top layer
-    "modules-left": ["custom/launcher", "cpu", "memory", "wlr/workspaces", "custom/weather"],
+    "modules-left": ["custom/launcher", "cpu", "memory", "hyprland/workspaces", "custom/weather"],
     "modules-right": ["tray", "network", "pulseaudio",  "backlight", "battery", "custom/lock", "clock", "custom/power-menu"],
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
       "format": "{icon}",
       "on-click": "activate",
       "format-icons": {
-        "active": " 󰮯",
+		"1": "一",
+		"2": "二",
+		"3": "三",
+		"4": "四",
+		"5": "五",
+		"6": "六",
+		"7": "七",
+		"8": "八",
+		"9": "九",
+	    "10": "〇",
+       //"active": " 󰮯",
+       // "empty": "",
         "default": "",
-      }
+      },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
     },
     "hyprland/window": {
         "format": "{}"
@@ -87,16 +109,8 @@
     },   
    "custom/lock": {
        "tooltip" : false,
-       "on-click": "swaylock",
+       "on-click": "hyprlock",
        "format" : "",
-    },
-   "custom/spotify": {
-        "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify",
-        "format": " {}",
-        "return-type": "json",
-        "on-click": "playerctl play-pause",
-        "on-double-click-right": "playerctl next",
-        "on-scroll-down": "playerctl previous",
     },
     "custom/power-menu": {
         "format": " ⏻ ",

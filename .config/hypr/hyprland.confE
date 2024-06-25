@@ -10,8 +10,7 @@ source=~/.config/hypr/configs/keybinds.conf
 input {
     force_no_accel = false
 
-    kb_layout = us, ru
-    # kb_variant=,,dvp
+    kb_layout = us,ru
     kb_options = grp:alt_shift_toggle
 
     follow_mouse = 1
@@ -101,7 +100,7 @@ decoration {
     col.shadow = rgba(0000001A)
     
     # Shader
-    # screen_shader = ~/.config/hypr/shaders/chromatic_abberation.frag
+    # screen_shader = ~/.config/hypr/shaders/nothing.frag
     # screen_shader = ~/.config/hypr/shaders/vibrance.frag
     
     # Dim
