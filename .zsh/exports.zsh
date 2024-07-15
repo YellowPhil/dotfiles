@@ -1,5 +1,4 @@
-#Just PATH env
-export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.npm-global/bin/:$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/share/gem/ruby/3.0.0/:$HOME/.local/bin:$PATH:$HOME/.cargo/bin:$HOME/go/bin
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -24,10 +23,13 @@ export XDG_CURRENT_DESKTOP=sway
 export WLR_NO_HARDWARE_CURSORS=1
 
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
-#export LS_COLORS="$(vivid generate molokai)"
+
+#LS_COLORS
+export LS_COLORS="$(vivid generate dracula)"
 #
 #fix Clion grey screen
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Wine prefix
 export WINEPREFIX=~/.wine
+

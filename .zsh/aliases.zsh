@@ -8,7 +8,6 @@ alias open_ports="sudo lsof -i -n -P"
 # launch gdb without prompt
 alias gdb='gdb -q'
 
-# pretty ls
 # obvious ones
 alias vim="nvim"
 alias vi="nvim"
@@ -39,7 +38,7 @@ alias forkbomb="echo ':(){ :|:& };:' | wl-copy"
 
 #connect to remote server
 alias old_server="ssh root@188.120.248.116"
-alias server="ssh root@62.109.24.105"
+alias server="ssh -i ~/.ssh/id25519 root@62.109.24.105"
 
 # dump errors to /dev/null
 alias find="find 2>/dev/null "
@@ -73,20 +72,26 @@ alias winrm='docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm'
 alias feh="sxiv"
 
 #VPN
-function vpn-on() { wg-quick up $HOME/Trash/wireguard/eat_people.conf }
-
-function vpn-off() { wg-quick down $HOME/Trash/wireguard/eat_people.conf }
+function vpn-on() { wg-quick up $HOME/.local/share/wg-quick/eat_people.conf }
+function vpn-off() { wg-quick down $HOME/.local/share/wg-quick/eat_people.conf }
 
 # pyenv
-alias pyenv='source ~/pyvenv/bin/activate'
+# alias pyenv='source ~/pyvenv/bin/activate'
 
-# MODERN ALTERNATIVES
-alias la='exa -lah'
-alias l='exa -l'
-alias ls='exa'
-alias du='dust'
-#alias curl='curlie'
+##################################################################### MODERN ALTERNATIVES ########################################################j
+# alias ls='colorls --dark'
+# alias la='ls -lAh --sd'
+# alias lt='ls --tree'
+# alias l='ls -l'
+# alias du='dust'
+# alias curl='curlie'
 #alias dig='dog'
 alias ccat='bat'
 alias neofetch="macchina"
+# alias rm='rip'
 
+#quite proxychains
+alias proxychains='proxychains -q'
+alias pch='proxychains'
+
+alias open='xdg-open'

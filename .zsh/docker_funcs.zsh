@@ -1,10 +1,6 @@
 function docker-clear() {
-    containers=("$(docker ps -q)")
-    for i in ${=containers};
-    do
-        docker stop $i;
-        docker rm $i;
-    done
+  docker stop $(docker ps -aq);
+  docker rm $(docker ps -aq);
 }
 
 alias dps="docker ps"
