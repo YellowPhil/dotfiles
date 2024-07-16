@@ -1,61 +1,40 @@
-@define-color highlight #ffffff;
-@define-color base1  rgba(40 ,40 ,40 ,0.95 );
-@define-color base2  rgba(40 ,40 ,40 ,0.95 );
-@define-color base3  rgba(50 ,48 ,47 ,0.75 );
-
-*{
-    font-family: Fira Code Nerd Font;
-    font-size: 16px ;
+* {
+  font-family: JetBrainsMono;
+  color: #e5e9f0;
+  background: transparent;
 }
 
-window {
-    border: 2px solid @highlight;
-    border-radius: 10px;  
-    background-color: @base2;
-
+#window {
+  background: rgba(41, 46, 66, 0.5);
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  border: 5px solid #b072d1;
 }
 
 #input {
-    margin-bottom: 15px;
-    padding:2px;
-    border-radius: 10px;
-    border: 0px solid @highlight;
-    color: #ebdbb2;
-    background-color: @base3;
-}
-
-#inner-box {
-    background:transparent;
-    padding:0px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
 }
 
 #outer-box {
-    margin: 5px;
-    padding:15px;
-    /*background-color: @base2;*/
+  padding: 20px;
 }
 
-
-#text {
-    padding:0px;
-    color: #A89984;
-}
-
-#text:selected {
-    color: @highlight;
+#img {
+  margin-right: 6px;
 }
 
 #entry {
-    padding:10px;
-    border-radius:0px;
-}
-
-#entry:nth-child(even) {
+  padding: 10px;
+  border-radius: 15px;
 }
 
 #entry:selected {
-    background-color: transparent;
-    border: 2px solid @highlight;
-    border-radius:10px;
+  background-color: #2e3440;
 }
 
+#text {
+  margin: 2px;
+}

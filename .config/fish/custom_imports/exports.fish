@@ -20,3 +20,6 @@ set -g -x _JAVA_AWT_WM_NONREPARENTING 1
 set -g -x WINEPREFIX ~/.wine
 
 set -g -x XCURSOR_SIZE 26
+
+# Little hack to make cargo work with git ssh
+set -g -x CARGO_NET_GIT_FETCH_WITH_CLI true
