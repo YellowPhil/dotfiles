@@ -3,6 +3,7 @@
     "modules-left": ["custom/launcher", "cpu", "memory", "hyprland/workspaces", "custom/weather"],
     "modules-right": ["tray", "network", "pulseaudio",  "backlight", "battery", "custom/lock", "clock", "custom/power-menu"],
     "hyprland/workspaces": {
+      "all-outputs": true,
       "format": "{icon}",
       "on-click": "activate",
       "format-icons": {
@@ -20,7 +21,7 @@
        // "empty": "",
         "default": "",
       },
-        "persistent_workspaces": {
+      "persistant_workspaces": {
             "1": [],
             "2": [],
             "3": [],
@@ -30,7 +31,7 @@
             "7": [],
             "8": [],
             "9": [],
-            "10": []
+            "10": ["eDP-1"]
         },
     },
     "hyprland/window": {
