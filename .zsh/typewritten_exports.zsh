@@ -1,1 +1,0 @@
-TYPEWRITTEN_CURSOR="underscore"

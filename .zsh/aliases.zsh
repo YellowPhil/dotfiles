@@ -93,6 +93,41 @@ alias open='xdg-open'
 
 alias gtp='graftcp'
 
+########################################################### VPN SETUP #################################################
+alias vpn-on='wg-quick up $HOME/.local/share/vpn/eat_people.conf'
+alias vpn-off='wg-quick down $HOME/.local/share/vpn/eat_people.conf'
+
+########################################################### NEW ERA ####################################################
+# alias cp='xcp'
+alias du='dust'
+alias cd='z'
+#alias ps='procs'
+alias rm='rip'
+#alias cd='zq'
+#alias jq='jql'
+#alias dig='dog'
+alias curl='curlie'
+#################################################### ZELLIJ SETUP #################################################
+alias zj='zellij'
+alias zja='zellij attach -f --index 0 -c'
+# #function rm() {
+# #  echo "$1"
+#   echo "$@"
+# }
+##############################################   SLIVER #############################################
+alias sliv='sliver-client_linux'
+############################################### TODOs ##################################
+alias t='todoist-cli'
+
+############################################# HEX EDITOR ###############################33
+alias whex='wxHexEditor'
+
+########################### HACKS ########################
+alias findip='grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"'
+alias sneaky-ssh='ssh -T -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+#
+
 # #function rm() {
 # #  echo "$1"
 #   echo "$@"
