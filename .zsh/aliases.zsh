@@ -100,7 +100,7 @@ alias vpn-off='wg-quick down $HOME/.local/share/vpn/eat_people.conf'
 ########################################################### NEW ERA ####################################################
 # alias cp='xcp'
 alias du='dust'
-alias cd='z'
+# alias cd='z'
 #alias ps='procs'
 alias rm='rip'
 #alias cd='zq'

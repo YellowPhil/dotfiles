@@ -22,9 +22,13 @@ end
 
 update_cwd_osc # Run once since we might have inherited PWD from a parent shell
 
+if status is-interactive
+  printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
+end
 
 starship init fish | source
 zoxide init fish | source
+pyenv init - | source
 source $HOME/.config/fish/custom_imports/exports.fish
 source $HOME/.config/fish/custom_imports/aliases.fish
 source $HOME/.config/fish/custom_imports/path.fish

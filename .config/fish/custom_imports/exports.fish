@@ -23,3 +23,6 @@ set -g -x XCURSOR_SIZE 26
 
 # Little hack to make cargo work with git ssh
 set -g -x CARGO_NET_GIT_FETCH_WITH_CLI true
+
+# SSH agent path
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket

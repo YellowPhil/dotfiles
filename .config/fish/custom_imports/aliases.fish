@@ -89,7 +89,6 @@ alias run_neo4j="docker run --detach --publish=7474:7474 --publish=7687:7687 --e
 alias winrm='evil-winrm'
 #
 alias feh="sxiv"
-alias nigger="ssh root@79.137.195.227"
 
 #diff
 #alias diff='diff-so-fancy'
@@ -106,6 +105,9 @@ alias gtp='graftcp'
 ########################################################### VPN SETUP #################################################
 alias vpn-on='wg-quick up $HOME/.local/share/vpn/eat_people.conf'
 alias vpn-off='wg-quick down $HOME/.local/share/vpn/eat_people.conf'
+
+alias chatgpt-on='wg-quick up $HOME/.local/share/vpn/chatgpt_vpn.conf && sleep 1 && xdg-open https://chatgpt.com'
+alias chatgpt-off='wg-quick down $HOME/.local/share/vpn/chatgpt_vpn.conf'
 
 ########################################################### NEW ERA ####################################################
 # alias cp='xcp'
@@ -131,3 +133,7 @@ alias t='todoist-cli'
 
 ############################################# HEX EDITOR ###############################33
 alias whex='wxHexEditor'
+########################### HACKS ########################
+alias findip='grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"'
+alias sneaky-ssh='ssh -T -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+#
