@@ -1,0 +1,1 @@
+source "/home/gnome/.deno/env.fish"

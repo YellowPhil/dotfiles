@@ -28,7 +28,6 @@ end
 
 starship init fish | source
 zoxide init fish | source
-pyenv init - | source
 source $HOME/.config/fish/custom_imports/exports.fish
 source $HOME/.config/fish/custom_imports/aliases.fish
 source $HOME/.config/fish/custom_imports/path.fish

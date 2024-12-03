@@ -25,8 +25,6 @@ alias ls='exa --icons'
 # obvious ones
 alias vim="nvim"
 alias vi="nvim"
-alias ida64="wine ~/Apps/IDA/ida64.exe"
-alias ida32="wine ~/Apps/IDA/ida.exe"
 
 # show info about packet
 alias qq="pacman -Qi"
@@ -39,7 +37,7 @@ alias pp="python ebanie.py"
 alias vp="vim ebanie.py"
 
 # fir VSCode for Wayland
-alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland --log debug --enable-features=WaylandWindowDecorations"
+alias code="code --no-sandbox --enable-features=UseOzonePlatform --ozone-platform=wayland --log debug --enable-features=WaylandWindowDecorations"
 
 # Use c++ 20 standart
 alias g++="g++ --std=c++20"
@@ -136,4 +134,6 @@ alias whex='wxHexEditor'
 ########################### HACKS ########################
 alias findip='grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"'
 alias sneaky-ssh='ssh -T -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
-#
+
+#################################### FFUF with default random agent
+alias ffuf='ffuf -H "User-Agent: $(openssl rand -hex 16)"'
