@@ -10,6 +10,16 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting
 
+    # prompt
+    starship init fish | source
+
+    # better cd
+    zoxide init fish | source
+
+    # Better history
+    atuin init fish | source
+
+    # Colors from wal
 end
 
 
@@ -26,14 +36,15 @@ if status is-interactive
   printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
 end
 
-starship init fish | source
-zoxide init fish | source
 source $HOME/.config/fish/custom_imports/exports.fish
 source $HOME/.config/fish/custom_imports/aliases.fish
 source $HOME/.config/fish/custom_imports/path.fish
 
+# wal -w -n -q -e
+wal --theme base16-black-metal -n -q -e
+
 # function fish_prompt
 #   set_color cyan; echo (pwd) 
 #
-   set_color green; echo '> '
+#set_color green; echo '> '
 # end
