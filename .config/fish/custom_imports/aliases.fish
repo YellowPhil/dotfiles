@@ -1,11 +1,6 @@
+#!/usr/bin/fish
 # For fun
 alias pong='ping'
-##################################################### DOCKER FUNCS ##############################################
-alias dps='docker ps'
-function docker-clear
-  docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
-end
-
 alias vscode-eslint-language-server='eslint'
 
 # add COLOR
@@ -86,7 +81,7 @@ alias run_neo4j="docker run --detach --publish=7474:7474 --publish=7687:7687 --e
 #alias winrm='docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm'
 alias winrm='evil-winrm'
 #
-alias feh="sxiv"
+alias feh="nsxiv"
 
 #diff
 #alias diff='diff-so-fancy'
@@ -111,6 +106,7 @@ alias chatgpt-off='wg-quick down $HOME/.local/share/vpn/chatgpt_vpn.conf'
 # alias cp='xcp'
 alias du='dust'
 alias cd='z'
+alias curl='curl --insecure -H "User-Agent: $(shuf -n 1 /usr/share/seclists/user-agents.txt)"'
 #alias ps='procs'
 #alias rm='rip'
 #alias cd='zq'
@@ -135,5 +131,8 @@ alias whex='wxHexEditor'
 alias findip='grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"'
 alias sneaky-ssh='ssh -T -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
-#################################### FFUF with default random agent
-alias ffuf='ffuf -H "User-Agent: $(openssl rand -hex 16)"'
+#################################### FFUF with default random agent #######################################
+alias ffuf='ffuf -H "User-Agent: $(shuf -n 1 /usr/share/seclists/user-agents.txt)"'
+alias gffuf='graftcp ffuf -H "User-Agent: $(shuf -n 1 /usr/share/seclists/user-agents.txt)"'
+#################################### WORK VPN ############################################
+alias nbup='netbird up --management-url https://gw.cicada8.ru --admin-url https://gw.cicada8.ru'

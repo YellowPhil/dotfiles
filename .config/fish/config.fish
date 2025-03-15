@@ -19,7 +19,14 @@ if status is-interactive
     # Better history
     atuin init fish | source
 
+    # direnv setup
+    direnv hook fish | source
+
     # Colors from wal
+    wal --theme sexy-neon -q 
+
+    # creds for applications
+    source ~/.creds.env
 end
 
 
@@ -36,12 +43,14 @@ if status is-interactive
   printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
 end
 
-source $HOME/.config/fish/custom_imports/exports.fish
-source $HOME/.config/fish/custom_imports/aliases.fish
-source $HOME/.config/fish/custom_imports/path.fish
+#source $HOME/.config/fish/custom_imports/*
+find $HOME/.config/fish/custom_imports -name "*.fish" -exec cat {} \; | source
 
+############ PYWAL THEME ##############
+# wal --theme sexy-belge -q 
+# wal --theme sexy-nancy -q 
 # wal -w -n -q -e
-wal --theme base16-black-metal -n -q -e
+###########################################
 
 # function fish_prompt
 #   set_color cyan; echo (pwd) 

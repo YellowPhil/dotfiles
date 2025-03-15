@@ -1,4 +1,6 @@
-set -g -x NPM_PACKAGES "$HOME/.npm-packages"
+#!/usr/bin/fish
+
+set -g -x NPM_CONFIG_PREFIX "$HOME/.npm-global"
 set -g -x ZSH "$HOME/.oh-my-zsh"
 set -g -x TERM xterm-256color
 
